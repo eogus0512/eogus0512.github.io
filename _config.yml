@@ -112,7 +112,7 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: "eogus0512e@gmail.com"
+      # url: "eogus0512e@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -124,10 +124,10 @@ author:
       # url: "https://facebook.com/dhkdwkdlfrjf"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/eogus0512"
+      # url: "https://github.com/eogus0512"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/daehyun_98"
+      # url: "https://instagram.com/daehyun_98"
 
 # Site Footer
 footer:
@@ -140,7 +140,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/eogus0512"
+      # url: "https://github.com/eogus0512"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
@@ -149,7 +149,7 @@ footer:
       # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/daehyun_98"
+      # url: "https://instagram.com/daehyun_98"
 
 
 # Reading Files
