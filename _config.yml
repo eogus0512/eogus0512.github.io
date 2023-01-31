@@ -106,7 +106,7 @@ analytics:
 author:
   name             : "Yun Daehyun"
   avatar           : "images/profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "동국대학교에 재학 중인 주니어 백엔드 개발자입니다."
+  bio              : "동국대학교에 재학 중인<br>주니어 백엔드 개발자입니다."
   location         : "서울특별시"
   email            : "eogus0512@gmail.com"
   links:
