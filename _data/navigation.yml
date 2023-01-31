@@ -4,7 +4,7 @@ main:
   #  url: "/"
   - title: "Introduce"
     url: /about/
-  - title: "Category"
+  - title: "Post"
     url: "/categories/"
   - title: "Tags"
     url: /tags/
