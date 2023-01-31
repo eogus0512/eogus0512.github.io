@@ -1,12 +1,10 @@
 # main links
 main:
-  - title: "Home"
-    url: /
-  - title: "Post"
-    url: /categories/
-  - title: "Tag"
-   url: /tags/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+  #- title: "Home"
+  #  url: "/"
+  - title: "Introduce"
+    url: /about/
+  - title: "Category"
+    url: "/categories/"
+  - title: "Tags"
+    url: /tags/
