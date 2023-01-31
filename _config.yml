@@ -20,7 +20,7 @@ title                    : "대현's 개발일지"
 title_separator          : "-"
 subtitle                 : "version 1.0" # site tagline that appears below site title in masthead
 name                     : "Yun Daehyun"
-description              : ""
+description              : "대현's 개발일지"
 url                      : "https://eogus0512.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "https://github.com/eogus0512/eogus0512.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
