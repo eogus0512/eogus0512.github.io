@@ -3,9 +3,9 @@ main:
   - title: "Home"
     url: /
   - title: "Post"
-    url: /post/
+    url: /categories/
   - title: "Tag"
-   url: /tag/
+   url: /tags/
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
