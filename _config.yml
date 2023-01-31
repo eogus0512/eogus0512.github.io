@@ -108,11 +108,11 @@ author:
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "동국대학교에 재학 중인 주니어 백엔드 개발자입니다."
   location         : "서울특별시"
-  email            : "eogus0512@gmail.com
+  email            : "eogus0512@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "eogus0512e@gmail.com"
+      url: "eogus0512e@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -121,13 +121,13 @@ author:
       # url: "https://twitter.com/"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/dhkdwkdlfrjf"
+      url: "https://facebook.com/dhkdwkdlfrjf"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/eogus0512"
+      url: "https://github.com/eogus0512"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/daehyun_98"
+      url: "https://instagram.com/daehyun_98"
 
 # Site Footer
 footer:
@@ -140,7 +140,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/eogus0512"
+      url: "https://github.com/eogus0512"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
@@ -149,7 +149,7 @@ footer:
       # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/daehyun_98"
+      url: "https://instagram.com/daehyun_98"
 
 
 # Reading Files
