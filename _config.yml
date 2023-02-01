@@ -154,7 +154,7 @@ defaults:
   home:
     heading: "Welcome to Daehyun's World"
     subheading: "Spring 완전 정복기"
-#    banner: "/images/banner.jpg"
+    banner: "/images/banner.jpg"
 
 # Banner default settings
 # These banner settings are for global banner default, but you can also
