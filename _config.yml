@@ -150,7 +150,7 @@ yat:
 #   - about.md
 
 # Page default value
-# defaults:
+ defaults:
    home:
      heading: "Welcome to Daehyun's World"
      subheading: "Spring 완전 정복기"
