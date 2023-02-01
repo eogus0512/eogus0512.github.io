@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Video example
+title: 아무거나
 subtitle:
 categories: example
 tags: [video]
