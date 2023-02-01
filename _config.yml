@@ -24,9 +24,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Your awesome title
-email: your-email@domain.com
-author: GitHub User
+title: 대현's 개발일지
+email: eogus0512@gmail.com
+author: Yun Daehyun
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -38,7 +38,7 @@ author: GitHub User
 #
 # For example:
 #   "Copyright (c) 2017-{currentYear} <a href="https://example.com">{author}</a>"
-#   "Copyright © 2017-2021 Foobar"
+#   "Copyright © 2017-2023 Foobar"
 #
 copyright: "Unpublished Work (cleft) 2017-{currentYear} {author}"
 
@@ -96,10 +96,6 @@ yat:
 #   - lang: ko
 #     img: https://cdn.countryflags.com/thumbs/south-korea/flag-400.png
 #     text: Korean
-#
-#   - lang: ru
-#     img: https://cdn.countryflags.com/thumbs/russia/flag-400.png
-#     text: Russian
 
 # You can choose a theme color
 # Default theme colors as below:
