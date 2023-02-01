@@ -151,7 +151,7 @@ yat:
 
 # Page default value
 # defaults:
-   home:
+#   home:
      heading: "Welcome to Daehyun's World"
      subheading: "Spring 완전 정복기"
      banner: "/images/banner.jpg"
