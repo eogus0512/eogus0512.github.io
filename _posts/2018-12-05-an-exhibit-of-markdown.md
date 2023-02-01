@@ -1,12 +1,10 @@
 ---
 layout: post
-title: An exhibit of Markdown
-subtitle: Each post also has a subtitle
-categories: markdown
-tags: [example, markdown]
+title: 프로젝트 구상
+subtitle: Java Spring 프로젝트
+categories: Spring
+tags: [Spring, Java]
 ---
-
-This note demonstrates some of what [Markdown][1] is capable of doing.
 
 ## An exhibit of Markdown
 
