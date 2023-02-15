@@ -55,6 +55,23 @@ th:replace를 사용하여 공통영역을 가져왔다.
   
 
 ### 적용 결과
-  
+```HomeController.java
+@Controller
+public class HomeController {
+    @GetMapping("/")
+    public String main(
+            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+
+        if (loginMember == null) {
+            LoginForm loginForm = new LoginForm();
+            model.addAttribute("loginForm", loginForm);
+            return "page/loginPage";
+        }
+
+        model.addAttribute("member", loginMember);
+        return "page/main";
+    }
+}
+```  
 ![image](https://user-images.githubusercontent.com/71585151/219018491-be858b76-013f-4844-83a0-f7dbe98211c5.png)
 메인화면에 공통영역이 정상적으로 포함된 것을 확인할 수 있다.
