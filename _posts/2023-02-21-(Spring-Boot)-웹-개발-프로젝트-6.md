@@ -11,7 +11,7 @@ tags: [Spring, Java, Web, DB]
 많은 DBMS가 존재하지만 그중에서 간단한 h2 database라는 DBMS를 사용할 것이다. 버전은 1.4.200을 사용할 것이다. 최근에 많은 버전이 새로 출시되었지만 일부 오류가 발생하는 곳이 생겨 이전버전인 1.4.200을 사용할 것이다.
 
 다운로드는 아래 주소를 통하여 진행하면 된다.
-https://www.h2database.com/
+[H2 database](https://www.h2database.com/)
 
 ### 환경설정
 build.gradle에 다음 내용을 추가한다.
