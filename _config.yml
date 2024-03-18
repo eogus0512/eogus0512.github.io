@@ -153,8 +153,8 @@ translate_langs:
 # Page default value
 defaults:
   home:
-    heading: "대현's 웹 개발 Blog"
-    subheading: "Spring 완전 정복기"
+    heading: "대현's 백엔드 Blog"
+    subheading: "백엔드 완전 정복기"
     banner: "images/banner.jpg"
 
 # Banner default settings
