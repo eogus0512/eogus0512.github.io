@@ -1,0 +1,1591 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="/jekyll-theme-yat/feed.xml" rel="self" type="application/atom+xml" /><link href="/jekyll-theme-yat/" rel="alternate" type="text/html" hreflang="ko" /><updated>2024-03-27T12:08:30+00:00</updated><id>/jekyll-theme-yat/feed.xml</id><title type="html">대현’s 개발일지</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Yun Daehyun</name></author><entry><title type="html">(컴퓨터 네트워크) 컴퓨터 네트워크 보안</title><link href="/jekyll-theme-yat/cs/2024/01/17/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B3%B4%EC%95%88.html" rel="alternate" type="text/html" title="(컴퓨터 네트워크) 컴퓨터 네트워크 보안" /><published>2024-01-17T00:00:00+00:00</published><updated>2024-01-17T00:00:00+00:00</updated><id>/jekyll-theme-yat/cs/2024/01/17/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B3%B4%EC%95%88</id><content type="html" xml:base="/jekyll-theme-yat/cs/2024/01/17/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B3%B4%EC%95%88.html"><![CDATA[<h2 id="네트워크-보안">네트워크 보안</h2>
+<ul>
+  <li>네트워크 보안 - 기밀성, 메시지 무결성, 종단점 인증, 운영 보안을 고려한 네트워크에서의 안전한 통신
+    <ul>
+      <li>기밀성 - 송신자와 지정된 수신자만이 전송되는 메시지 내용을 이해할 수 있어야한다.</li>
+      <li>메시지 무결성 - 통신하는 내용이 전송 도중에 변경되지 않아야한다.</li>
+      <li>종단점 인증 - 통신에 참여하는 송신자와 수신자는 서로 누구인지 인증 가능해야한다.</li>
+      <li>운영 보안 - 침입 감지 시스템으로 패킷은 상세히 관찰되고 의심스러운 행위에 대해 네트워크 관리에게 보고된다.
+<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="암호의-원리">암호의 원리</h2>
+<ul>
+  <li>암호화 알고리즘 - 평문은 암호화 알고리즘을 사용해서 암호화되어 원문이 되고, 원문은 복화화 알고리즘을 사용해서 복호화되어 평문이 된다.
+<br /></li>
+</ul>
+
+<h2 id="대칭키-암호화">대칭키 암호화</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/b750f0b8-1e2c-42d2-a929-c963f8ac9086" alt="image-20231105-035351" /></p>
+
+<ul>
+  <li>대칭키 암호화 알고리즘 - 어떤 것을 다른 것으로 대치하는 것이다. 송신자와 수신자는 같은 키를 공유한다.</li>
+  <li>카이사르 암호 - 평문 + k (k=key)</li>
+  <li>단일 문자 대응 암호 - 각 철자들은 고유한 대응 글자로 변환된다.</li>
+  <li>공격의 종류
+    <ul>
+      <li>암호문만을 이용한 공격 - 침입자가 평문 메시지의 내용에 대한 어떠한 사전 정보도 없이 가로챈 암호문에서만 접근할 수 있는 경우이다.</li>
+      <li>알려진 평문 공격 - 침입자가 어느정도 암호문의 쌍을 알고 있을 때, 이를 사용하여 공격하는 경우이다.</li>
+      <li>선택 평문 공격 - 침입자는 특정 평문 메시지를 선택하여 이에 대응하는 암호문 형태를 얻을 수 있다.</li>
+    </ul>
+  </li>
+  <li>다중 문자 대응 암호화 - 여러 개의 단일 문자 대응법을 가지고 평문 메시지에서의 위치에 따라 서로 다른 단일 문자 대응 암호법을 사용하는 것이다.</li>
+  <li>블록 암호화
+    <ul>
+      <li>메시지가 k비트 블록 단위로 암호화된다. 각 k비트 블록은 독립적으로 암호화된다.</li>
+      <li>이 암호기법에 대한가장 단순한 공격방법은 무작정 모든 사상을 시도해보는 것이다.</li>
+      <li><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/124d0cd9-0211-4276-b319-d7f6ba8cdcf4" alt="image-20231105-035836" /></li>
+      <li>블록 암호화 기법은 블록의 순열 테이블을 임의로 모방 생성하는 함수를 사용한다. 암호화 사이클을 n번 반복하게 된다.</li>
+      <li>블록 암호화 방법에는 DES, AES 등이 있다.
+<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="공개키-암호화">공개키 암호화</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/afbd6a01-6aa8-4639-86bc-a2181681b528" alt="image-20231105-035902" /></p>
+
+<ul>
+  <li>공개키 암호화 알고리즘 - 송신자와 수신자는 2개의 키를 갖는다. 하나는 세상의 모든사람에게 알려진 공개키이고, 다른 하나는 수신자만 아는 개인키이다. 송신자는 수신자의 공개키를 가지고 평문을 암호화하고, 수신자는 그것을 자신의 개인키와 이미 알려져 있는 복호화 알고리즘을 이용하여 복호화한다.</li>
+  <li>RSA - 소인수분해의 어려움에 기반하고 있는 알고리즘이다. 매우 큰 소수를 소인수로 분해하는 것이 어렵기 때문에 공개키 암호화 알고리즘으로서 적합하다.
+    <ul>
+      <li>RSA 알고리즘</li>
+      <li>
+        <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/c2a8b950-ffe7-4c9e-9acf-93d9a7948624" alt="image-20231105-040303" /></p>
+      </li>
+      <li>세션키 - RSA에 필요한 지수연산은 시간이 많이 필요하기 때문에 RSA는 실제로 종종 대칭키 암호화와 함께 사용된다. 이 키를 세션키라고 한다. 수신자는 세션키가 RSA로 암호화된 형태인 c를 받고, 이를 복호화하여 세션키 Ks를 얻게된다. 그 후로, 수신자는 송신자가 데이터 암호화에 사용한 세션키를 사용한다.
+<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="메시지-무결성">메시지 무결성</h2>
+<ul>
+  <li>메시지 무결성을 정의하기 위해선 메시지가 정말 수신자로부터 온것인지, 수신자에게 전달되는 도중에 메시지가 변경되지 않았는지에 대해 확인이 필요하다. 
+<br /></li>
+</ul>
+
+<h2 id="암호화-해시함수">암호화 해시함수</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/b90a1a8a-e850-4805-9db0-c2c58b6864eb" alt="image-20231105-043119" /></p>
+
+<ul>
+  <li>해시 함수는 입력 m을 받아서 해시라 불리는 고정된 크기의 문자열 H(m)을 계산해낸다.</li>
+  <li>(m, H(m))이 원래 메시지와 그 메시지에 대해 송신자가 만들어낸 해시값이라고 할 때, 침입자가 원래 메시지와 동일한 해시값을 갖는 다른 메시지 y를 위조할 수 없다고 할 수 있어야한다.
+<br /></li>
+</ul>
+
+<h2 id="메시지-인증-코드">메시지 인증 코드</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/46d52743-304f-477c-9081-71f19d7fdb8a" alt="image-20231105-050603" /></p>
+
+<ul>
+  <li>해시 함수로부터 메시지 무결성을 얻을 때, 가짜 메시지 m’을 생성하여 메시지 내에서 자신이 수신자라고 주장한 후, H(m’)을 생성하여 수신자에게 (m’, H(m))을 보내면, 문제없이 부적절한 행위를 검출할 수 없다.</li>
+  <li>메시지 무결성을 위해서는 암호화 해시 함수의 사용 외에도 비밀키를 공유할 필요가 있는데, 이때, 비트열 형태인 이 공유 비밀키를 인증키라고 한다.</li>
+  <li>메시지 무결성 적용 방법
+    <ul>
+      <li>수신자는 메시지 m을 생성한 후 s와 접합하여 m+s를 만든다. 그런 다음 해시 H(m+s)를 계산해내는데 이것을 메시지 인증 코드(MAC)라고 부른다.</li>
+      <li>송신자는 MAC을 메시지 m에 첨부하여 확장 메시지 (m, H(m+s))를 생성해서 수신자에게 보낸다.</li>
+      <li>수신자는 확장 메시지 (m, h)를 받으면 이미 알고있는 s를 이용하여 MAC H(m+s)를 계산한다. 만약, H(m+s) = h라면, 아무 문제가 없는 것이다.</li>
+    </ul>
+  </li>
+  <li>MAC은 암호화 알고리즘을 필요로 하지 않는다. 즉, 메시지의 무결성만 필요로 하고 메시지 기밀성은 고려하지 않는다.
+<br /></li>
+</ul>
+
+<h2 id="전자서명">전자서명</h2>
+<ul>
+  <li>디지털 세계에서 자신의 문서 내용에 대해 승인했거나 동의했다는 사실을 증명하는 목적으로 사용되는 암호화 기법을 말한다.</li>
+  <li>서명자를 입증할 수 있어야 하고, 위조할 수 없도록 해야한다. 즉, 어느 한 개인이 서명한 무서를 실제로 그 사람이 서명했다는 사실, 그리고 오직 그 사람만이 문서에 서명할 수 있었다는 사실을 증명할 수 있어야 한다.</li>
+  <li>전자서명 생성방법</li>
+  <li>
+    <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/a8452659-fdef-4c0f-a3c8-bcccf44001db" alt="image-20231105-051655" /></p>
+  </li>
+  <li>수신자는 문서에 서명할 목적으로 개인키를 사용하여 알고리즘을 계산한다.</li>
+  <li>개인키를 사용하는 이유는 KB+(KB−(m))=m이 되도록하기 위해서 이다.</li>
+  <li>개인키를 사용하였기 때문에 개인키를 알고있는 자신 이외에 다른 사람들은 생성 불가능하다.</li>
+  <li>전자서명 메시지의 전송</li>
+  <li>
+    <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/9a731901-7e0a-4b78-9801-075d36386eea" alt="image-20231105-052018" /></p>
+  </li>
+  <li>서명된 메시지의 검증</li>
+  <li>
+    <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/14d14d68-2012-423b-850d-913f1ac6c9cc" alt="image-20231105-052042" /></p>
+  </li>
+  <li>공개키 인증 - 전자서명의 중요한 응용 중 하나로 어떤 공개키가 특정 통신 개체에 속한다는 것을 보증하는 것이다.
+    <ul>
+      <li>IPsec과 TLS 등 많은 대중적인 보안 네트워킹에서 사용된다.</li>
+      <li>
+        <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/dde0b2ed-0b31-440a-81fc-b926bdf4f967" alt="image-20231105-052233" /></p>
+      </li>
+      <li>공격자는 송신자에게 자신이 수신자라고 속이고 자신의 개인키로 이용해 서명된 메시지 요약문을 송신자에게 보낸다. 송신자는 그것이 수신자의 것이라고 생각하여 공격자의 공개키를 이용하여 암호화하여 수신자에게 보낸다. 당연하게도 수신자는 자신이 원한 메시지가 아닌 잘못된 메시지를 가지게 된다.</li>
+    </ul>
+  </li>
+  <li>인증기관(CA) - 공개키가 어떤 특정한 통신 개체의 것인지 보증하는 일을 담당한다.
+    <ul>
+      <li>CA는 어떤 개체가 스스로 주장하는 자신의 신분, 바로 그 개체가 맞는지 확인한다.</li>
+      <li>일단 CA가 개체의 신원을 확인하면, CA는 그 개체의 공개키와 신분확인서를 결합한 인증서를 만든다</li>
+      <li><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/c1509ee8-efa9-4654-8b1b-764b6fe0f405" alt="image-20231105-053434" />
+<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="종단점-인증">종단점 인증</h2>
+<ul>
+  <li>하나의 통신 개체가 다른 개체에게 자신의 신원을 컴퓨터 네트워크상으로 증명하는 작업이다.</li>
+  <li>종단점 인증 시나리오
+    <ul>
+      <li>송신자는 메시지를 수신자에게 보낸다.</li>
+      <li>수신자는 넌스 R을 선택하고 그것을 송신자에게 보낸다.</li>
+      <li>송신자는 송신자와 수신자의 대칭 비밀키르르 사용해서 그 넌스를 암호화하고, 암호화된 넌스를 밥에게 보낸다.</li>
+      <li>수신자는 자신이 받은 메시지를 복호화한다. 만약 복호화한 넌스가 자신이 송신자에게 보낸 것과 같다면 송신자를 인증한다.</li>
+      <li><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/b2143690-d142-4050-9c9a-3653814c4226" alt="image-20231105-053818" />
+ <br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="tcp연결의-보안--tls">TCP연결의 보안 : TLS</h2>
+<ul>
+  <li>TCP에서 기밀성, 데이터 무결성, 종단점 인증 등의 보안 서비스를 포함하는 버전을 TLS라고 부른다.</li>
+  <li>almost-TLS는 핸드셰이크, 키 유도, 데이터 전송이라는 세 단계에서 보안을 제공한다.</li>
+  <li>핸드셰이크
+    <ul>
+      <li>(a) 송신자는 TCP연결을 설립한다.</li>
+      <li>(b) 수신자는 송신자가 진짜 송신자인지 확인한다.</li>
+      <li>(c) TLS 세션에 필요한 모든 대칭키를 생성하기 위해 앨리스와 밥이 사용할 주 비밀키를 수신자에게 전송한다.</li>
+      <li>이렇게 TCP연결이 성립되면 수신자는 송신자에게 메시지를 보내고, 여기에 송신자는 수신자의 공개키를 담은 인증서로 응답한다.</li>
+      <li>수신자는 인증서 내의 공개키가 CA로부터 인증받은 것이기 때문에 수신자의 것이라는 사실을 확실히 믿을 수 있다.</li>
+      <li>수신자는 MS를 생성하여 이를 송신자의 공개키로 암호화하여 EMS를 만든다.</li>
+      <li>EMS가 송신자에게 전송되고 송신자는 자신의 개인키를 가지고 EMS를 복호화하여 MS를 얻는다.</li>
+      <li><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/9783d569-e881-40a7-b1d1-465a770272ea" alt="image-20231105-061351" /></li>
+    </ul>
+  </li>
+  <li>키유도
+    <ul>
+      <li>원칙적으로 송신자와 수신자가 공유한 MS는 이후의 모든 암호화와 데이터 무결성 검사를 위한 대칭 세션키로 사용될 수 있다. 하지만 일반적으로 앨리스와 밥이 각각 다른 암호화 키를 사용하고, 암호화와 무결성 검사에도 서로 다른 키를 사용하는 것이 좀 더 안전하기 때문에 MS를 이용하여 4개의 키를 생성한다.</li>
+    </ul>
+  </li>
+  <li>데이터 전송
+    <ul>
+      <li>핸드 셰이크와 키유도를 통해 TCP연결이 되었기 때문에 송, 수신자는 서로에게 안전한 데이터를 보낼 수 있다.</li>
+      <li>송신자 쪽의 TCP는 모든게 잘 처리되었다고 생각하고 그 두 레코드를 TLS 부계층에 넘겨준다.</li>
+      <li>송신자 쪽의 TLS가 두 레코드를 복화화한다.</li>
+      <li>송신자 쪽의 TLS가 각 레코드의 HMA을 사용하여 두 레코드의 데이터 무결성을 확인한다.</li>
+      <li>TLS는 두 레코드의 복호화된 바이트 스트림을 애플리케이션 계층에 넘겨준다. 그러나 순서가 뒤 바뀐  두 레코드 때문에 앨리스가 받은 전체 바이트 스트림은 순서가 맞지 않는다.
+<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="네트워크-계층-보안--ipsec">네트워크 계층 보안 : IPsec</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/0c43e7f5-b5ea-4cc4-bd07-04aa4146dbc9" alt="image-20231105-062012" /></p>
+
+<ul>
+  <li>IPsec - 호스트 사이의 IP 데이터 그램을 보호한다. 또한, 공공 인터넷 상에 가상 사설 네트워크를 구축하기 위해 IPsec이 사용된다. IP 데이터 그램에 기밀성, 출발지 인증, 데이터 무결성, 재생 공격 방지 같은 보안 서비스를 추가한다.</li>
+  <li>AH, ESP 프로토콜 - 출발지 IPsec 개체가 보안 데이터그램을 목적지 개체에 보낼 때 AH 프로토콜이나 ESP 프로토콜을 사용한다. AH 프로토콜은 출발지 인증과 데이터 무결성을 제공하지만 기밀성은 제공하지 않는다. ESP프로토콜은 출발지 인증, 데이터 무결성, 기밀성을 제공한다.</li>
+  <li>SA - IPsec 데이터그램을 전송하기 전에 출발지 개체와 목적지 개체는 네트워크 계층에서 논리적 연결을 설립한다. 이러한 논리적 연결을 SA라고 한다. SA는 단방향 연결이기 때문에 양방향으로 2개의 SA가 설립되어야한다.</li>
+  <li>IPsec 데이터 그램
+    <ul>
+      <li>터널 모드와 전송 모드라는 두가지 패킷 형식을 갖는다. 주로 VPN에 터널모드가 더 적합하여 터널보드가 더 널리 사용된다.</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Yun Daehyun</name></author><category term="CS" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[네트워크 보안 네트워크 보안 - 기밀성, 메시지 무결성, 종단점 인증, 운영 보안을 고려한 네트워크에서의 안전한 통신 기밀성 - 송신자와 지정된 수신자만이 전송되는 메시지 내용을 이해할 수 있어야한다. 메시지 무결성 - 통신하는 내용이 전송 도중에 변경되지 않아야한다. 종단점 인증 - 통신에 참여하는 송신자와 수신자는 서로 누구인지 인증 가능해야한다. 운영 보안 - 침입 감지 시스템으로 패킷은 상세히 관찰되고 의심스러운 행위에 대해 네트워크 관리에게 보고된다.]]></summary></entry><entry><title type="html">(컴퓨터 네트워크) 네트워크 계층 - 제어 평면</title><link href="/jekyll-theme-yat/cs/2024/01/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EC%A0%9C%EC%96%B4-%ED%8F%89%EB%A9%B4.html" rel="alternate" type="text/html" title="(컴퓨터 네트워크) 네트워크 계층 - 제어 평면" /><published>2024-01-11T00:00:00+00:00</published><updated>2024-01-11T00:00:00+00:00</updated><id>/jekyll-theme-yat/cs/2024/01/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EC%A0%9C%EC%96%B4-%ED%8F%89%EB%A9%B4</id><content type="html" xml:base="/jekyll-theme-yat/cs/2024/01/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EC%A0%9C%EC%96%B4-%ED%8F%89%EB%A9%B4.html"><![CDATA[<h2 id="라우팅-알고리즘">라우팅 알고리즘</h2>
+<ul>
+  <li>라우팅 알고리즘의 목표는 송신자부터 수신자까지 라우터의 네트워크를 통과하는 좋은 경로를 결정하는 것이다.</li>
+  <li>그래프 : G(N, E)로 나타내고, N과 E는 각각 노드와 엣지의 집합이고, 하나의 엣지는 집합 N에 속하는 한 쌍의 노드로 표시된다.</li>
+  <li>라우팅 알고리즘의 분류
+    <ul>
+      <li>중앙 집중형 라우팅 알고리즘 : 네트워크 전체에 대한 완전한 정보를 가지고 출발지와 목적지 사이의 최소 비용 경로를 계산한다. 핵식점인 특징은 알고리즘이 연결과 링크 비용에 대한 완전한 정보를 갖는다는 점이다. 전체 상태 정보를 갖는 알고리즘을 링크 상태(link-state) 알고리즘이라고 한다.</li>
+      <li>분산 라우팅 알고리즘 : 최소 비용 경로의 계산이 라우터들에 의해 반복적이고 분산된 방식으로 수행된다.  어떤 노드도 모든 링크의 비용에 대한 완전한 정보를 갖고 있지는 않다. 대신 각 노드는 자신에게 직접 연결된 링크에 대한 비용 정보만을 가지고 시작한다. 이후 반복된 계산과 이웃 노드와의 정보 교환을 통해 노드는 점차적으로 목적지 또는 목적지 집합까지의 최소 비용 경로를 계산한다. (예) 거리 벡터 알고리즘)
+<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="링크-상태ls-라우팅-알고리즘">링크 상태(LS) 라우팅 알고리즘</h2>
+<ul>
+  <li>다익스트라 알고리즘 : 하나의 노드에서 네트워크 내 다른 모든 노드로의 최소 비용 경로를 계산한다. 네트워크 전체 정보를 이용한다.</li>
+  <li>D(v) : 알고리즘이 현재 반복 시점에서 출발지 노드부터 목적지 v까지의 최소 비용 경로의 비용</li>
+  <li>p(v) : 출발지에서 v까지의 현재 최소 비용 경로에서 v의 직전 노드</li>
+  <li>N’ : 노드의 집합. 출발지에서 v까지의 최소 비용 경로가 명확히 알려져 있다면, v는 N’에 포함된다.</li>
+  <li>
+    <p>출발지 노드 u를 위한 링크 상태(LS) 알고리즘
+<img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/8aa9071a-9d9d-473d-a303-2c7efe802bff" alt="image-20231008-130643" /></p>
+  </li>
+  <li>
+    <p>링크 상태 알고리즘 수행 결과 예시
+<img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/1eef9e45-1828-48d5-a82e-d8dd4a36cc0d" alt="image-20231008-131015" /></p>
+  </li>
+  <li>최소 비용 경로와 포워딩 테이블
+<img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/565bd4de-f359-4927-9391-20458a8c9f67" alt="image-20231008-131108" />
+<br /></li>
+</ul>
+
+<h2 id="거리-벡터dv-라우팅-알고리즘">거리 벡터(DV) 라우팅 알고리즘</h2>
+<ul>
+  <li>특징
+    <ul>
+      <li>분산적 : 각 노드는 하나 이상의 직접 연결된 이웃으로부터 정보를 받고, 계산을 수행하며, 계산된 결과를 다시 그 이웃들에게 배포한다.</li>
+      <li>반복적 : 이웃끼리 더 이상 정보를 교환하지 않을 때까지 프로세스가 지속된다.</li>
+      <li>비동기적 : 톱니바퀴 돌듯이 모든 노드가 서로 정확히 맞물려 통작할 필요가 없다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>DV 알고리즘에서 노드x부터 y까지 최소 비용 경로의 비용
+<img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/7039559b-03b9-4c99-9900-225cb40fde42" alt="image-20231008-131515" /></p>
+  </li>
+  <li>
+    <p>거리 벡터(DV) 알고리즘 <br />
+<img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/47d67891-b796-4684-961b-69a20939e537" alt="image-20231008-135845" /></p>
+  </li>
+  <li>DV 알고리즘에서는 어떤 노드 x가 자신에게 직접 연결된 링크 중 하나의 비용이 변경된 사실을 알게 되거나 어떤 이웃으로부터 변경된 거리 벡터를 수신했을 때 자신의 거리 벳터 추정값을 갱신한다.</li>
+  <li>거리벡터 알고리즘 동작
+<img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/e709affd-3cdb-4085-817f-cd3dae4c3a2a" alt="image-20231008-140035" />
+<br /></li>
+</ul>
+
+<h2 id="링크-상태-알고리즘과-거리-벡터-라우팅-알고리즘의-비교">링크 상태 알고리즘과 거리 벡터 라우팅 알고리즘의 비교</h2>
+<ul>
+  <li>DV 알고리즘에서 각 노드는 오직 직접 연결된 이웃과만 메시지를 교환하지만, 자신으로부터 네트워크 내 모든 노드로의 최소 비용 추정값을 이웃들에게 제공한다. 반면 LS 알고리즘은 전체 정보를 필요로 한다. 
+<br /></li>
+</ul>
+
+<h2 id="인터넷에서의-as-내부-라우팅--ospf">인터넷에서의 AS 내부 라우팅 : OSPF</h2>
+<ul>
+  <li>네트워크를 여러 개의 자율 시스템(Autonomous System)으로 나누고 같은 AS 안에 있는 라우터들은 동일한 라우팅 알고리즘을 사용하는데 이러한 라우팅 알고리즘을 AS 내부 라우팅 프로토콜이라고 한다.</li>
+  <li>개방형 최단 경로 우선(OSPF) 프로토콜
+    <ul>
+      <li>링크 상태 정보를 플러딩 하고, 다익스트라 최소 비용 경로 알고리즘을 사용하는 링크 상태 알고리즘이다.</li>
+      <li>OSPF를 이용하여 각 라우터는 전체  AS에 대한 완벽한 토폴로지 지도(그래프)를 얻는다.</li>
+      <li>OSPF를 사용하는 라우터는 인접한 라우터만이 아니라 자율 시스템 내의 다른 모든 라우터에게 라우팅 정보를 브로드캐스팅한다.
+<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="인터넷-서비스-제공업자isp간의-라우팅--bgp">인터넷 서비스 제공업자(ISP)간의 라우팅 : BGP</h2>
+<ul>
+  <li>목적지가 AS 외부에 있는 경우 BGP를 이용하여 전달된다.</li>
+  <li>BGP의 임무
+    <ul>
+      <li>이웃 AS를 통해 도달 가능한 서브넷 프리픽스 정보를 얻는다.</li>
+      <li>서브넷 주소 프리픽스로의 가장 좋은 경로를 결정한다.</li>
+    </ul>
+  </li>
+  <li>BGP 경로
+    <ul>
+      <li>eBGP : 2개의 AS를 연결하는 BGP 연결</li>
+      <li>iBGP : 같은 AS 내의 라우터 간 BGP 연결</li>
+      <li>도달 가능성 정보를 전파하기 위해서는 iBGP와 eBGP 연결이 모두 사용된다.</li>
+      <li>특정 목적지까지 다른 많은 경로가 존재할 수 있고 각기 다른 일련의 AS들을 통과하기도 한다.</li>
+    </ul>
+  </li>
+  <li>최고의 경로 결정
+    <ul>
+      <li>수많은 경로 중 라우터는 최선의 경로를 선택해야한다.</li>
+      <li>AS-PATH : 프리픽스가 어떤 AS에 전달되었을 때 그 AS는 자신의 AN은 AS-PATH 내 현재 리스트에 추가한다.</li>
+      <li>NECT-HOP : AS-PATH가 시작되는 라우터 인터페이스의 IP 주소이다.</li>
+    </ul>
+  </li>
+  <li>뜨거운 감자 라우팅
+    <ul>
+      <li>라우터가 목적지까지의 경로 중 자신의 AS 바깥에 있는 부분에 대한 비용은 신경쓰지 않고 최대한 신속하게 패킷을 자신의 AS 밖으로 내보내는 것이다.</li>
+      <li>비용은 신경쓰지 않고 자신의 AS 내부 비용만 줄이기 위해 당장의 최선의 다음 라우터를 선택한다.</li>
+    </ul>
+  </li>
+  <li>BGP 경로 선택 알고리즘
+    <ul>
+      <li>속성중 하나로서 지역 선호도가 경로에 할당 된다. 지역 선호도의 값은 온전히 AS 네트워크 관리자에 의한 정책이다. 최고 지역 선호 값을 가진 경로가 선택된다.</li>
+      <li>최고 지역 선호값을 가진 경로가 여러 개 있다면 이들 중에서 최단 AS-PATH를 가진 경로가 선택된다. 여기서 거릿값으로는 라우터 홉 수 보다는 AS 홉 수를 사용한다.</li>
+      <li>남은 경로들에 대해 뜨거운 감자 라우팅을 수행한다. 즉, NEXT-HOP 라우터까지의 거리가 가장 가까운 경로가 선택된다.</li>
+      <li>아직도 하나 이상의 경로가 남아있다면 라우터는  BGP 식별자를 사용하여 경로를 선택한다.</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Yun Daehyun</name></author><category term="CS" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[라우팅 알고리즘 라우팅 알고리즘의 목표는 송신자부터 수신자까지 라우터의 네트워크를 통과하는 좋은 경로를 결정하는 것이다. 그래프 : G(N, E)로 나타내고, N과 E는 각각 노드와 엣지의 집합이고, 하나의 엣지는 집합 N에 속하는 한 쌍의 노드로 표시된다. 라우팅 알고리즘의 분류 중앙 집중형 라우팅 알고리즘 : 네트워크 전체에 대한 완전한 정보를 가지고 출발지와 목적지 사이의 최소 비용 경로를 계산한다. 핵식점인 특징은 알고리즘이 연결과 링크 비용에 대한 완전한 정보를 갖는다는 점이다. 전체 상태 정보를 갖는 알고리즘을 링크 상태(link-state) 알고리즘이라고 한다. 분산 라우팅 알고리즘 : 최소 비용 경로의 계산이 라우터들에 의해 반복적이고 분산된 방식으로 수행된다. 어떤 노드도 모든 링크의 비용에 대한 완전한 정보를 갖고 있지는 않다. 대신 각 노드는 자신에게 직접 연결된 링크에 대한 비용 정보만을 가지고 시작한다. 이후 반복된 계산과 이웃 노드와의 정보 교환을 통해 노드는 점차적으로 목적지 또는 목적지 집합까지의 최소 비용 경로를 계산한다. (예) 거리 벡터 알고리즘)]]></summary></entry><entry><title type="html">(스프링 핵심원리) 컴포넌트 스캔과 의존관계 자동 주입</title><link href="/jekyll-theme-yat/spring/2024/01/08/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94%EA%B3%BC-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%9E%90%EB%8F%99-%EC%A3%BC%EC%9E%85.html" rel="alternate" type="text/html" title="(스프링 핵심원리) 컴포넌트 스캔과 의존관계 자동 주입" /><published>2024-01-08T00:00:00+00:00</published><updated>2024-01-08T00:00:00+00:00</updated><id>/jekyll-theme-yat/spring/2024/01/08/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94%EA%B3%BC-%20-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%9E%90%EB%8F%99-%EC%A3%BC%EC%9E%85</id><content type="html" xml:base="/jekyll-theme-yat/spring/2024/01/08/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94%EA%B3%BC-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%9E%90%EB%8F%99-%EC%A3%BC%EC%9E%85.html"><![CDATA[<h2 id="컴포넌트-스캔">컴포넌트 스캔</h2>
+<h3 id="컴포넌트-스캔이란">컴포넌트 스캔이란?</h3>
+<ul>
+  <li>스프링은 스프링 빈을 수동으로 설정 정보를 통해 등록할 수 도 있지만, 설정 정보 없이 자동으로 스프링 빈을 등록하는 <code class="language-plaintext highlighter-rouge">컴포넌트 스캔</code>이라는 기능을 제공한다.</li>
+  <li>컴포넌트 스캔은 <code class="language-plaintext highlighter-rouge">@Component</code>애노테이션이 붙은 클래스를 스캔해서 스프링 빈으로 등록한다. <code class="language-plaintext highlighter-rouge">@Configuration</code>, <code class="language-plaintext highlighter-rouge">@Repository</code>, ‘@Controller’ 등 @Component 애노테이션을 포함한 애노테이션도 컴포넌트 스캔의 대상이 된다.
+<br /></li>
+</ul>
+
+<h3 id="컴포넌트-스캔-과정">컴포넌트 스캔 과정</h3>
+
+<p><strong>1. @ComponentScan</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package hello.core;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.FilterType;
+import static org.springframework.context.annotation.ComponentScan.*;
+@Configuration
+@ComponentScan(
+ excludeFilters = @Filter(type = FilterType.ANNOTATION, classes =
+Configuration.class))
+public class AutoAppConfig {
+}
+</code></pre></div></div>
+<ul>
+  <li>컴포넌트 스캔을 사용하기 위해선 <code class="language-plaintext highlighter-rouge">@ComponentScan</code>애노테이션을 설정 정보에 붙이면 된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">@ComponentScan</code>은 <code class="language-plaintext highlighter-rouge">@Component</code>가 붙은 모든 클래스를 스프링 빈으로 등록한다.
+<br /></li>
+</ul>
+
+<p><strong>2. @Autowired 의존관계 자동 주입</strong></p>
+<ul>
+  <li>@Component가 붙은 클래스의 생성자에 <code class="language-plaintext highlighter-rouge">@Autowired</code>를 지정하면, 스프링 컨테이너가 자동으로 해당 스프링 빈을 찾아서 의존관계를 주입한다.</li>
+  <li>생성자의 파라미터가 여러개이더라도 모두 찾아 자동으로 주입한다.
+<br /></li>
+</ul>
+
+<h3 id="컴포넌트-스캔-기본-대상">컴포넌트 스캔 기본 대상</h3>
+<ul>
+  <li>컴포넌트 스캔은 <code class="language-plaintext highlighter-rouge">@Component</code>뿐만 아니라 <code class="language-plaintext highlighter-rouge">@Component</code>를 포함한 모든 애노테이션을 컴포넌트 스캔 대상으로 한다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">@Component</code> : 컴포넌트 스캔에서 사용</li>
+      <li><code class="language-plaintext highlighter-rouge">@Controller</code> : 스프링 MVC 컨트롤러에서 사용</li>
+      <li><code class="language-plaintext highlighter-rouge">@Service</code> : 스프링 비즈니스 로직에서 사용</li>
+      <li><code class="language-plaintext highlighter-rouge">@Repository</code> : 스프링 데이터 접근 계층에서 사용, 데이터 계층 예외를 스프링 계층 예외로 변환해준다.</li>
+      <li><code class="language-plaintext highlighter-rouge">@Configuration</code> : 스프링 설정 정보에서 사용, 스프링 빈이 싱글톤이 유지하도록 추가 처리한다.
+<br /></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="중복-등록과-충돌">중복 등록과 충돌</h3>
+<ol>
+  <li>같은 이름의 자동 빈이 여러개 등록된 상황
+    <ul>
+      <li>스프링은 <code class="language-plaintext highlighter-rouge">ConfilictingBeanDefinitionException</code>예외를 발생시킨다.</li>
+    </ul>
+  </li>
+  <li>같은 이름의 자동 빈과 수동 빈이 등록된 상황
+    <ul>
+      <li>스프링은 수동 빈에 우선권을 주어 수동 빈만을 등록한다.</li>
+      <li>수동 빈이 자동 빈을 오버라이딩 하여 자동 빈은 등록되지 않는다.
+<br /></li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="의존관계-자동-주입">의존관계 자동 주입</h2>
+<p>의존관계 주입은 다음과 같이 크게 4가지 방법으로 할 수 있다.</p>
+<ul>
+  <li>생성자 주입</li>
+  <li>수정자 주입</li>
+  <li>필드 주입</li>
+  <li>일반 메서드 주입</li>
+</ul>
+
+<h3 id="생성자-주입">생성자 주입</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Component
+public class ServiceImpl implements Service {
+   private final Repository repository;
+
+   @Autowired
+   public ServiceImpl(Repository repository) {
+     this.repository = repository;
+   }
+}
+</code></pre></div></div>
+<ul>
+  <li>생성자를 통해서 의존 관계를 주입받는다.</li>
+  <li>대부분의 의존관계 자동 주입은 생성자 주입을 통해서 이루어진다.</li>
+  <li>클래스가 생성될 때 딱 한번만 호출된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">@Autowired</code>를 통해 자동으로 의존 관계가 주입된다.</li>
+  <li>불변, 필수 의존관계에 사용한다.
+<br /></li>
+</ul>
+
+<h3 id="수정자-주입-setter-주입">수정자 주입 (setter 주입)</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Component
+public class ServiceImpl implements Service {
+   private final Repository repository;
+
+   @Autowired
+   public void setRepository(Repository repository) {
+     this.repository = repository;
+   }
+}
+</code></pre></div></div>
+<ul>
+  <li>setter 필드의 값을 변경하는 수정자 메서드를 통해 의존관계를 주입받는다.</li>
+  <li>선택, 변경 가능성이 있는 의존관계에 사용한다.</li>
+</ul>
+
+<h3 id="필드-주입과-일반-메서드-주입">필드 주입과 일반 메서드 주입</h3>
+<ul>
+  <li>필드 주입은 필드에 의존관계를 바로 주입하는 것을 말한다.</li>
+  <li>일반 메서드 주입은 일반 메서드를 통해서 의존관계를 주입 받는다.</li>
+  <li>두 주입 방식 모두 일반적으로 잘 사용하지 않는다.</li>
+</ul>]]></content><author><name>Yun Daehyun</name></author><category term="Spring" /><category term="Spring" /><summary type="html"><![CDATA[컴포넌트 스캔 컴포넌트 스캔이란? 스프링은 스프링 빈을 수동으로 설정 정보를 통해 등록할 수 도 있지만, 설정 정보 없이 자동으로 스프링 빈을 등록하는 컴포넌트 스캔이라는 기능을 제공한다. 컴포넌트 스캔은 @Component애노테이션이 붙은 클래스를 스캔해서 스프링 빈으로 등록한다. @Configuration, @Repository, ‘@Controller’ 등 @Component 애노테이션을 포함한 애노테이션도 컴포넌트 스캔의 대상이 된다.]]></summary></entry><entry><title type="html">(스프링 핵심원리) 객체 지향 원리</title><link href="/jekyll-theme-yat/spring/2023/12/23/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%EC%9B%90%EB%A6%AC.html" rel="alternate" type="text/html" title="(스프링 핵심원리) 객체 지향 원리" /><published>2023-12-23T00:00:00+00:00</published><updated>2023-12-23T00:00:00+00:00</updated><id>/jekyll-theme-yat/spring/2023/12/23/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%EC%9B%90%EB%A6%AC</id><content type="html" xml:base="/jekyll-theme-yat/spring/2023/12/23/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%EC%9B%90%EB%A6%AC.html"><![CDATA[<h2 id="좋은-객체-지향-설계의-5가지-원칙">좋은 객체 지향 설계의 5가지 원칙</h2>
+
+<p><strong>SOLID 원칙</strong></p>
+<ul>
+  <li>단일 책임 원칙 (SRP / Single Responsibility Principle)
+    <ul>
+      <li>한 클래스는 하나의 책임만 가져야 한다.</li>
+    </ul>
+  </li>
+  <li>개방-폐쇄 원칙 (OCP / Open Closed Principle
+    <ul>
+      <li>소프트웨어 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야 한다.</li>
+    </ul>
+  </li>
+  <li>리스코드 치환 원칙 (LSP / Liskov Subsitution Principle)
+    <ul>
+      <li>객체는 하위 타입의 인스턴스로 바꿀 수 있어야한다.</li>
+    </ul>
+  </li>
+  <li>인터페이스 분리 원칙 (ISP / Interface Segregation Principle)
+    <ul>
+      <li>여러 개의 범용 인터페이스보다 특정 클라이언트를 위한 인터페이스가 더 낫다.</li>
+    </ul>
+  </li>
+  <li>의존관계 역전 원칙 (DIP / Dependency Inversion Principle)
+    <ul>
+      <li>추상화에 의존하고, 구체화에 의존하면 안된다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>*<b>이러한 SOLID 원칙 중 스프링에서 SRP, DIP, OCP가 핵심적으로 적용된다.<b>*
+<br /><br /></b></b></p>
+
+<p><strong>SRP 단일 책임 원칙</strong></p>
+<ul>
+  <li>클라이언트 객체는 실행하는 책임만 담당하여야 한다. 직접 구현 객체를 생성하고, 연결하는 역할은 구성 클래스(AppConfig)에 맡긴다.</li>
+</ul>
+
+<p><strong>DIP 의존관계 역전 원칙</strong></p>
+<ul>
+  <li>프로그래머는 추상화에 의존하고, 구체화에 의존해서는 안된다. 따라서, 구성 클래스가 클라이언트 대신 구체 클래스를 생성하고, 의존관계를 주입함으로써 클라이언트는 추상화 인터페이스에만 의존하고, 구체 클래스에는 의존하지 않도록 한다.</li>
+</ul>
+
+<p><strong>OCP 개방-폐쇄 원칙</strong></p>
+<ul>
+  <li>소프트웨어 요소는 확장에는 열려있으나 변경에는 닫혀있어야 한다. 스프링은 다형성을 사용함으로써 이 원칙을 적용한다. 만약, 새로운 구체 클래스로 기능을 변경하려 할 때, 구성 클래스가 클라이언트 코드 대신 구체 클래스를 클라이언트 코드에 주입함으로 클라이언트 코드는 변경되지 않는다.</li>
+</ul>
+
+<p><br /><br /><br /></p>
+<h2 id="ioc-di-컨테이너">IoC, DI, 컨테이너</h2>
+
+<p><strong>제어의 역전 (IoC / Inversion of Control)</strong></p>
+<ul>
+  <li>프로그램의 제어 흐름을 구현 객체가 직접 제어하는 것이 아니라 외부 구성 클래스에서 관리하는 것을 제어의 역전이라고 한다.</li>
+  <li>제어의 역전 덕분에 구체 객체는 자신의 로직을 실행하는 역할에만 집중할 수 있고, 프로그램 제어 흐름에 대한 권한은 모두 외부 구성 클래스에 맡긴다.</li>
+</ul>
+
+<p><strong>의존관계 주입 (DI / Dependency Injection)</strong></p>
+<ul>
+  <li>프로그램의 실행 시점에 외부에서 실제 구현 객체를 생성하여 클라이언트에 전달해 클라이언트와 서버의 실제 의존관계가 연결되는 것을 의존관계 주입이라고 한다.</li>
+  <li>의존관계 주입으로 클라이언트 코드의 변경 없이 클라이언트 호출 대상을 변경할 수 있다. 또한, 정적인 클래스 의존관계 변경 없이 동적 객체 인스턴스 의존관계를 변경할 수 있다.</li>
+</ul>
+
+<p><strong>DI 컨테이너</strong></p>
+<ul>
+  <li>객체를 생성하고, 관리하고, 의존관계를 연결해주는 외부 구성 클래스를 DI 컨테이너라고 한다.</li>
+</ul>]]></content><author><name>Yun Daehyun</name></author><category term="Spring" /><category term="Spring" /><summary type="html"><![CDATA[좋은 객체 지향 설계의 5가지 원칙]]></summary></entry><entry><title type="html">(스프링 핵심원리) 스프링 컨테이너</title><link href="/jekyll-theme-yat/spring/2023/12/23/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88.html" rel="alternate" type="text/html" title="(스프링 핵심원리) 스프링 컨테이너" /><published>2023-12-23T00:00:00+00:00</published><updated>2023-12-23T00:00:00+00:00</updated><id>/jekyll-theme-yat/spring/2023/12/23/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88</id><content type="html" xml:base="/jekyll-theme-yat/spring/2023/12/23/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88.html"><![CDATA[<h2 id="스프링-컨테이너">스프링 컨테이너</h2>
+<h3 id="스프링-컨테이너란">스프링 컨테이너란?</h3>
+<ul>
+  <li>자바 객체의 생명 주기를 관리하고, 생성된 자바 객체들에게 추가적인 기능을 제공하는 핵심 컴포넌트이다.</li>
+  <li>스프링 컨테이너에서 자바 객체를 <code class="language-plaintext highlighter-rouge">빈(Bean)</code>이라 하고, 빈들의 생성, 관리, 제거 등 생명주기를 관리하고, 빈 간의 관계를 설정한다.</li>
+  <li>스프링 컨테이너는 <code class="language-plaintext highlighter-rouge">@Configuration</code> 애노테이션을 사용하여 자바 구성 클래스로 만들 수 있다.
+<br /></li>
+</ul>
+
+<h3 id="스프링-컨테이너-생성과정">스프링 컨테이너 생성과정</h3>
+
+<p><strong>1. 스프링 컨테이너 생성</strong></p>
+<ul>
+  <li>구성 클래스를 생성하고, 구성 정보로 지정하면 스프링 컨테이너가 생성된다.<br /></li>
+</ul>
+
+<p><strong>2. 스프링 빈 등록</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@Configuration
+public class AppConfig {
+
+    @Bean
+    public MemberService memberService() {
+        return new MemberServiceImpl(memberRepository());
+    }
+
+    @Bean
+    public OrderService orderService() {
+        return new OrderServiceImpl(
+                memberRepository(),
+                discountPolicy());
+    }
+
+    @Bean
+    public MemberRepository memberRepository() {
+        return new MemoryMemberRepository();
+    }
+
+    @Bean
+    public DiscountPolicy discountPolicy() {
+        return new RateDiscountPolicy();
+    }
+}
+
+</code></pre></div></div>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/d4864acc-9c3b-4480-8a92-7df3e33da42d" alt="image" /></p>
+
+<ul>
+  <li>스프링 컨테이너는 파라미터로 넘어온 설정 클래스 정보를 사용해서 스프링 빈을 등록한다.</li>
+  <li>기본적으로 빈 이름은 메소드 이름을 사용한다. 빈 이름은 중복이 발생하면 기존 빈을 덮어버리는 경우가 발생하기 때문에 주의해야한다.
+<br /></li>
+</ul>
+
+<p><strong>3. 스프링 빈 의존 관계 설정</strong>
+    <br /><br />
+<img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/ab9b70da-c22d-4a03-a90f-e84b06750f0a" alt="image" /></p>
+
+<ul>
+  <li>스프링 컨테이너는 구성 클래스의 설정 정보의 매개변수를 활용하여 의존관계를 주입한다.</li>
+</ul>
+
+<p><br /><br /><br /></p>
+
+<h2 id="싱글톤-컨테이너">싱글톤 컨테이너</h2>
+<p>스프링은 여러 사용자에게 동시에 서비스하는 웹 애플리케이션을 지원하기 위해서 한개의 인스턴스만을 생성하여 공유하도록 설계하였다.
+따라서, 클래스의 인스턴스를 ‘단 1개만’ 생성하기 위해서 <code class="language-plaintext highlighter-rouge">싱글톤 패턴</code>을 사용한다.</p>
+
+<p><br /></p>
+
+<h3 id="싱글톤-패턴">싱글톤 패턴</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class SingletonService {
+   private static final SingletonService instance = new SingletonService();
+
+   public static SingletonService getInstance() {
+     return instance;
+   }
+
+   private SingletonService() {}
+
+   public void logic() {
+     System.out.println("싱글톤 객체 로직 호출");
+   }
+}
+</code></pre></div></div>
+<ol>
+  <li>static 영역에 객체 인스턴스를 미리 생성한다.</li>
+  <li>객체 인스턴스를 사용하기위해서 <code class="language-plaintext highlighter-rouge">getInstance()</code>메서드를 통해서 조회할 수 있는데 이 메서드는 기존에 생성해 놓은 하나의 인스턴스만을 반환한다.</li>
+  <li>생성자를 <code class="language-plaintext highlighter-rouge">private</code>으로 선언하여 외부로부터 객체 인스턴스 생성을 막는다.</li>
+</ol>
+
+<p><em>싱글톤 패턴은 DIP, OCP 위반, private 생성자로 자식 클래스 생성, 코드의 길이 등 다양한 문제점이 존재하지만 스프링은 싱글톤 컨테이너를 통해서 문제점을 해결하여 빈을 싱글톤으로 관리한다.</em></p>
+
+<p><br /></p>
+
+<h3 id="싱글톤-컨테이너-1">싱글톤 컨테이너</h3>
+<ul>
+  <li>스프링 컨테이너는 싱글톤 컨테이너 역할을 한다.</li>
+  <li>객체(빈)을 한개만 생성하여 관리하고, 싱글톤 패턴의 문제점을 해결하여 객체를 싱글톤으로 유지할 수 있도록 한다.<br />
+<img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/f12c363b-5154-46e3-abb2-d5b7057058ca" alt="image" /></li>
+</ul>
+
+<p><br /></p>
+<ul>
+  <li>스프링 컨테이너는 미리 객체를 생성하고, 사용자에게 미리 생성해둔 객체를 공유하여 반환해 효율적으로 사용할 수 있도록 한다.</li>
+</ul>
+
+<p><strong>주의할 점</strong></p>
+<ul>
+  <li>객체 인스턴스를 하나만 생성해서 공유하는 방식이기 때문에 여러 클라이언트가 하나의 같은 객체 인스턴스를 공유하게 된다. 따라서, 객체의 상태를 유지하도록 설계하지 않고 반드시 <code class="language-plaintext highlighter-rouge">무상태(stateless)</code>설계하여야 한다.</li>
+  <li>클라이언트 코드에는 의존적인 필드와 값이 변경 가능한 코드를 넣어선 안되고, 가급적 읽기만 가능하도록 하여야한다.</li>
+</ul>]]></content><author><name>Yun Daehyun</name></author><category term="Spring" /><category term="Spring" /><summary type="html"><![CDATA[스프링 컨테이너 스프링 컨테이너란? 자바 객체의 생명 주기를 관리하고, 생성된 자바 객체들에게 추가적인 기능을 제공하는 핵심 컴포넌트이다. 스프링 컨테이너에서 자바 객체를 빈(Bean)이라 하고, 빈들의 생성, 관리, 제거 등 생명주기를 관리하고, 빈 간의 관계를 설정한다. 스프링 컨테이너는 @Configuration 애노테이션을 사용하여 자바 구성 클래스로 만들 수 있다.]]></summary></entry><entry><title type="html">(컴퓨터 네트워크) 네트워크 계층 - 데이터 평면</title><link href="/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EB%A9%B4.html" rel="alternate" type="text/html" title="(컴퓨터 네트워크) 네트워크 계층 - 데이터 평면" /><published>2023-10-11T00:00:00+00:00</published><updated>2023-10-11T00:00:00+00:00</updated><id>/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EB%A9%B4</id><content type="html" xml:base="/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EB%A9%B4.html"><![CDATA[<h2 id="네트워크-계층-개요">네트워크 계층 개요</h2>
+<ul>
+  <li>
+    <p>네트워크 계층의 역할 - 송신 호스트에서 수신 호스트로 패킷을 전달하는 것</p>
+  </li>
+  <li>
+    <p>네트워크 계층의 중요한 기능</p>
+
+    <ul>
+      <li>
+        <p>포워딩(전달) : 패킷이 라우터의 입력 링크에 도달했을 때 라우터는 그 패킷을 적절한 출력 링크로 이동시킨다.</p>
+      </li>
+      <li>
+        <p>라우팅 : 송신자가 수신자에게 패킷을 전송할 때 네트워크 계층은 패킷 경로를 결정해야한다. 이때, 경로를 계산하는 알고리즘을 라우팅 알고리즘이라고 한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>네트워크 서비스 모델</p>
+
+    <ul>
+      <li>
+        <p>송수신 호스트 간 패킷 전송 특성을 정의한다.</p>
+      </li>
+      <li>
+        <p>보장된 전달 : 패킷이 출발지 호스트에서부터 목적지 호스트까지 도착하는 것을 보장한다.</p>
+      </li>
+      <li>
+        <p>지연 제한 이내의 보장된 전달 : 패킷의 전달을 보장할 뿐만 아니라 호스트 간의 특정 지연 제한 안에 전달한다.</p>
+      </li>
+      <li>
+        <p>순서화 패킷 전달 : 패킷이 목적지에 송신된 순서대로 도착하는 것을 보장한다.</p>
+      </li>
+      <li>
+        <p>최소 대역 폭 보장 :  송신과 수신 호스트 사이에 특정한 비트율의 전송 링크를 에뮬레이트 한다.</p>
+      </li>
+      <li>
+        <p>보안 서비스 : 네트워크 계층은 모든 데이터 그램을 출발지 호스트에서는 암호화, 목적지 호스트에서는 해독을 할 수 있게 하여 트랜스포트 계층의 모든 세그먼트에 대해 기밀성을 유지해야한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="라우터-내부-구조">라우터 내부 구조</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/7a4647ae-ac20-499c-b1f4-eee02014d263" alt="image-20231008-050136" /></p>
+
+<ul>
+  <li>
+    <p>라우터의 네 가지 요소</p>
+
+    <ul>
+      <li>
+        <p>입력 포트 : 들어오는 링크의 반대 편에 있는 링크 계층과 상호 운용하기 위해 핑요한 링크 계층 기능을 수행한다. 또한 검색 기능을 수행하는데 포워딩 테이블을 참조하여 도착된 패킷이 스위치 구조를 통해 라우터 출력 포트를 결정한다. 제어 패킷은 입력 포트에서 라우팅 프로세서로 전달된다.</p>
+      </li>
+      <li>
+        <p>스위치 구조 : 라우터의 입력 포트와 출력 포트를 연결한다. 라우터 내부에 포함되어있다.</p>
+      </li>
+      <li>
+        <p>출력 포트 : 스위치 구조에서 수신한 패킷을 저장하고 필요한 링크 계층 및 물리 계층 기능을 수행하여 출력 링크로 패킷을 전송한다.</p>
+      </li>
+      <li>
+        <p>라우팅 프로세서 : 제어 평면 기능을 수행한다. SDN 라우터에서 라우팅 프로세서는 원격 컨트롤러와 통신하여 원격 컨트롤러에서 계산된 포워딩 테이블 엔트리를 수신하고 라우터의 입력 포트에 이러한 엔트리를 설치한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>데이터 평면이 나노초 단위로 작동하는 동안 라우터의 제어 기능은 밀리초 또는 2초 단위로 작동한다. 따라서 제어 평면 기능은 일반적으로 소프트웨어로 구현되며 라우팅 프로세서에서 실행된다.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="입력-포트-처리-및-목적지-기반-전송">입력 포트 처리 및 목적지 기반 전송</h2>
+<ul>
+  <li>
+    <p>입력 포트의 라인 종단 기능과 링크 계층 처리는 라우터의 개별 입력 링크와 관련된 물리 계층 및 데이터 링크 계층을 구현한다.</p>
+  </li>
+  <li>
+    <p>라우터는 포워딩 테이블을 사용하여 도착 패킷이 스위치 구조를 통해 전달되는 출력 포트를 검색한다.</p>
+  </li>
+  <li>
+    <p>포워딩 테이블은 라우팅 프로세서에서 계산되거나 갱신되거나 원결 SDN 컨트롤러에서 수신된다.</p>
+  </li>
+  <li>
+    <p>입력 패킷을 스위칭할 출력 포트가 각 패킷의 목적지 주소를 기반으로 하는 경우 목적지 주소마다 하나의 엔트리가 필요하게 되는데 이는 매우 많은 주소를 필요로 하여 불가능한다. 따라서 프리픽스를 이용하여 포워딩 테이블에서 라우터는 패킷의 목적지 주소의 프리픽스를 링크 테이블의 링크 인터페이스와 매치한다.</p>
+  </li>
+</ul>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/b8339de9-56f6-4f52-b9b0-b4a3fdd456c9" alt="image-20231008-053516" /></p>
+
+<ul>
+  <li>
+    <p>매치되는 엔트리가 존재하면 라우터는 패킷을 그 매치와 연관된 링크로 보낸다.</p>
+  </li>
+  <li>
+    <p>하드웨어 로직은 포워딩 테이블을 검색하여 가장 긴 프리픽스와 매치되는 것을 찾고, 출력 포트가 결정되면 패킷을 스위치 구조로 보낸다.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="스위칭">스위칭</h2>
+<ul>
+  <li>
+    <p>패킷이 입력 포트에서 출력 포트로 실제로 스위칭 되는 구조</p>
+  </li>
+  <li>
+    <p>메모리를 통한 교환 : 메모리를 통해 스위칭한다. 목적지 주소를 검색하고 해당 메모리 위치에  패킷을 저장하는 것이 입력 라인 카드에서 처리한다.</p>
+  </li>
+  <li>
+    <p>버스를 통한 교환 : 입력포트는 라우팅 프로세서의 개입 없이 공유 버스를 통해 직접 출력 포트로 패킷을 전송한다. 모든 패킷이 하나의 버스를 건너가야 하므로, 라우터의 교환 속도는 버스 속도에 의해 제한된다. 그럼에도 불구하고 버스를 통한 스위칭은 종종 작은 지역 및 기업 네트워크에서 작동하는 라우터에서 사용하기에 충분하다.</p>
+  </li>
+  <li>
+    <p>상호연결 네트워크를 통한 교환 : 공유 버스의 대역폭 제한을 극복하기 위해서 좀 더 복잡한 상호연결 네트워크를 사용한다. N개의 입력 포트를 N개의 출력 포트에 연결하는 2N 버스로 구성된다. 각 수직 버스는 교차점에서 각 수평 버스와 교차하며 수위치 구조 컨트롤러에 의해 언제든지 열거나 닫을 수 있다. 현대의 스위칭 방식은 크로스바 스위치는 여러 패킷을 병렬로 전달할 수 있도록 한다.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="출력-포트-처리">출력 포트 처리</h2>
+<ul>
+  <li>출력 포트의 메모리에 저장된 패킷을 가져와서 출력 링크를 통해 전송한다.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="큐잉-발생-위치">큐잉 발생 위치</h2>
+<ul>
+  <li>
+    <p>패킷 큐는 입력 포트와 출력 포트 모두에서 형성될 수 있다. 큐의 위치와 범위는 트래픽 로드, 스위치 구조의 상대 속도 및 라인 속도에 따라서 달라진다.</p>
+  </li>
+  <li>
+    <p>큐가 커지면 라우터의 메모리가 소모될 수 있고 도착하는 패킷을 저장할 수 있는 메모리가 없을 때 패킷 손실이 발생한다.</p>
+  </li>
+  <li>
+    <p>입력 큐잉</p>
+
+    <ul>
+      <li>
+        <p>입력라인 속도에 비해 스위치 구조가 충분히 빠르지 않다면 패킷이 스위치 구조를 통해 출력 포트로 전송되기 위해 차례를 기다려야한다.</p>
+      </li>
+      <li>
+        <p>스위치 구조에선 경쟁이 없는 상태이지만 라인의 앞쪽에서 다른 패킷이 막고 있을 때 다음 패킷이 입력 대기를 해야하는 상황을 스위치에서의 HOL 블로킹이라고 한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>출력 큐잉</p>
+
+    <ul>
+      <li>
+        <p>스위치가 출력 포트에 비해 속도가 빠르게 되면 시간 단위에 단일 패킷만을 전송할 수 있는 출력 포트에 계속해서 패킷 큐에 패킷이 쌓이게 되어 도착 패킷들을 출력 링크를 통한 전송 큐에서 대기해야한다.</p>
+      </li>
+      <li>
+        <p>대기 중인 패킷의 수가 출력 포트에서 사용 가능한 메모리를 다 소모할 만큼 충분히 많아질 수 있다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="패킷-스케줄링">패킷 스케줄링</h2>
+<ul>
+  <li>
+    <p>큐에 있는 패킷이 출력 링크를 통해 전송되는 순서를 결정하기 위해서 사용되는 큐잉 처리 방법</p>
+  </li>
+  <li>
+    <p>FIFO</p>
+
+    <ul>
+      <li>
+        <p>출력 링크 큐에 도착한 순서와 동일한 순서로 출력 링크에서 전송할 패킷을 선택한다.</p>
+      </li>
+      <li>
+        <p>패킷은 도착한 순서와 동일한 순서로 나가게 된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>우선순위 큐잉</p>
+
+    <ul>
+      <li>
+        <p>출력 링크에 도착한 패킷이 큐에 도착하면 우선순위 클래스로 분류된다.</p>
+      </li>
+      <li>
+        <p>우선순위가 낮은 패킷이 먼저 큐에서 대기했더라도 우선순위가 높은 패킷이 도착하면 우선순위가 높은 패킷이 먼저 전송된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>라운도 로빈과 WFQ</p>
+
+    <ul>
+      <li>
+        <p>패킷을 클래스로 분류하지만 우선순위가 존재하지 않으며 라운드 로빈 스케줄러가 클래스 간에 서비스를 번갈아가며 제공한다. 라운드 로빈 스케줄링은 클래스를 돌아가며 패킷을 차례대로 전송한다.</p>
+      </li>
+      <li>
+        <p>작업 보존 큐잉(work-conserving queuing) 규칙의 경우, 전송을 위해 큐에서 기다리는 패킷이 있다면 링크는 유휴 상태가 되는 것을 허용하지 않는다. 만약 크래스에서 패킷을 찾지 못하면 시퀀스의 다음 클래스를 즉시 검사한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="ipv4-주소체계">IPv4 주소체계</h2>
+<ul>
+  <li>
+    <p>각 IP 주소는 32비트 길이로 2^32개의 주소를 사용할 수 있다. 이 주소는 일반 적으로 주소의 각 바이트를 십진수로 표현하고 주소의 다른 바이트와 점으로 구분하는 십진 표기법을 사용한다. (예)193.32.216.9 → 11000001 00100000 11011000 00001001)</p>
+  </li>
+  <li>
+    <p>전 세계 인터넷에서 모든 호스트와 라우터의 각 인터페이스는 고유한 IP 주소를 갖고, 이러한 주소는 인터페이스의 IP 주소 일부를 연결된 서브넷이 결정한다.</p>
+  </li>
+  <li>
+    <p>IP 용어로 세 호스트들의 인터페이스들과 하나의 라우터 인터페이스로 연결된 네트워크는 서브넷을 구성한다고 말한다.</p>
+  </li>
+  <li>
+    <p>서브넷 : 서브넷을 결정하려면 먼저 호스트나 라우터에서 각 인터페이스를 분리하고 고립된 네트워크를 만든다. 이 고립된 네트워크의 종단점은 인터페이스의 끝이 된다. 이렇게 고립된 네트워크 각각을 서브넷이라고 부른다.</p>
+  </li>
+</ul>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/9926727f-3cc1-4a30-8826-1ad541844a2a" alt="image-20231008-091115" /></p>
+
+<ul>
+  <li>
+    <p>CIDR</p>
+
+    <ul>
+      <li>
+        <p>인터넷 주소 할당 방식 중 하나로 서브넷 주소체계 표기를 일반화한다. 서브넷 주소체계로서, 32비트 IP 주소는 두 부분으로 나누고, 이것은 다시 점으로 된 십진수 형태의 a.b.c.d/x를 가지며, 여기서 x는 주소 첫 부분의 비트 수이고 최상위 비트를 의미한다. 또한, 이것을 프리픽스 또는 네트워크 프리픽스라고 부른다.</p>
+      </li>
+      <li>
+        <p>주소의 나머지 32-x 비트들은 기관 내부에 같은 네트워크 프리픽스를 갖는 모든 장비를 구변한다. 이 비트들은 기관 내부의 라우터에서 패킷을 전달할 때 사용되는 것이다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>IP 주소의 또 다른 형태인 브로드캐스트 주소는 255.255.255.255가 있는데 호스트가 목적지 주소가 이 주소인 데이터그램을 보내면 이 메시지는 같은 서브넷에 있는 모든 호스트에게 전달된다.</p>
+  </li>
+  <li>
+    <p>주소 블록 획득</p>
+
+    <ul>
+      <li>기관의 서브넷에서 사용하기 위한 IP 주소 블록을 얻기 위해, 네트워크 관리자는 먼저 이미 할당받은 주소의 큰 블록에서 주소를 제공하는 ISP와 접촉해야한다. 예를 들어 ISP가 주소 블록 200.23.16.0/20을 할당 받았다고 한다면 200.23.16+x.0/23의 주소 블록을 사용하는 8개 조직을 지원할 수 있다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>호스트 주소 획득: 동적 호스트 구성 프로토콜</p>
+
+    <ul>
+      <li>
+        <p>한 기관은 ISP로부터 주소 블록을 획득하여, 개별 IP 주소를 기관 내부의 호스트와 라우터 인터페이스에 할당한다.</p>
+      </li>
+      <li>
+        <p>일반적으로 동적 호스트 구성 프로토콜(DHCP)을 사용하여 호스트에 IP 주소를 자동으로 할당받는다.</p>
+      </li>
+      <li>
+        <p>네트워크 관리자는 해당 호스트가 네트워크에 접속하고자 할 때마다 동일한 IP 주소를 받도록 하거나, 다른 임시 IP 주소를 할당하도록 DHCP를 설정한다.</p>
+      </li>
+      <li>
+        <p>DHCP는 호스트 IP 주소의 할당뿐만 아니라, 서브넷 마스크, 첫 번째 홈 라우터 주소나 로컬 DNS 서버 주소같은 추가 정보를 얻게 해준다.</p>
+      </li>
+      <li>
+        <p>네트워크에서 자동으로 호스트와 연결해주는 DHCP의 능력으로 플러그 앤 플레이 프로토콜이라고 한다.</p>
+      </li>
+      <li>
+        <p>DHCP 프로토콜 4단계 과정</p>
+
+        <ul>
+          <li>
+            <p>DHCP 서버 발견 : 새롭게 도착한 호스트는 상호작용할 DHCP를 발견한다. DHCP 클라이언트는 해당 네트워크의 DHCP 서버 주소를 모르기 때문에 DHCP 발견 메시지를 포함하는 IP 데이터그램을 생성하여 목적지 주소를 브로드캐스트 주소로 하고, 출발지 주소를 0.0.0.0으로 설정하여 서브넷에 연결된 모든 노드로 브로드캐스트한다.</p>
+          </li>
+          <li>
+            <p>DHCP 서버 제공 : DHCP 발견 메시지를 받은 DHCP서버는 DHCP 제공 메시지를 클라이언트로 응답한다. 브로드캐스트 주소를 사용하여 서브넷의 모든 노드로 메시지를 보내어 가장 최적의 위치에 있는 DHCP 서버를 선택한다.</p>
+          </li>
+          <li>
+            <p>DHCP 요청 : 새롭게 도착한 클라이언트는 하나 또는 그 이상의 서버 제공자 중에서 선택할 것이고, 선택된 제공자에게 파라미터 설정으로 되돌아오는 DHCP 요청 메시지로 응답한다.</p>
+          </li>
+          <li>
+            <p>DHCP ACK : 서버는 DHCP 요청 메시지에 대해 요청된 파라미터를 확인하는 DHCP ACK메시지로 응답한다. 클라이언트가 DHCP ACK 메시지를 받으면 상호작용은 종료되고 클라이언트는 DHCP 할당 IP 주소를 임대기간동안 사용할 수 있다.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="네트워크-주소-변환-nat">네트워크 주소 변환 (NAT)</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/e8c9352d-0934-4d0a-873d-9b0e2c647c36" alt="image-20231008-095257" /></p>
+
+<ul>
+  <li>
+    <p>SOHO(small office, home office)의 확산으로 ISP는 모든 SOHO에 IP 장치를 수용할 수 있는 주소 범위를 할당해야하는데 네트워크가 현저하게 커진다면 큰 주소 블록이 할당되어야한다. 하지만 ISP 이미 SOHO 네트워크의 해당 주소 범위에 인접한 부분을 할당해 버렸다면 네트워크 주소 변환 (NAT)로 주소를 할당할 수 있다.</p>
+  </li>
+  <li>
+    <p>NAT 기능 라우터는 외부 세계로는 라우터처럼 보이지 않고 하나의 IP 주소를 갖는 하나의 장비로 동작한다. 따라서 NAT 기능 라우터는 외부에서 들어오는 홈 네트워크의 상세한 사항을 숨긴다. 이때, 라우터가 한 IP 주소를 DHCP를 통해서 얻는다.</p>
+  </li>
+  <li>
+    <p>WAN에서 같은 목적지 IP 주소를 갖는 NAT 라우터에 모든 데이터그램이 도착하면, 라우터는 NAT 변환테이블을 통해 주어진 데이터그램을 전달하는 내부 호스트를 알 수 있다.</p>
+  </li>
+</ul>
+
+<h2 id="ipv6">IPv6</h2>
+<ul>
+  <li>
+    <p>IPv4 주소 공간의 고갈에 대한 주소 공간의 수명을 연장하기 위해 세로운 프로토콜인 IPv6가 개발되었다.</p>
+  </li>
+  <li>
+    <p>중요한 변화</p>
+
+    <ul>
+      <li>
+        <p>확장된 주소 기능 : IP 주소 크기를 32비트에서 12비트로 확장</p>
+      </li>
+      <li>
+        <p>간소화된 40바이트 헤더 : IPv4의 많은 필드가 생략되거나 옵션으로 남겨져 라우터가 IP 데이터그램을 더 빨리 처리하게 해준다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>IPv4에서 IPv6로의 전환</p>
+  </li>
+</ul>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/8442c12b-54e4-4e2b-bec5-deee3a732882" alt="image-20231008-112546" /></p>
+
+<ul>
+  <li>
+    <p>터널링</p>
+
+    <ul>
+      <li>
+        <p>두 IPv6 노드가 IPv6 데이터 그램을 사용해서 작동하고 IPv4 라우터를 통해 연결되어있다고 가정한다. 이때, 연결된 IPv4 라우터들을 터널이라고 한다.</p>
+      </li>
+      <li>
+        <p>터널의 첫번째 노드는 IPv6데이터 그램을 IPv4형식으로 캡슐화한다.</p>
+      </li>
+      <li>
+        <p>터널 내부에 있는 IPv4라우터는 IPv4 데이터그램이 IPv6데이터그램을 갖고 있다는 사실을 모른채 다른 데이터 그램을 처리하는 방식으로 IPv4데이터그램을 처리한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Yun Daehyun</name></author><category term="CS" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[네트워크 계층 개요 네트워크 계층의 역할 - 송신 호스트에서 수신 호스트로 패킷을 전달하는 것]]></summary></entry><entry><title type="html">(컴퓨터 네트워크) 트랜스포트 계층</title><link href="/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%ED%8A%B8-%EA%B3%84%EC%B8%B5.html" rel="alternate" type="text/html" title="(컴퓨터 네트워크) 트랜스포트 계층" /><published>2023-10-11T00:00:00+00:00</published><updated>2023-10-11T00:00:00+00:00</updated><id>/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%ED%8A%B8-%EA%B3%84%EC%B8%B5</id><content type="html" xml:base="/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%ED%8A%B8-%EA%B3%84%EC%B8%B5.html"><![CDATA[<h2 id="트랜스포트-계층-프로토콜">트랜스포트 계층 프로토콜</h2>
+<ul>
+  <li>
+    <p>종단 시스템 사이의 IP 전달 서비스를 종단 시스템에서 동작하는 두 프로세스 간의 전달 서비스로 확장하는 역할</p>
+  </li>
+  <li>
+    <p>TCP (Transmission Control Protocol)</p>
+
+    <ul>
+      <li>
+        <p>패킷 단위 - 세그먼트</p>
+      </li>
+      <li>
+        <p>신뢰적인 데이터 전송을 제공한다. 흐름 제어, 순서 번호, 확인 응답, 타이머를 사용함으로써 TCP는 송신하는 프로세스로부터 수신하는 프로세스에게 데이터가 순서대로 정확하게 전달되도록 한다.</p>
+      </li>
+      <li>
+        <p>혼잡 제어를 사용하여 TCP 연결이 과도한 양의 트래픽으로 모든 통신하는 호스트들 사이의 스위치와 링크를 홉잡하게 하는 것을 방지한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>UDP (User Datagram Protocol)</p>
+
+    <ul>
+      <li>
+        <p>패킷 단위 - 세그먼트, 데이터그램</p>
+      </li>
+      <li>
+        <p>비신뢰적인 데이터 전송을 제공한다. 하나의 프로세스에 의해 전송된 데이터가 손상되지 않고 목적지 프로세스에 도착한다는 것을 보장하지 않는다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="다중화와-역다중화">다중화와 역다중화</h2>
+<ul>
+  <li>
+    <p>다중화 - 출발지 호스트에서 소켓으로부터 데이터를 모으고, 이에 대한 세그먼트를 생성하기 위해 각 데이터에 헤더 정보로 캡슐화하고, 그 세그먼트들을 네트워크 계층으로 전달하는 작업</p>
+  </li>
+  <li>
+    <p>역다중화 - 트랜스포트 계층 세그먼트의 데이터를 올바른 소켓으로 전달하는 작업</p>
+  </li>
+  <li>
+    <p>수행 과정</p>
+
+    <ul>
+      <li>
+        <p>트랜스 포트 계층 다중화에서 소켓은 유일한 식별자를 가지고 각 세그먼트는 세그먼트가 전달될 적절한 소켓을 가리키는 출발지 포트번호 필드와 목적지 포트 번호 필드를 가진다.</p>
+      </li>
+      <li>
+        <p>호스트의 각 소켓은 포트 번호를 할당받는다.</p>
+      </li>
+      <li>
+        <p>세그먼트가 호스트에 도착하면, 트랜스포트 계층은 세그먼트 안의 목적지 포트 번호르르 검사하고 상응하는 소켓으로 세그먼트를 보낸다.</p>
+      </li>
+      <li>
+        <p>세그먼트의 데이터는 소켓을 통해 해당되는 프로세스로 전달된다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="비연결형-트랜스포트--udp">비연결형 트랜스포트 : UDP</h2>
+<ul>
+  <li>
+    <p>다중화/역다중화 기능과 간단한 오류 검사 기능을 제외하면 IP에 아무것도 추가하지 않는다.</p>
+  </li>
+  <li>
+    <p>세그먼트를 송신하기 전에 송신 트랜스포트 계층 개체들과 수신 트랜스포트 계층 개체들 사이에 핸드셰이크를 사용하지 않아 비연결형이라고 한다.</p>
+  </li>
+  <li>
+    <p>예) DNS</p>
+
+    <ul>
+      <li>
+        <p>DNS 질의 메시지를 작성하고 UDP에게 메시지를 넘겨준다.</p>
+      </li>
+      <li>
+        <p>어떠한 핸드셰이크도 수행하지 않고, 메시지에 헤더 필드를 추가한 후에 최종 세그먼트를 네트워크 계층에 넘겨준다.</p>
+      </li>
+      <li>
+        <p>네트워크 계층은 UDP 세그먼트를 데이터 그램으로 캡슐화하고 네임 서버에 데이터 그램을 송신한다.</p>
+      </li>
+      <li>
+        <p>질의 호스트에서의 DNS 애플리케이션은 질의에 대한 응답을 기다린다.</p>
+      </li>
+      <li>
+        <p>만약 질의 호스트가 응답을 수신하지 못하면 질의를 다른 네임 서버로 송신하거나 이를 야기한 애플리케이션에게 응답을 수신할 수 없을을 통보한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>UDP 체크섬</p>
+
+    <ul>
+      <li>체크섬은 세그먼트가 출발지로부터 목적지로 이동했을 때, UDP 세그먼트 안의 비트에 대한 변경사항이 있는지 검사하는 것으로 오류 검출을 위한 것이다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>UDP가 더 선호되는 이유</p>
+
+    <ul>
+      <li>
+        <p>무슨 데이터를 언제 보낼지에 대해 애플리케이션 레벨에서 더 정교한 제어</p>
+      </li>
+      <li>
+        <p>연결 설정이 없어 어떤 지연도 없다.</p>
+      </li>
+      <li>
+        <p>연결 상태가 없어 일번적으로 좀 더 많은 클라이언트를 수용할 수 있다.</p>
+      </li>
+      <li>
+        <p>TCP에 비해 더 작은 패킷 헤더 오버헤드를 가진다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="신뢰적인-데이터-전송">신뢰적인 데이터 전송</h2>
+<ul>
+  <li>
+    <p>GBN 프로토콜 - 패킷 하나의 오류가 발생하면 오류가 발생한 패킷부터 이전의 전송했던 패킷을 모두 재전송한다.</p>
+  </li>
+  <li>
+    <p>SR 프로토콜 - 수신자에서 오류가 발생한 패킷을 수신했다고 의심되는 패킷만을 송신자가 다시 전송하여 불필요한 재전송을 피한다.</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="연결지향형-트랜스포트--tcp">연결지향형 트랜스포트 : TCP</h2>
+<ul>
+  <li>
+    <p>TCP 연결</p>
+
+    <ul>
+      <li>
+        <p>두 프로세스는 연결 지향형으로 연결된다.</p>
+      </li>
+      <li>
+        <p>전이중 서비스를 제공하여 두 호스트는 각자의 데이터를 동시에 상대방 호스트에 전송할 수 있다.</p>
+      </li>
+      <li>
+        <p>항상 단일 송신자와 단일 수신자 사이의 점대점 연결이다. 따라서, 멀티태스킹은 불가능하다.</p>
+      </li>
+      <li>
+        <p>연결 설정 방법 - 세 방향 핸드셰이크 (three-way handshake)</p>
+
+        <ul>
+          <li>
+            <p>연결을 초기화하는 프로세스를 클라이언트 프로세스라하고 다른 프로세스를 서버 프로세스라고 부른다.</p>
+          </li>
+          <li>
+            <p>클라이언트가 연결을 위한 특별한 TCP 세그먼트를 보내면 서버는 두번 째 특별한 TCP 세그먼트로 응답한다.</p>
+          </li>
+          <li>
+            <p>클라이언트는 세 번째 특별한 세그먼트로 다시 응답하면 TCP 연결 설정이 완료된다.</p>
+          </li>
+          <li>
+            <p>이렇게 두 호스트 사이에 3개의 세그먼트가 보내지므로 연결 설정 절차를 세 방향 핸드셰이크라고 부른다.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>타임 아웃 - 만약 수신 측에서 확인을 보내지 않거나, 전송된 데이터 패킷이 중간에 손실되거나 지연되는 경우, 타임아웃이 발생한다. 타임아웃은 일반적으로 세그먼트가 재전송되어야 함을 의미하고, 송식 측에서 해당 세그먼트를 다시 전송한다. 이를 통해 데이터의 안정성과 신뢰성이 확보된다.</p>
+  </li>
+  <li>
+    <p>흐름 제어</p>
+  </li>
+  <li>
+    <p>TCP는 송신자가 수신자의 버퍼를 오버플로시키는 것을 방지하기 위해 애플리케이션에게 수신하는 애플리케이션이 읽는 속도와 송신자가 전송하는 속도를 같도록 하는 흐름 제어 서비스를 제공한다.</p>
+  </li>
+  <li>
+    <p>TCP 연결 관리</p>
+
+    <ul>
+      <li>
+        <p>TCP연결 과정</p>
+
+        <ul>
+          <li>
+            <p>1단계 - 클라이언트 측 TCP는 서버 TCP에게 특별한 TCP 세그먼트를 송신한다.</p>
+          </li>
+          <li>
+            <p>2단계 - TCP SYN 세그먼트를 포함하는 IP 데이터그램이 서버 호스트에 도착하면, 서버는 데이터그램으로부터 TCP SYN 세그먼트를 추출한다.</p>
+          </li>
+          <li>
+            <p>3단계 - 연결 승인 세그먼트를 수신하면, 클라이언트는 연결에 버퍼와 변수를 할당한다.</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>TCP 연결이 존재하는 동안 각 호스트에서 동작하는 TCP 프로토콜은 다양한 TCP 상태를 전이한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="혼잡-제어">혼잡 제어</h2>
+<ul>
+  <li>
+    <p>종단 간의 혼잡 제어 - 네트워크 계층은 혼잡 제어 목적을 위해 트랜스포트 계층에게 어떤 직접적인 지원도 제공하지 않는다. 네트워크에서 혼잡의 존재는 관찰된 네트워크 동작에 기초하여 종단 시스템이 추측해야한다.</p>
+  </li>
+  <li>
+    <p>네트워크 지원 혼잡 제어 - 라우터들은 네트워크 안에서 혼잡 상태와 관련하여 송신자나 수신자 또는 모두에게 직접적인 피트백을 제공한다.</p>
+  </li>
+  <li>
+    <p>네트워크 지원 혼잡 제어 - 라우터들은 네트워크 안에서 혼잡 상태와 관련하여 송신자나 수신자 또는 모두에게 직접적인 피드백을 제공한다.</p>
+
+    <ul>
+      <li>ATM ABR 혼잡제어 - 라우터는 자신이 출력 링크(outgoing link)에 제공할 수 있는 전송률을 송신자에게 명확히 알릴 수 있게 해준다.</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Yun Daehyun</name></author><category term="CS" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[트랜스포트 계층 프로토콜 종단 시스템 사이의 IP 전달 서비스를 종단 시스템에서 동작하는 두 프로세스 간의 전달 서비스로 확장하는 역할]]></summary></entry><entry><title type="html">(컴퓨터 네트워크) 애플리케이션 계층</title><link href="/jekyll-theme-yat/cs/2023/10/09/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EA%B3%84%EC%B8%B5.html" rel="alternate" type="text/html" title="(컴퓨터 네트워크) 애플리케이션 계층" /><published>2023-10-09T00:00:00+00:00</published><updated>2023-10-09T00:00:00+00:00</updated><id>/jekyll-theme-yat/cs/2023/10/09/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EA%B3%84%EC%B8%B5</id><content type="html" xml:base="/jekyll-theme-yat/cs/2023/10/09/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EA%B3%84%EC%B8%B5.html"><![CDATA[<h2 id="네트워크-애플리케이션-구조">네트워크 애플리케이션 구조</h2>
+<ul>
+  <li>
+    <p>클라이언트-서버</p>
+
+    <ul>
+      <li>
+        <p>서버 - 항상 동작하고 있는 호스트</p>
+      </li>
+      <li>
+        <p>클라이언트 - 서버에게 서비스 요청을 하는 호스트</p>
+      </li>
+      <li>
+        <p>서버는 고정 IP주소라는 잘 알려진 주소를 가지고 항상 동작하고, 클라이언트는 서버 주소로 패킷을 보내 언제든지 서버에 연결할 수 있다.</p>
+      </li>
+      <li>
+        <p>서비스 요청을 많이 받는 서버의 경우 많은 수의 호스트를 갖춘 데이터 센터가 강력한 가상의 서버를 생성하는 역할로 사용된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>P2P</p>
+
+    <ul>
+      <li>
+        <p>피어(peer) - P2P 구조에서 서비스 제공자가 소유하지 않고 사용자들이 제어하는 데스크톱과 랩톱을 말한다.</p>
+      </li>
+      <li>
+        <p>피어라는 간헐적으로 연결된 호스트 쌍이 서로 직접 통신한다.</p>
+      </li>
+      <li>
+        <p>자가 확장성 - 각 피어들은 파일을 다른 피어들에게 분배함으로써 해당 시스템에 서비스 능력을 추가할 수 있다.</p>
+      </li>
+      <li>
+        <p>예) BitTorrent</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="프로세스-간-통신">프로세스 간 통신</h2>
+<ul>
+  <li>
+    <p>클라이언트 프로세스</p>
+
+    <ul>
+      <li>
+        <p>웹 어플리케이션에서 클라이언트 브라우저 프로세스</p>
+      </li>
+      <li>
+        <p>P2P에서 파일을 내려받는 피어</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>서버 프로세스</p>
+
+    <ul>
+      <li>
+        <p>웹 어플리케이션에서 웹 서버 프로제스</p>
+      </li>
+      <li>
+        <p>P2P에서 파일을 올리는 피어</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>일반적으로 두 프로세스간 통신 세션에서 초기화하는 프로세스를 클라이언트, 세션을 시작하기 위해 접속을 기다리는 프로세스를 서버라고 한다.</p>
+  </li>
+</ul>
+
+<h2 id="프로세스와-네트워크-사이의-인터페이스">프로세스와 네트워크 사이의 인터페이스</h2>
+<ul>
+  <li>
+    <p>하나의 프로세스에서 다른 프로세스로 보내는 메시지는 네트워크를 통해 이동한다.</p>
+  </li>
+  <li>
+    <p>소켓 - 프로세스가 메시지를 네트워크로 보내기 위한 통로 역할을 한다. 소켓은 애플리케이션과 네트워크 사이의 API라고도 한다.</p>
+  </li>
+  <li>
+    <p>프로세스 주소</p>
+
+    <ul>
+      <li>
+        <p>호스트의 주소 - IP주소로 식별</p>
+      </li>
+      <li>
+        <p>목적지 호스트 내의 수신 프로세스를 명시하는 식별자 - 포트번호로 식별</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="애플리케이션이-이용-가능한-트랜스포트-서비스">애플리케이션이 이용 가능한 트랜스포트 서비스</h2>
+<ul>
+  <li>
+    <p>신뢰적 데이터 전송 - 프로토콜이 프로세스 간 보장된 데이터 전송 서비스를 제공하는 것을 말한다. 이 서비스가 제공되면 송신 프로세스는 데이터를 소켓으로 보내고 그 데이터가 오류 없이 수신 프로세스에 도착할 것이라는 확신을 가진다.</p>
+  </li>
+  <li>
+    <p>처리율 - 네트워크 경로를 따라 두 프로세스 간의 통신 세션에서 송신 프로세스가 수신 프로세스를 비트로 전달할 수 있는 비율</p>
+  </li>
+  <li>
+    <p>시간 - 데이터를 전송하는 시간을 보장 받는다.</p>
+  </li>
+  <li>
+    <p>보안 - 기밀성, 데이터 무결성, 종단 인증 등의 보안 서비스를 제공받는다.</p>
+  </li>
+</ul>
+
+<h2 id="인터넷-전송-프로토콜-제공-서비스">인터넷 전송 프로토콜 제공 서비스</h2>
+<ul>
+  <li>
+    <p>TCP</p>
+
+    <ul>
+      <li>
+        <p>연결 지향형 서비스 - 메시지를 전송하기 전에 클라이언트와 서버는 핸드 셰이킹 단계를 통해 서로 전송 제어 정보를 교환하여 연결한다.</p>
+      </li>
+      <li>
+        <p>신뢰적 데이터 전송 서비스 - 모든 데이터를 오류 없이 올바른 순서로 전달한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>UDP</p>
+
+    <ul>
+      <li>
+        <p>비연결형 - 핸드셰이킹 과정이 없이 바로 메시지를 전송한다.</p>
+      </li>
+      <li>
+        <p>비신뢰적 데이터 전송 서비스 - 수신 소켓에 도착하는 것을 보장하지 않고, 수신 소켓에 도착하는 메시지들의 순서를 보장하지 않는다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="http">HTTP</h2>
+<ul>
+  <li>
+    <p>HTTP</p>
+
+    <ul>
+      <li>
+        <p>메시지의 구조 및 클라이언트와 서버가 메시지를 어떻게 교환하는지에 대해 정의하고 있는 웹의 애플리케이션 계층 프로토콜</p>
+      </li>
+      <li>
+        <p>HTTP 서버는 클라이언트에 대한 정보를 유지하지 않으므로 HTTP를 비상태 프로토콜이라고 한다.</p>
+      </li>
+      <li>
+        <p>웹 서버는 항상 켜져 있고, 고정 IP 주소를 가지며, 수백만 브라우저로부터 요청을 서비스한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>웹 페이지 - 기본  HTML 파일과 여러 참조 객체로 구성</p>
+  </li>
+  <li>
+    <p>URL - 객체를 갖고 있는 서버의 호스트 이름과 객체의 경로 이름을 가진 웹 페이지 주소</p>
+  </li>
+  <li>
+    <p>웹 브라우저 - 요구한 웹 페이지를 보여주고 여러가지 인터넷 항해와 구성 특성을 제공</p>
+  </li>
+  <li>
+    <p>쿠키</p>
+
+    <ul>
+      <li>
+        <p>인터넷 사용자가 어떠한 웹사이트를 방문할 경우 사용자의 웹 브라우저를 통해 인터넷 사용자의 컴퓨터나 다른 기기에 설치되는 작은 기록 정보 파일</p>
+      </li>
+      <li>
+        <p>네가지 요소</p>
+
+        <ul>
+          <li>
+            <p>HTTP 응답 메시지 쿠키 헤더라인</p>
+          </li>
+          <li>
+            <p>HTTP 요청 메시지 쿠키 헤더라인</p>
+          </li>
+          <li>
+            <p>사용자의 브라우저에 사용자 종단 시스템과 관리를 지속시키는 쿠키 파일</p>
+          </li>
+          <li>
+            <p>웹 사이트의 백엔드 데이터베이스</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>작동 방식</p>
+
+        <ul>
+          <li>
+            <p>클라이언트 호스트가 HTTP 요청을 하면 서버 호스트는 HTTP 응답 메시지에 Set-cookie 헤더와 식별번호를 포함하여 보낸다.</p>
+          </li>
+          <li>
+            <p>이후 일정 시간동안 클라이언트 호스트가 HTTP 요청을 할때 HTTP 요청 메시지에 쿠키 파일을 추가하여 보낸다.</p>
+          </li>
+          <li>
+            <p>서버 호스트는 식별번호를 식별하여 클라이언트 호스트가 원하는 웹 정보를 유지할 수 있다.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>웹 캐싱</p>
+
+    <ul>
+      <li>
+        <p>자체의  저장디스크를 갖고 최근 호출된 객체의 사본을 저장 및 보존하여 브라우저가 사용자의 HTTP 요구를 웹 캐시에 가장 먼저 보내도록 구성할 수 있다.</p>
+      </li>
+      <li>
+        <p>작동 방식</p>
+
+        <ul>
+          <li>
+            <p>브라우저는 웹 캐시와 TCP 연결을 설정하고 웹 캐시에 있는 객체에 대한 HTTP 요청을 보낸다.</p>
+          </li>
+          <li>
+            <p>웹 캐시는 객체의 사본이 자기에게 저장되어 있는지 확인한다. 만약 저장되어 있다면 웹 개시는 클라이언트 브라우저로 HTTP 응답 메시지와 함께 객체를 전송한다. 만약 저장되어 있지 않다면, 웹 캐시는 기점 서버로 TCP 연결을 설정하고, 캐시와 서버간의 TCP 연결로 객체에 대한 HTTP 요청을 보낸다.</p>
+          </li>
+          <li>
+            <p>요청을 받은 후에 기점 시버는 웹 캐시로 HTTP 응답 메시지와 함께 객체를 보낸다.</p>
+          </li>
+          <li>
+            <p>웹 캐시의 객체를 수신할 때, 객체를 지역 저장장치에 복사하고 클라이언트 브라우저에 HTTP 응답 메시지와 함께 객체의 사본을 보낸다.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="http2">HTTP/2</h2>
+<ul>
+  <li>
+    <p>HTTP/1.1에서 하나의 TCP 연결 상에서 멀티플렉싱 요청/응답 지연 시간을 줄이는데 있으며, 요청 우선순위화, 서버 푸시, HTTP 헤더 필드의 효율적인 합축 기능 등을 제공한다.</p>
+  </li>
+  <li>
+    <p>HTTP/1.1의 경우 지속적인 TCP 연결을 이용하기 때문에 웹 페이지당 오직 하나의 TCP 연결을 가진다. 이 때, 하나의 TCP 상에서 웹 페이지에 있는 모든 객체를 보내게 되기 때문에 HOL 블로킹 문제가 발생한다. 이를 해결하기 위해 HTTP/2에선 여러 개의 병렬 TCP 연결을 열어 같은 웹 페이지에 있는 객체들을 브라우저로 병렬적으로 전송하여 HOL 블로킹 문제를 해결했다.</p>
+  </li>
+  <li>
+    <p>HTTP/2 프레이밍 - 각 메시지를 작은 프레임으로 나누고, 같은 TCP 연결에서의 요청과 응답 메시지를 인터리빙한다.</p>
+  </li>
+</ul>
+
+<h2 id="dns">DNS</h2>
+<ul>
+  <li>
+    <p>DNS (Domain Name System) - 라우터의 경우 IP주소를 통해 호스트가 인터넷의 어디에 위치하는지에 대한 자세한 정보를 얻을 수 있다. 반면 사람에겐 IP주소가 매우 복잡하고 외우기 어렵다고 느낄 수 있는데 이를 절충하기 위해 호스트 이름을 IP 주소로 변환해주는 디렉터리 서비스가 존재하는데 이를 DNS라고 한다.</p>
+  </li>
+  <li>
+    <p>변환 과정</p>
+
+    <ul>
+      <li>
+        <p>브라우저는 URL로부터 호스트 이름을 추출하고 호스트 이름을 DNS 애플리케이션의 클라이언트에 넘긴다.</p>
+      </li>
+      <li>
+        <p>DNS 클라이언트는 DNS 서버로  호스트 이름을 포함하는 질의를 보낸다.</p>
+      </li>
+      <li>
+        <p>DNS 클라이언트는 호스트 이름에 대한 IP 주소를 가진 응답을 받게 된다.</p>
+      </li>
+      <li>
+        <p>브라우저가 DNS로부터 IP 주소를 받으면 브라우저는 해당 IP 주소와 그 주소의 80번 포트에 위치하는 HTTP 서버 프로세스로 TCP연결을 초기화한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="p2p">P2P</h2>
+<ul>
+  <li>
+    <p>간헐적으로 연결되는 호스트 쌍들이 서로 직접 통신한다.</p>
+  </li>
+  <li>
+    <p>클라이언트-서버 구조보다 일반적으로 분배시간이 적고, 자가 확장성을 갖는다.</p>
+  </li>
+  <li>
+    <p>피어가 비트의 소비자이자 재분배자이다.</p>
+  </li>
+</ul>
+
+<h2 id="cdn">CDN</h2>
+<ul>
+  <li>
+    <p>다수의 지점에 분산된 서버들을 운영하며, 비디오 및 다른 형태의 웹 콘텐츠 데이터의 복사본을 이러한 분산 서버에 저장하는 네트워크를 콘텐츠 분배 네트워크라고 한다.</p>
+  </li>
+  <li>
+    <p>사용자는 최선의 서비스와 사용자 경험을 제공할 수 있는 지점의 CDN 서버로 연결되고, CDN 은 콘텐츠 제공자가 소유한 사설 CDN일 수 있고, 제 3자가 운영하는 CDN을 통해 다수의 콘텐츠 제공자가 서비스할 수 있다.</p>
+  </li>
+  <li>
+    <p>서버 위치 지정 방법</p>
+
+    <ul>
+      <li>
+        <p>Enter Deep - 서버 클러스터를 세계 곳곳의 접속 네트워크에 구축함으로써 ISP의 접속 네트워크로 깊숙이 들어가는 것이다. 이로 인해 서버를 최대한 사용자 가까이에 위치시켜 사용자와 CDN 서버 사이의 링크 및 라우터 수를 줄이고, 사용자가 경험하는 지연 시간 및 처리율을 개선할 수 있다.</p>
+      </li>
+      <li>
+        <p>Bring Home - 좀 더 적은 수의 핵심 지점에 큰 규모의 서버 클러스터를 구축하여 ISP를 Home으로 가져오는 개념이다. Enter Depp에 비해 클러스터 유지 및 관리 비용이 줄지만 사용자가 느끼는 지연 시간 및 처리율은 상대적으로 나빠진다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Yun Daehyun</name></author><category term="CS" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[네트워크 애플리케이션 구조 클라이언트-서버]]></summary></entry><entry><title type="html">(컴퓨터 네트워크) 컴퓨터 네트워크와 인터넷</title><link href="/jekyll-theme-yat/cs/2023/10/08/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EC%99%80-%EC%9D%B8%ED%84%B0%EB%84%B7.html" rel="alternate" type="text/html" title="(컴퓨터 네트워크) 컴퓨터 네트워크와 인터넷" /><published>2023-10-08T00:00:00+00:00</published><updated>2023-10-08T00:00:00+00:00</updated><id>/jekyll-theme-yat/cs/2023/10/08/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EC%99%80-%EC%9D%B8%ED%84%B0%EB%84%B7</id><content type="html" xml:base="/jekyll-theme-yat/cs/2023/10/08/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EC%99%80-%EC%9D%B8%ED%84%B0%EB%84%B7.html"><![CDATA[<h2 id="인터넷의-구성요소">인터넷의 구성요소</h2>
+
+<ul>
+  <li>호스트(host) - 인터넷에 연결되는 모든 장치를 말하며 호스트는 통신 링크와 패킷 스위치의 네트워크로 연결된다. 종단시스템으로도 불린다.</li>
+  <li>링크(link) - 물리 매체로 구성되며 다양한 전송률을 이용하여 데이터를 전송하며 전송률은 초당 비트수를 의미하는 bps단위를 사용한다.</li>
+  <li>패킷(packet) - 한 종단 시스템에서 다른 종단 시스템으로 보낼 데이터를 세그먼트로 나누고 각 세그먼트에 헤더를 붙인 정보 패키지</li>
+  <li>스위치(switch) - 입력 통신 링크의 하나로 도착하는 패킷을 받아서 출력 통신 링크의 하나로 그 패킷을 전달. 종류로는 라우터와 링크 계층 스위치가 있다.</li>
+  <li>ISP - 패킷 스위치와 통신 링크로 이루어진 네트워크
+<em>(경로(route) - 패킷이 송신 종단 시스템에서 수신 종단 시스템에 도달하는 동안 거쳐온 일련의 통신 링크와 패킷 스위치)</em></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="인터넷-애플리케이션">인터넷 애플리케이션</h2>
+
+<ul>
+  <li>분산 애플리케이션(distributed application) - 서로 데이터를 교환하는 많은 종단 시스템을 포함하는 애플리케이션으로 애플리케이션에 서비스를제공하는 인프라스트럭처이다. 스트리밍, 모바일, 태블릿 애플리케이션을 포함한 인터넷 애플리케이션 뿐만 아니라 전자 메일, 웹 서핑과 같은 전통적인 애플리케이션을 포함한다.</li>
+  <li>소켓 인터페이스 - 특정 목적지 프로그램으로 데이터를 전달하기 위해서 송신 프로그램이 따라야 하는 규칙의 집합, 인터넷은 소켓 인터페이스를 따라 데이터를 목적지 프로그램을 전달한다.</li>
+  <li>프로토콜 - 메시지를 송수신하기 위해서 둘 이상의 통신 개체 간에 교환되는 메시지 포맷과 순서뿐만 아니라, 메시지의 송수신과 다른 이벤트에 따른 행동들을 정의한 규약</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="종단-시스템">종단 시스템</h2>
+
+<ul>
+  <li>종단 시스템 - 호스트라고도 불리며 인터넷에 연결되는 컴퓨터와 그 밖의 장치를 말한다. 때때로 클라이언트와 서버로 구분된다.</li>
+  <li>접속 네트워크 - 종단 시스템을 그 종단 시스템으로부터 먼 거리에 있는 다른 종단 시스템까지의 경로상에 있는 첫 번째 라우터에 연결하는 네트워크</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="패킷교환">패킷교환</h2>
+
+<ul>
+  <li>송신 측과 수신 측 사이에서 각 패킷은 통신 링크와 패킷 스위치를 거친다.</li>
+  <li>패킷은 링크의 최대 전송률과 같은 속도로 각각의 통신 링크에서 전송된다.</li>
+  <li>패킷을 전송하는 데 걸리는 시간 L/R초 ( L = 패킷의 비트 크기, R = 전송 속도, bps)</li>
+  <li>저장-후-전달 - 스위치가 출력 링크로 패킷의 첫 비트를 전송하기 전에 전체 패킷을 받아야함을 의미한다. 따라서, 스위치가 패킷의 모든 패킷 정보를 받기 전엔 목적지에 패킷의 어떠한 내용도 전달할 수 없다. 대부분의 패킷 스위치가 이 방식을 사용한다.</li>
+  <li>큐잉 지연 - 패킷 스위치는 도착하는 패킷을 다른 링크로 전송되어야 하는데 그 링크가 다른 패킷을 전송하고 있다면 도착하는 패킷은 출력 버퍼에서 대기해야하는데 이 때 발생하는 현상을 말한다.</li>
+  <li>패킷 손실 - 가변적인 큐잉 지연 현상으로 인해 버퍼가 전송을 위해 대기 중인 다른 패킷들로 꽉 차 있는 경우가 발생하여 도착하는 패킷 혹은 이미 큐에 대기 중인 패킷을 폐기하는 패킷 손실이 발생한다.</li>
+  <li>포워딩 테이블 - 목적지 주소를 라우터의 출력 링크로 매핑하기 위한 테이블</li>
+  <li>라우팅 프로토콜 - 패킷이 라우터에 도착하면 라우터는 올바른 출력 링크를 찾기 위해 주소를 조사하고 이 목적지 주소를 이용하여 포워딩 테이블을 검색한다. 그런 후에 라우터는 그 패킷을 출력 링크로 보낸다. 이러한 포워딩 테이블을 자동으로 설정하는데 사용하기 위한 프로토콜을 말한다.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="회선-교환">회선 교환</h2>
+
+<ul>
+  <li>회선 교환 네트워크</li>
+  <li>네트워크가 회선을 설계할 때, 그 연결이 이루어지는 동안 네트워크 링크에 일정한 전송률을 예약한다.</li>
+  <li>네트워크의 각 링크가 N개의 회선을 가질 때, 종단 간 연결을 사용하는 각 링크에 대해 그 연결은 연결이 지속되는 동안 링크 전체 전송 용량의 1/N을 가진다.</li>
+  <li>주파수 분할 다중화 (FDM, frequency-division multiplexing) - 링크를 통해 설정된 연결의 그 링크의 주파수 스펙트럼을 공유한다. 주파수 영역으로 회선을 분할한다.</li>
+  <li>시간 분할 다중화 (TDM, time-division multiplexing) - 시간을 일정 주기의 프레임으로 구분하고, 각 프레임은 고정된 수의 시간 슬롯으로 나뉜다. 시간 슬롯으로 회선을 분할한다.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="패킷-교환-네트워크에서의-지연-손실">패킷 교환 네트워크에서의 지연, 손실</h2>
+
+<ul>
+  <li>지연
+    <ul>
+      <li>처리 지연 - 패킷 헤더를 조사하고 그 패킷을 어디로 보낼지를 결정하는 시간</li>
+      <li>큐잉 지연 - 패킷이 큐에서 링크로 전송되기를 기다리면서 발생하는 지연</li>
+      <li>전송 지연 - 패킷의 모든 비트를 링크로 밀어내는 데 필요한 시간</li>
+      <li>전파 지연 - 링크의 처음부터 어떤 라우터까지의 전파에 필요한 시간</li>
+      <li>종단 간 지연 = N(처리지연 + 전송 지연 + 전파 지연) (N = 라우터 개수)</li>
+    </ul>
+  </li>
+  <li>패킷 손실 - 큐 용량은 유한하므로 큐 용량이 꽉차 패킷을 저장할 수 없는 경우에 라우터는 그 패킷을 버리는데 이러한 경우를 패킷 손실이라 한다.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="프로토콜-계층">프로토콜 계층</h2>
+
+<ul>
+  <li>애플리케이션 계층
+    <ul>
+      <li>네트워크 애플리케이션과 애플리케이션 계층 프로토콜이 있는 곳, 한 종단 시스템에 있는 애플리케이션이 다른 종단 시스템에 있는 애플리케이션과 정보 패킷을 교환하는데 사용한다.</li>
+      <li>예) HTTP, SMTP, FTP</li>
+      <li>패킷 - 메시지</li>
+    </ul>
+  </li>
+  <li>트랜스포트 계층
+    <ul>
+      <li>클라이언트와 서버 간에 애플리케이션 계층 메시지를 전송하는 서비스를 제공한다.</li>
+      <li>예) TCP, UDP</li>
+      <li>패킷 - 세그먼트</li>
+    </ul>
+  </li>
+  <li>네트워크 계층
+    <ul>
+      <li>한 호스트에서 다른 호스트로 데이터그램을 라우팅하는 책임을 가진다. 목적지 호스트의 트랜스포트 계층으로 세그먼트를 운반하는 서비스를 제공한다.</li>
+      <li>예) IP</li>
+      <li>패킷 - 데이터그램</li>
+    </ul>
+  </li>
+  <li>링크 계층
+    <ul>
+      <li>출발지와 목적지 간 일련의 패킷 스위치를 통해 데이터그램을 라우팅한다. 경로상의 한 노드에서 다른 노드로 패킷을 이동하기 위해 네트워크 계층은 링크 계층 서비스에 의존한다.</li>
+      <li>예) 이더넷, 와이파이</li>
+      <li>패킷 - 프레임</li>
+    </ul>
+  </li>
+  <li>물리 계층
+    <ul>
+      <li>프레임 내부의 각 비트를 한 노드에서 다음 노드로 이동하는 역할을 한다</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Yun Daehyun</name></author><category term="CS" /><category term="CS" /><category term="Network" /><summary type="html"><![CDATA[인터넷의 구성요소]]></summary></entry><entry><title type="html">(디자인 패턴) 싱글톤 패턴</title><link href="/jekyll-theme-yat/study/2023/07/08/(%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4)-%EC%8B%B1%EA%B8%80%ED%86%A4-%ED%8C%A8%ED%84%B4.html" rel="alternate" type="text/html" title="(디자인 패턴) 싱글톤 패턴" /><published>2023-07-08T00:00:00+00:00</published><updated>2023-07-08T00:00:00+00:00</updated><id>/jekyll-theme-yat/study/2023/07/08/(%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4)-%EC%8B%B1%EA%B8%80%ED%86%A4-%ED%8C%A8%ED%84%B4</id><content type="html" xml:base="/jekyll-theme-yat/study/2023/07/08/(%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4)-%EC%8B%B1%EA%B8%80%ED%86%A4-%ED%8C%A8%ED%84%B4.html"><![CDATA[<h2 id="싱글톤-패턴">싱글톤 패턴</h2>
+
+<p><strong>싱글 톤 패턴이란?</strong></p>]]></content><author><name>Yun Daehyun</name></author><category term="Study" /><category term="Design Pattern" /><summary type="html"><![CDATA[싱글톤 패턴]]></summary></entry></feed>
