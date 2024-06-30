@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>(도커) 이미지 빌드 | 대현’s 개발일지</title>
+<meta name="generator" content="Jekyll v4.3.3">
+<meta property="og:title" content="(도커) 이미지 빌드">
+<meta name="author" content="Yun Daehyun">
+<meta property="og:locale" content="ko">
+<meta name="description" content="` 이미지레이어">
+<meta property="og:description" content="` 이미지레이어">
+<link rel="canonical" href="/jekyll-theme-yat/docker/2024/02/23/(%EB%8F%84%EC%BB%A4)-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B9%8C%EB%93%9C.html">
+<meta property="og:url" content="/jekyll-theme-yat/docker/2024/02/23/(%EB%8F%84%EC%BB%A4)-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B9%8C%EB%93%9C.html">
+<meta property="og:site_name" content="대현’s 개발일지">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-02-23T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="(도커) 이미지 빌드">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yun Daehyun"},"dateModified":"2024-02-23T00:00:00+00:00","datePublished":"2024-02-23T00:00:00+00:00","description":"` 이미지레이어","headline":"(도커) 이미지 빌드","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/docker/2024/02/23/(%EB%8F%84%EC%BB%A4)-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B9%8C%EB%93%9C.html"},"url":"/jekyll-theme-yat/docker/2024/02/23/(%EB%8F%84%EC%BB%A4)-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B9%8C%EB%93%9C.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="대현's 개발일지">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="대현's 개발일지" src="images/favicon.png" onerror="this.style.display='none'">
+  대현's 개발일지
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ko',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">(도커) 이미지 빌드</h1>
+  <h2 class="post-subtitle">개발자를 위한 쉬운 도커 (데브위키)</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2024-02-23T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Feb 23, 2024
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 12 mins</span>
+  </p>
+<div class="post-tags"><a class="post-tag" href="/jekyll-theme-yat/tags.html#Docker">#Docker</a></div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>`</p>
+<h2 id="이미지레이어">이미지레이어</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/40050cea-bd96-47a4-aa67-bdd3cc254206" alt="image"></p>
+
+<ul>
+  <li>도커 이미지는 저장소를 효율적으로 사용하기 위해서 레이어드 파일 시스템으로 구성</li>
+  <li>이미지를 다운로드 받을 때 여러개의 pull이 실행되는데 이것은 여러개의 레이어를 의미한다.</li>
+  <li>레이어드 파일 시스템은 공간을 효율적으로 사용할 수 있다.</li>
+  <li>이미지를 저장하고 전송할 때 스토리지와 네트워크 사용량을 절약할 수 있다.
+<br>
+</li>
+</ul>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/5e6a670f-e76f-4177-a794-06d317e1d00b" alt="image"></p>
+
+<ol>
+  <li>OS파일 시스템 준비</li>
+  <li>OS에서 Nginx 소프트웨어 설치, 이전 레이어인 OS 레이어에서 NGINX 소프트웨어가 추가된 부분만 따로 가지게 됨</li>
+  <li>Nginx 설정 파일인 nginx.conf파일 작성</li>
+  <li>이미지 A와 B의 index.html 파일의 내용만 다르게 작성, 1, 2, 3번의 레이어는 같음
+    <ul>
+      <li>레이어는 순차적으로 쌓이고, 각각의 레이어는 이전 레이어에서 변경된 부분을 저장, 같은 변경이 일어난 레이어는 공유에서 재사용될 수 있다.</li>
+      <li>컨테이너가 실행중에 생기는 모든 변경 사항들은 새로운 레이어에 저장됨</li>
+      <li>이미지 레이어 - 컨테이너를 실행하기 위한 세이브 포인트 역할</li>
+      <li>컨테이너 레이어 - 실제로 이미지를 컨테이너로 실행한 다음 프로세스가 변경하는 내용을 기록</li>
+      <li>동일한 이미지로 컨테이너를 많이 만들어도 이미지로 실행된 모든 컨테이너가 하나의 이미지를 공유해서 읽어옴</li>
+      <li>읽기 전용 레이어를 통해 실행 속도를 증가시킬 수 있고, 컨테이너가 늘어나면서 사용하는 공간을 최대한 작게 관리할 수 있다.</li>
+      <li>정리하면, 읽기 전용 레이어이란 설계도로 여러 컨테이너를 생성할 수 있다는 것이다.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="이미지-레이어-명령문">이미지 레이어 명령문</h3>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">docker image history 이미지명</code> - 해당 이미지가 어떻게 구성되어 있는지 확인</li>
+</ul>
+
+<h3 id="이미지-레이어-정리">이미지 레이어 정리</h3>
+<ul>
+  <li>Layering - 각 레이어는 이전 레이어 위에 쌓이며,여러 이미지 간에 공유될 수 있다. 레이어 방식은 중복 데이터를 최소화하고, 빌드 속도를 높이며, 저장소를 효율적으로 사용할 수 있게 해준다</li>
+  <li>Copy-on-Write(CoW) 전략 - 다음 레이어에서 이전 레이어의 특정 파일을 수정 할 때,해당 파일의 복사본을 만들어서 변경 사항을 적용한다.이렇게 함으로써 원래 레이어는 수정되지 않고 그대로 유지된다.</li>
+  <li>ImmutableLayers(불변 레이어) - 이미지의 각 레이어는 불변으로, 한 번 생성되면 변경되지 않는다. 이렇게 함으로써 이미지의 일관성을 유지하고,여러 컨테이너에서 안전하게 공유할 수 있다.</li>
+  <li>Caching(캐싱) - 레이어를 캐시하여, 이미 빌드된 레이어를 재사용할 수 있다. 이는 이미지 빌드 시간을 크게 줄여주며,같은 레이어를 사용하는 여러 이미지에서 효율적으로 작동한다.
+<br>
+</li>
+</ul>
+
+<h2 id="이미지-커밋">이미지 커밋</h2>
+<ul>
+  <li>커밋 - 실행 중인 컨테이너를 그 상태 그대로 이미지로 만들어내는 방식</li>
+</ul>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/d540c005-12a1-429e-a40f-f8623edb7ab1" alt="image"></p>
+
+<ol>
+  <li>Nginx이미지를 컨테이너로 실행한다.</li>
+  <li>컨테이너의 내부 파일을 변경한다.</li>
+  <li>현재 컨테이너의 상태를 Commit으로 새로운 이미지 저장한다.</li>
+</ol>
+
+<h3 id="이미지-커밋-명령문">이미지 커밋 명령문</h3>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">docker run -it --name 컨테이너명 이미지명 bin/bash</code> - 컨테이너 실행과 동시에 터미널 접속, cmd 대신 shell로 사용자가 접근</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">docker commit -m 커밋명 실행중인컨테이너명 생성할이미지명</code> - 실행 중인 컨테이너를 이미지로 생성
+<br>
+</li>
+</ul>
+
+<h2 id="이미지-빌드">이미지 빌드</h2>
+<ul>
+  <li>빌드 - 도커 파일이라는 명세서를 통해서 이미지를 만드는 방식</li>
+</ul>
+
+<h3 id="iacinfrastructure-as-code">IaC(Infrastructure as Code)</h3>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/ba857ede-ddb7-4858-9e21-c82e7e82362a" alt="image"></p>
+
+<ul>
+  <li>인프라 상태를 코드로 관리, 프로그램은 자동으로 사람이 작성한 코드를 읽어 인프라를 관리한다.</li>
+  <li>코드에 들어가는 내용은 프로그램이 작업하기 위한 일련의 작업 명세서로 사용된다.</li>
+  <li>
+    <p>도커 - IaC 방식 사용</p>
+
+    <ul>
+      <li>
+        <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/dbb5bda7-7cc0-4415-a331-702070b21e17" alt="image"></p>
+      </li>
+      <li>도커에서 빌드 방식을 사용하면 컨테이너를 생성하고 커밋하는 것을 도커가 대신 수행해준다.</li>
+      <li>도커파일 - 도커에게 어떤 작업을 수행할지 코드로 작성한 것</li>
+      <li>도커는 IaC방식에 따라서 이미지를 도커 파일이라는 소스 코드로 관리할 수 있다. 코드이기 때문에 애플리케이션 소스 코드와도 함꼐 관리할 수 있고 버전관리도 가능하다.</li>
+      <li>도커는 도커파일을 해석하여 이미지를 제작한다.</li>
+      <li>도커는 사람대신 도커 파일의 지시어를 통해 빌드를 진행해줘 오류가 발생하는것을 방지할 수 있다.</li>
+      <li>커밋 방식을 사용하면 여러 레이어를 여러번의 커밋과정을 거쳐 이미지를 생성하는 반면, 빌드 방식은 도커가 직접 이러한 작업들을 반복해주기 때문에 레이어 구조를 편리하게 활용할 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="이미지-빌드-명령문">이미지 빌드 명령문</h3>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">docker build -t 이미지명 Dockerfile경로</code> - 도커파일을 통해 이미지 빌드</li>
+  <li>도커파일 문법
+    <ul>
+      <li>FROM 이미지명 - 베이스 이미지를 지정</li>
+      <li>COPY 파일경로 복사할경로 - 파일을 레이어에 복사</li>
+      <li>CMD [“명령어”] - 컨테이너 실행 시 명령어 지정
+<br>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="dockerfile-지시어">DockerFile 지시어</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/51baccd7-7247-4d1f-bae5-9d8dd2a5c8db" alt="image"></p>
+
+<ul>
+  <li>애플리케이션 빌드 - 소스코드를 실행 가능한 프로그램으로 만드는 과정, 결과물 아티팩트</li>
+  <li>이미지 빌드 - 도커 파일을 이미지로 만드는 과정, 개발자가 개발한 소스코드를 애플리케이션 이미지로 필드할 때, 이미지 빌드 과정에 애플리케이션 빌드 과정이 포함되어 있다.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">docker build -f 도커파일명 -t 이미지명 Dockerfile경로</code> - 도커파일명이 Dockerfile이 아닌 경우 별도 지정</li>
+  <li>기본 지시어
+    <ul>
+      <li>FROM 이미지명 - 베이스 이미지를 지정</li>
+      <li>COPY 빌드컨텍스트경로 레이어경로 - 빌드 컨텍스트의 파일을 레이어에 복사</li>
+      <li>RUN 명령어 - 명령어 실행</li>
+      <li>CMD [“명령어”] - 컨테이너 실행 시 명령어 지정</li>
+      <li>WORKDIR 폴더명 - 작업 디렉토리를 지정</li>
+      <li>USER 유저명 - 명령을 실행할 사용자 변경</li>
+      <li>EXPOSE 포트번호 - 컨테이너가 사용할 포트를 명시</li>
+      <li>ARG 변수명 변수값 - 이미지 빌드 시점의 환경 변수 설정 (docker build –build -arg 변수명=변수값 으로 덮어쓰기 가능)</li>
+      <li>ENV 변수명 변수값 - 이미지 빌드 및 컨테이너 실행 시점의 환경 변수 설정 (docker run -e 변수명=변수값 으로 덮어쓰기 가능)</li>
+      <li>ENTRYPOINT [“명령어”] - 고정된 명령어를 지정
+<br>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="멀티-스테이지-빌드">멀티 스테이지 빌드</h2>
+<ul>
+  <li>
+    <p>빌드에 사용하는 이미지와 실행에 사용하는 이미지를 함께 활용하는 방법</p>
+  </li>
+  <li>
+    <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/967f3abe-f56c-4348-9db7-ed787480d814" alt="image"></p>
+  </li>
+  <li>빌드에 사용하는 이미지와 실행에 사용하는 이미지를 분리하여 생성하고, 사용</li>
+  <li>분리를 통해 다운로드 속도를 높일 수 있음</li>
+  <li>빌드 스테이지와 실행 스테이지로 나누어서 빌드하는 방식을 <code class="language-plaintext highlighter-rouge">멀티 스테이지 빌드</code>라고 한다.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 첫번째 단계:	빌드 환경 설정
+FROM maven:3.6	AS build
+WORKDIR /app
+
+# 소스코드 복사
+COPY pom.xml .
+COPY src ./src
+
+# 애플리케이션 빌드
+RUN mvn clean package
+
+# 두번째 단계:	실행 환경 설정
+FROM openjdk:11-jre-slim
+WORKDIR /app
+
+# 빌드 단계에서 생성된 JAR	파일 복사
+COPY --from=build /app/target/*.jar ./app.jar
+EXPOSE 8080
+CMD ["java", "-jar", "app.jar"]
+</code></pre></div></div>
+<ul>
+  <li>첫번째 FROM 지시자를 사용하여 JAVA 애플리케이션을 빌드하기 위해 maven 베이스 이미지 사용</li>
+  <li>RUN 지시자를 사용하여 JAVA 애플리케이션을 빌드</li>
+  <li>두번째 FROM 지시자를 사용하여 JAVA 애플리케이션을 실행하기 위해 openjdk 베이스 이미지 사용</li>
+  <li>COPY 지시자를 사용하여 build에서 실행 이미지로 파일을 복사한다.</li>
+</ul>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/docker/2024/02/21/(%EB%8F%84%EC%BB%A4)-%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%99%80-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88.html" title="(도커) 이미지와 컨테이너">(도커) 이미지와 컨테이너</a><a class="next" href="/jekyll-theme-yat/docker/2024/02/25/(%EB%8F%84%EC%BB%A4)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC.html" title="(도커) 네트워크">(도커) 네트워크</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%ED%8A%B8-%EA%B3%84%EC%B8%B5.html" title="(도커) 네트워크">(컴퓨터 네트워크) 트랜스포트 계층</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/docker/2024/02/26/(%EB%8F%84%EC%BB%A4)-%EB%8F%84%EC%BB%A4-%EC%8B%A4%EB%AC%B4.html" title="(도커) 네트워크">(도커) 도커 실무</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/project/2023/02/21/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-6.html" title="(도커) 네트워크">(Spring Boot) 웹 개발 프로젝트 - 6</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EB%A9%B4.html" title="(도커) 네트워크">(컴퓨터 네트워크) 네트워크 계층 - 데이터 평면</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2024 Yun Daehyun</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

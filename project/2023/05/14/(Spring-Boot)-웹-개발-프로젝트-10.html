@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>(Spring Boot) 웹 개발 프로젝트 - 10 | 대현’s 개발일지</title>
+<meta name="generator" content="Jekyll v4.3.3">
+<meta property="og:title" content="(Spring Boot) 웹 개발 프로젝트 - 10">
+<meta name="author" content="Yun Daehyun">
+<meta property="og:locale" content="ko">
+<meta name="description" content="프로필 화면 설계 등록된 포스트를 한번에 볼 수 있고, 포스트를 선택해서 들어갈 수 있는 프로필 화면을 설계해야한다. 포스트는 이미 등록되어 있기 때문에 적절한 UI를 설계하고 사용자의 포스트의 앞 이미지를 불러와 한 화면에 한번에 볼 수 있도록 설계하여야한다. ```templates/page/profilePage_couple.html &lt;!DOCTYPE html&gt; 러브쉐어 ♥ 의 공간 +">
+<meta property="og:description" content="프로필 화면 설계 등록된 포스트를 한번에 볼 수 있고, 포스트를 선택해서 들어갈 수 있는 프로필 화면을 설계해야한다. 포스트는 이미 등록되어 있기 때문에 적절한 UI를 설계하고 사용자의 포스트의 앞 이미지를 불러와 한 화면에 한번에 볼 수 있도록 설계하여야한다. ```templates/page/profilePage_couple.html &lt;!DOCTYPE html&gt; 러브쉐어 ♥ 의 공간 +">
+<link rel="canonical" href="/jekyll-theme-yat/project/2023/05/14/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-10.html">
+<meta property="og:url" content="/jekyll-theme-yat/project/2023/05/14/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-10.html">
+<meta property="og:site_name" content="대현’s 개발일지">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-05-14T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="(Spring Boot) 웹 개발 프로젝트 - 10">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yun Daehyun"},"dateModified":"2023-05-14T00:00:00+00:00","datePublished":"2023-05-14T00:00:00+00:00","description":"프로필 화면 설계 등록된 포스트를 한번에 볼 수 있고, 포스트를 선택해서 들어갈 수 있는 프로필 화면을 설계해야한다. 포스트는 이미 등록되어 있기 때문에 적절한 UI를 설계하고 사용자의 포스트의 앞 이미지를 불러와 한 화면에 한번에 볼 수 있도록 설계하여야한다. ```templates/page/profilePage_couple.html &lt;!DOCTYPE html&gt; 러브쉐어 &hearts; 의 공간 +","headline":"(Spring Boot) 웹 개발 프로젝트 - 10","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/project/2023/05/14/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-10.html"},"url":"/jekyll-theme-yat/project/2023/05/14/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-10.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="대현's 개발일지">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="대현's 개발일지" src="images/favicon.png" onerror="this.style.display='none'">
+  대현's 개발일지
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ko',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">(Spring Boot) 웹 개발 프로젝트 - 10</h1>
+  <h2 class="post-subtitle">프로필 구현 - 2 (화면 설계)</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2023-05-14T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> May 14, 2023
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 9 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Spring">#Spring</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#Java">#Java</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#Web">#Web</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="프로필-화면-설계">프로필 화면 설계</h2>
+<p>등록된 포스트를 한번에 볼 수 있고, 포스트를 선택해서 들어갈 수 있는 프로필 화면을 설계해야한다. 포스트는 이미 등록되어 있기 때문에 적절한 UI를 설계하고 사용자의 포스트의  앞 이미지를 불러와 한 화면에 한번에 볼 수 있도록 설계하여야한다.</p>
+<pre><code class="language-templates/page/profilePage_couple.html">&lt;!DOCTYPE html&gt;
+&lt;html th:replace="~{layout/common_layout :: layout(~{::title}, ~{::section})}"&gt;
+&lt;head&gt;
+  &lt;title&gt;러브쉐어&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;section class="text-center"&gt;
+  &lt;div&gt;
+    &lt;div style="float: left"&gt;
+      &lt;span th:text="${boyFriend}" style="font-size: 20px"&gt;&lt;/span&gt;
+      &lt;span style="font-size: 20px"&gt;&amp;hearts;&lt;/span&gt;
+      &lt;span th:text="${girlFriend}"  style="font-size: 20px"&gt;&lt;/span&gt;
+      &lt;span style="font-size: 15px"&gt;의 공간&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button th:if="${session.loginMember.loginId == boyFriend || session.loginMember.loginId == girlFriend}"
+            type="button" class="btn btn-outline-dark" style="font-size: 30px; float: right" onclick="location.href='/profile-add'"&gt;+&lt;/button&gt;
+  &lt;/div&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+  &lt;div class="row"&gt;
+    &lt;div class="col-4" th:each="p : ${post}"&gt;
+      &lt;div class="card" style="margin-bottom: 20px"&gt;
+        &lt;a th:href="@{/profile/post/{id}(id=${p.id})}"&gt;
+          &lt;img th:src="|/images/${p.images[0].getStoreFileName()}|" class="card-img-top"&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>프로필의 이름은 ‘남자친구아이디 ♥ 여자친구아이디의 공간’으로 설정하고, 이름 옆에 포스트 등록 버튼을 만들어 프로필의 아이디 정보와 로그인 아이디 정보가 일치할 시에만 활성화되도록 설정한다. 그리고 각 포스트의 이미지를 <a>를 사용하여 클릭하면 해당 포스트로 이동할 수 있도록 설정한다. 이때, 이미지는 포스트의 맨앞 이미지를 사용할 것이기 때문에 이미지 src정보를 "|/images/${p.images[0].getStoreFileName()}|"로 하여 포스트의 첫번째 이미지를 불러오도록 하였다. th:each속성을 사용하여 로그인 아이디에 해당하는 모든 포스트를 불러들인다.
+<br><br></a></p>
+
+<h2 id="포스트-화면-구현">포스트 화면 구현</h2>
+<p>컨트롤러를 통해 포스트 화면에 로그인 정보와 포스트 정보를 제공한다. 기존 profilePage.html에 사용자의 subscriber와 사용자의 subscriber의 subscriber이 사용자와 일치하면 <meta http-equiv="refresh" content="0;url=/profile/posts"> 코드를 실행하도록 하여 커플 프로필 화면으로 이동하도록 한다.</p>
+<pre><code class="language-web/profile/ProfileController">@GetMapping("/profile/posts")
+    public String redirect_posts(RedirectAttributes redirectAttributes, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
+        if (member.getGender().equals("MEN")) {
+            redirectAttributes.addAttribute("boyFriend", member.getLoginId());
+            redirectAttributes.addAttribute("girlFriend", member.getLoverName());
+        } else {
+            redirectAttributes.addAttribute("boyFriend", member.getLoverName());
+            redirectAttributes.addAttribute("girlFriend", member.getLoginId());
+        }
+
+        return "redirect:/profile/couple/{boyFriend}/{girlFriend}";
+    }
+
+    @GetMapping("/profile/couple/{boyFriend}/{girlFriend}")
+    public String couplePosts(@PathVariable String boyFriend, @PathVariable String girlFriend, Model model) {
+        List&lt;Post&gt; post = postRepository.findByBoyFriend(boyFriend);
+        log.info("post={}", post);
+        model.addAttribute("post", post);
+        return "page/profilePage_couple";
+    }
+</code></pre>
+<p>/profile/posts로 이동하게 되면 남자친구와 여자친구의 정보와 함께 커플 프로필 화면으로 이동한다. 이때, redirect를 사용하여 커플의 boyFriend아이디와 girlFriend아이디를 url을 통해 넘겨주도록 한다. url로 넘겨받은 정보를 model에 넣고, 커플의 포스트를 List<post>형으로 데이터베이스에서 가지고 와 model에 넣고, 커플 프로필 화면에 넘겨준다. 이전에 프로필 화면 설계 부분에서 구현한 화면에 model이 전해져 커플의 각 포스트 맨앞 이미지가 출력되어진다.</post></p>
+
+<h2 id="결과">결과</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/dd37fe14-6aaa-4fbf-8b2b-4b93e5bd9f84" alt="image"></p>
+
+<p>커플 이름으로 올린 포스트들이 커플 프로필 화면에 한꺼번에 들어온 것을 확인할 수 있다. 각 이미지를 클릭하면 이미지에 해당하는 포스트 화면으로 이동하게 된다.</p>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/b8b31b70-aa67-4767-a5af-4ab5a968d04b" alt="image"></p>
+
+<p>다른 사용자의 프로필 화면에 들어가면 포스트 등록 버튼이 비활성화 된다.</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/project/2023/04/01/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-9.html" title="(Spring Boot) 웹 개발 프로젝트 - 9">(Spring Boot) 웹 개발 프로젝트 -...</a><a class="next" href="/jekyll-theme-yat/study/2023/07/07/(Spring-Boot)-%EC%8A%A4%ED%94%84%EB%A7%81-MVC-1.html" title="(Spring Boot) 스프링 MVC - 1">(Spring Boot) 스프링 MVC - 1...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/docker/2024/02/25/(%EB%8F%84%EC%BB%A4)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC.html" title="(Spring Boot) 스프링 MVC - 1">(도커) 네트워크</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EB%A9%B4.html" title="(Spring Boot) 스프링 MVC - 1">(컴퓨터 네트워크) 네트워크 계층 - 데이터 평면</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/project/2023/02/27/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-7.html" title="(Spring Boot) 스프링 MVC - 1">(Spring Boot) 웹 개발 프로젝트 - 7</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/designpattern/2024/06/01/(%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4)-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C-%ED%8C%A8%ED%84%B4.html" title="(Spring Boot) 스프링 MVC - 1">(디자인 패턴) 정적 팩토리 메서드 패턴</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2024 Yun Daehyun</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

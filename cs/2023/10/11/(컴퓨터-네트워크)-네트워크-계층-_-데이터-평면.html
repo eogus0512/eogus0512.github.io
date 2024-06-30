@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>(컴퓨터 네트워크) 네트워크 계층 - 데이터 평면 | 대현’s 개발일지</title>
+<meta name="generator" content="Jekyll v4.3.3">
+<meta property="og:title" content="(컴퓨터 네트워크) 네트워크 계층 - 데이터 평면">
+<meta name="author" content="Yun Daehyun">
+<meta property="og:locale" content="ko">
+<meta name="description" content="네트워크 계층 개요 네트워크 계층의 역할 - 송신 호스트에서 수신 호스트로 패킷을 전달하는 것">
+<meta property="og:description" content="네트워크 계층 개요 네트워크 계층의 역할 - 송신 호스트에서 수신 호스트로 패킷을 전달하는 것">
+<link rel="canonical" href="/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EB%A9%B4.html">
+<meta property="og:url" content="/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EB%A9%B4.html">
+<meta property="og:site_name" content="대현’s 개발일지">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-10-11T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="(컴퓨터 네트워크) 네트워크 계층 - 데이터 평면">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yun Daehyun"},"dateModified":"2023-10-11T00:00:00+00:00","datePublished":"2023-10-11T00:00:00+00:00","description":"네트워크 계층 개요 네트워크 계층의 역할 - 송신 호스트에서 수신 호스트로 패킷을 전달하는 것","headline":"(컴퓨터 네트워크) 네트워크 계층 - 데이터 평면","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EB%A9%B4.html"},"url":"/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EB%8D%B0%EC%9D%B4%ED%84%B0-%ED%8F%89%EB%A9%B4.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="대현's 개발일지">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="대현's 개발일지" src="images/favicon.png" onerror="this.style.display='none'">
+  대현's 개발일지
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ko',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">(컴퓨터 네트워크) 네트워크 계층 - 데이터 평면</h1>
+  <h2 class="post-subtitle">컴퓨터 네트워크 4장</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2023-10-11T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Oct 11, 2023
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 24 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CS">#CS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#Network">#Network</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="네트워크-계층-개요">네트워크 계층 개요</h2>
+<ul>
+  <li>
+    <p>네트워크 계층의 역할 - 송신 호스트에서 수신 호스트로 패킷을 전달하는 것</p>
+  </li>
+  <li>
+    <p>네트워크 계층의 중요한 기능</p>
+
+    <ul>
+      <li>
+        <p>포워딩(전달) : 패킷이 라우터의 입력 링크에 도달했을 때 라우터는 그 패킷을 적절한 출력 링크로 이동시킨다.</p>
+      </li>
+      <li>
+        <p>라우팅 : 송신자가 수신자에게 패킷을 전송할 때 네트워크 계층은 패킷 경로를 결정해야한다. 이때, 경로를 계산하는 알고리즘을 라우팅 알고리즘이라고 한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>네트워크 서비스 모델</p>
+
+    <ul>
+      <li>
+        <p>송수신 호스트 간 패킷 전송 특성을 정의한다.</p>
+      </li>
+      <li>
+        <p>보장된 전달 : 패킷이 출발지 호스트에서부터 목적지 호스트까지 도착하는 것을 보장한다.</p>
+      </li>
+      <li>
+        <p>지연 제한 이내의 보장된 전달 : 패킷의 전달을 보장할 뿐만 아니라 호스트 간의 특정 지연 제한 안에 전달한다.</p>
+      </li>
+      <li>
+        <p>순서화 패킷 전달 : 패킷이 목적지에 송신된 순서대로 도착하는 것을 보장한다.</p>
+      </li>
+      <li>
+        <p>최소 대역 폭 보장 :  송신과 수신 호스트 사이에 특정한 비트율의 전송 링크를 에뮬레이트 한다.</p>
+      </li>
+      <li>
+        <p>보안 서비스 : 네트워크 계층은 모든 데이터 그램을 출발지 호스트에서는 암호화, 목적지 호스트에서는 해독을 할 수 있게 하여 트랜스포트 계층의 모든 세그먼트에 대해 기밀성을 유지해야한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h2 id="라우터-내부-구조">라우터 내부 구조</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/7a4647ae-ac20-499c-b1f4-eee02014d263" alt="image-20231008-050136"></p>
+
+<ul>
+  <li>
+    <p>라우터의 네 가지 요소</p>
+
+    <ul>
+      <li>
+        <p>입력 포트 : 들어오는 링크의 반대 편에 있는 링크 계층과 상호 운용하기 위해 핑요한 링크 계층 기능을 수행한다. 또한 검색 기능을 수행하는데 포워딩 테이블을 참조하여 도착된 패킷이 스위치 구조를 통해 라우터 출력 포트를 결정한다. 제어 패킷은 입력 포트에서 라우팅 프로세서로 전달된다.</p>
+      </li>
+      <li>
+        <p>스위치 구조 : 라우터의 입력 포트와 출력 포트를 연결한다. 라우터 내부에 포함되어있다.</p>
+      </li>
+      <li>
+        <p>출력 포트 : 스위치 구조에서 수신한 패킷을 저장하고 필요한 링크 계층 및 물리 계층 기능을 수행하여 출력 링크로 패킷을 전송한다.</p>
+      </li>
+      <li>
+        <p>라우팅 프로세서 : 제어 평면 기능을 수행한다. SDN 라우터에서 라우팅 프로세서는 원격 컨트롤러와 통신하여 원격 컨트롤러에서 계산된 포워딩 테이블 엔트리를 수신하고 라우터의 입력 포트에 이러한 엔트리를 설치한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>데이터 평면이 나노초 단위로 작동하는 동안 라우터의 제어 기능은 밀리초 또는 2초 단위로 작동한다. 따라서 제어 평면 기능은 일반적으로 소프트웨어로 구현되며 라우팅 프로세서에서 실행된다.</p>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h2 id="입력-포트-처리-및-목적지-기반-전송">입력 포트 처리 및 목적지 기반 전송</h2>
+<ul>
+  <li>
+    <p>입력 포트의 라인 종단 기능과 링크 계층 처리는 라우터의 개별 입력 링크와 관련된 물리 계층 및 데이터 링크 계층을 구현한다.</p>
+  </li>
+  <li>
+    <p>라우터는 포워딩 테이블을 사용하여 도착 패킷이 스위치 구조를 통해 전달되는 출력 포트를 검색한다.</p>
+  </li>
+  <li>
+    <p>포워딩 테이블은 라우팅 프로세서에서 계산되거나 갱신되거나 원결 SDN 컨트롤러에서 수신된다.</p>
+  </li>
+  <li>
+    <p>입력 패킷을 스위칭할 출력 포트가 각 패킷의 목적지 주소를 기반으로 하는 경우 목적지 주소마다 하나의 엔트리가 필요하게 되는데 이는 매우 많은 주소를 필요로 하여 불가능한다. 따라서 프리픽스를 이용하여 포워딩 테이블에서 라우터는 패킷의 목적지 주소의 프리픽스를 링크 테이블의 링크 인터페이스와 매치한다.</p>
+  </li>
+</ul>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/b8339de9-56f6-4f52-b9b0-b4a3fdd456c9" alt="image-20231008-053516"></p>
+
+<ul>
+  <li>
+    <p>매치되는 엔트리가 존재하면 라우터는 패킷을 그 매치와 연관된 링크로 보낸다.</p>
+  </li>
+  <li>
+    <p>하드웨어 로직은 포워딩 테이블을 검색하여 가장 긴 프리픽스와 매치되는 것을 찾고, 출력 포트가 결정되면 패킷을 스위치 구조로 보낸다.</p>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h2 id="스위칭">스위칭</h2>
+<ul>
+  <li>
+    <p>패킷이 입력 포트에서 출력 포트로 실제로 스위칭 되는 구조</p>
+  </li>
+  <li>
+    <p>메모리를 통한 교환 : 메모리를 통해 스위칭한다. 목적지 주소를 검색하고 해당 메모리 위치에  패킷을 저장하는 것이 입력 라인 카드에서 처리한다.</p>
+  </li>
+  <li>
+    <p>버스를 통한 교환 : 입력포트는 라우팅 프로세서의 개입 없이 공유 버스를 통해 직접 출력 포트로 패킷을 전송한다. 모든 패킷이 하나의 버스를 건너가야 하므로, 라우터의 교환 속도는 버스 속도에 의해 제한된다. 그럼에도 불구하고 버스를 통한 스위칭은 종종 작은 지역 및 기업 네트워크에서 작동하는 라우터에서 사용하기에 충분하다.</p>
+  </li>
+  <li>
+    <p>상호연결 네트워크를 통한 교환 : 공유 버스의 대역폭 제한을 극복하기 위해서 좀 더 복잡한 상호연결 네트워크를 사용한다. N개의 입력 포트를 N개의 출력 포트에 연결하는 2N 버스로 구성된다. 각 수직 버스는 교차점에서 각 수평 버스와 교차하며 수위치 구조 컨트롤러에 의해 언제든지 열거나 닫을 수 있다. 현대의 스위칭 방식은 크로스바 스위치는 여러 패킷을 병렬로 전달할 수 있도록 한다.</p>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h2 id="출력-포트-처리">출력 포트 처리</h2>
+<ul>
+  <li>출력 포트의 메모리에 저장된 패킷을 가져와서 출력 링크를 통해 전송한다.</li>
+</ul>
+
+<p><br></p>
+
+<h2 id="큐잉-발생-위치">큐잉 발생 위치</h2>
+<ul>
+  <li>
+    <p>패킷 큐는 입력 포트와 출력 포트 모두에서 형성될 수 있다. 큐의 위치와 범위는 트래픽 로드, 스위치 구조의 상대 속도 및 라인 속도에 따라서 달라진다.</p>
+  </li>
+  <li>
+    <p>큐가 커지면 라우터의 메모리가 소모될 수 있고 도착하는 패킷을 저장할 수 있는 메모리가 없을 때 패킷 손실이 발생한다.</p>
+  </li>
+  <li>
+    <p>입력 큐잉</p>
+
+    <ul>
+      <li>
+        <p>입력라인 속도에 비해 스위치 구조가 충분히 빠르지 않다면 패킷이 스위치 구조를 통해 출력 포트로 전송되기 위해 차례를 기다려야한다.</p>
+      </li>
+      <li>
+        <p>스위치 구조에선 경쟁이 없는 상태이지만 라인의 앞쪽에서 다른 패킷이 막고 있을 때 다음 패킷이 입력 대기를 해야하는 상황을 스위치에서의 HOL 블로킹이라고 한다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>출력 큐잉</p>
+
+    <ul>
+      <li>
+        <p>스위치가 출력 포트에 비해 속도가 빠르게 되면 시간 단위에 단일 패킷만을 전송할 수 있는 출력 포트에 계속해서 패킷 큐에 패킷이 쌓이게 되어 도착 패킷들을 출력 링크를 통한 전송 큐에서 대기해야한다.</p>
+      </li>
+      <li>
+        <p>대기 중인 패킷의 수가 출력 포트에서 사용 가능한 메모리를 다 소모할 만큼 충분히 많아질 수 있다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h2 id="패킷-스케줄링">패킷 스케줄링</h2>
+<ul>
+  <li>
+    <p>큐에 있는 패킷이 출력 링크를 통해 전송되는 순서를 결정하기 위해서 사용되는 큐잉 처리 방법</p>
+  </li>
+  <li>
+    <p>FIFO</p>
+
+    <ul>
+      <li>
+        <p>출력 링크 큐에 도착한 순서와 동일한 순서로 출력 링크에서 전송할 패킷을 선택한다.</p>
+      </li>
+      <li>
+        <p>패킷은 도착한 순서와 동일한 순서로 나가게 된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>우선순위 큐잉</p>
+
+    <ul>
+      <li>
+        <p>출력 링크에 도착한 패킷이 큐에 도착하면 우선순위 클래스로 분류된다.</p>
+      </li>
+      <li>
+        <p>우선순위가 낮은 패킷이 먼저 큐에서 대기했더라도 우선순위가 높은 패킷이 도착하면 우선순위가 높은 패킷이 먼저 전송된다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>라운도 로빈과 WFQ</p>
+
+    <ul>
+      <li>
+        <p>패킷을 클래스로 분류하지만 우선순위가 존재하지 않으며 라운드 로빈 스케줄러가 클래스 간에 서비스를 번갈아가며 제공한다. 라운드 로빈 스케줄링은 클래스를 돌아가며 패킷을 차례대로 전송한다.</p>
+      </li>
+      <li>
+        <p>작업 보존 큐잉(work-conserving queuing) 규칙의 경우, 전송을 위해 큐에서 기다리는 패킷이 있다면 링크는 유휴 상태가 되는 것을 허용하지 않는다. 만약 크래스에서 패킷을 찾지 못하면 시퀀스의 다음 클래스를 즉시 검사한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h2 id="ipv4-주소체계">IPv4 주소체계</h2>
+<ul>
+  <li>
+    <p>각 IP 주소는 32비트 길이로 2^32개의 주소를 사용할 수 있다. 이 주소는 일반 적으로 주소의 각 바이트를 십진수로 표현하고 주소의 다른 바이트와 점으로 구분하는 십진 표기법을 사용한다. (예)193.32.216.9 → 11000001 00100000 11011000 00001001)</p>
+  </li>
+  <li>
+    <p>전 세계 인터넷에서 모든 호스트와 라우터의 각 인터페이스는 고유한 IP 주소를 갖고, 이러한 주소는 인터페이스의 IP 주소 일부를 연결된 서브넷이 결정한다.</p>
+  </li>
+  <li>
+    <p>IP 용어로 세 호스트들의 인터페이스들과 하나의 라우터 인터페이스로 연결된 네트워크는 서브넷을 구성한다고 말한다.</p>
+  </li>
+  <li>
+    <p>서브넷 : 서브넷을 결정하려면 먼저 호스트나 라우터에서 각 인터페이스를 분리하고 고립된 네트워크를 만든다. 이 고립된 네트워크의 종단점은 인터페이스의 끝이 된다. 이렇게 고립된 네트워크 각각을 서브넷이라고 부른다.</p>
+  </li>
+</ul>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/9926727f-3cc1-4a30-8826-1ad541844a2a" alt="image-20231008-091115"></p>
+
+<ul>
+  <li>
+    <p>CIDR</p>
+
+    <ul>
+      <li>
+        <p>인터넷 주소 할당 방식 중 하나로 서브넷 주소체계 표기를 일반화한다. 서브넷 주소체계로서, 32비트 IP 주소는 두 부분으로 나누고, 이것은 다시 점으로 된 십진수 형태의 a.b.c.d/x를 가지며, 여기서 x는 주소 첫 부분의 비트 수이고 최상위 비트를 의미한다. 또한, 이것을 프리픽스 또는 네트워크 프리픽스라고 부른다.</p>
+      </li>
+      <li>
+        <p>주소의 나머지 32-x 비트들은 기관 내부에 같은 네트워크 프리픽스를 갖는 모든 장비를 구변한다. 이 비트들은 기관 내부의 라우터에서 패킷을 전달할 때 사용되는 것이다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>IP 주소의 또 다른 형태인 브로드캐스트 주소는 255.255.255.255가 있는데 호스트가 목적지 주소가 이 주소인 데이터그램을 보내면 이 메시지는 같은 서브넷에 있는 모든 호스트에게 전달된다.</p>
+  </li>
+  <li>
+    <p>주소 블록 획득</p>
+
+    <ul>
+      <li>기관의 서브넷에서 사용하기 위한 IP 주소 블록을 얻기 위해, 네트워크 관리자는 먼저 이미 할당받은 주소의 큰 블록에서 주소를 제공하는 ISP와 접촉해야한다. 예를 들어 ISP가 주소 블록 200.23.16.0/20을 할당 받았다고 한다면 200.23.16+x.0/23의 주소 블록을 사용하는 8개 조직을 지원할 수 있다.</li>
+    </ul>
+  </li>
+  <li>
+    <p>호스트 주소 획득: 동적 호스트 구성 프로토콜</p>
+
+    <ul>
+      <li>
+        <p>한 기관은 ISP로부터 주소 블록을 획득하여, 개별 IP 주소를 기관 내부의 호스트와 라우터 인터페이스에 할당한다.</p>
+      </li>
+      <li>
+        <p>일반적으로 동적 호스트 구성 프로토콜(DHCP)을 사용하여 호스트에 IP 주소를 자동으로 할당받는다.</p>
+      </li>
+      <li>
+        <p>네트워크 관리자는 해당 호스트가 네트워크에 접속하고자 할 때마다 동일한 IP 주소를 받도록 하거나, 다른 임시 IP 주소를 할당하도록 DHCP를 설정한다.</p>
+      </li>
+      <li>
+        <p>DHCP는 호스트 IP 주소의 할당뿐만 아니라, 서브넷 마스크, 첫 번째 홈 라우터 주소나 로컬 DNS 서버 주소같은 추가 정보를 얻게 해준다.</p>
+      </li>
+      <li>
+        <p>네트워크에서 자동으로 호스트와 연결해주는 DHCP의 능력으로 플러그 앤 플레이 프로토콜이라고 한다.</p>
+      </li>
+      <li>
+        <p>DHCP 프로토콜 4단계 과정</p>
+
+        <ul>
+          <li>
+            <p>DHCP 서버 발견 : 새롭게 도착한 호스트는 상호작용할 DHCP를 발견한다. DHCP 클라이언트는 해당 네트워크의 DHCP 서버 주소를 모르기 때문에 DHCP 발견 메시지를 포함하는 IP 데이터그램을 생성하여 목적지 주소를 브로드캐스트 주소로 하고, 출발지 주소를 0.0.0.0으로 설정하여 서브넷에 연결된 모든 노드로 브로드캐스트한다.</p>
+          </li>
+          <li>
+            <p>DHCP 서버 제공 : DHCP 발견 메시지를 받은 DHCP서버는 DHCP 제공 메시지를 클라이언트로 응답한다. 브로드캐스트 주소를 사용하여 서브넷의 모든 노드로 메시지를 보내어 가장 최적의 위치에 있는 DHCP 서버를 선택한다.</p>
+          </li>
+          <li>
+            <p>DHCP 요청 : 새롭게 도착한 클라이언트는 하나 또는 그 이상의 서버 제공자 중에서 선택할 것이고, 선택된 제공자에게 파라미터 설정으로 되돌아오는 DHCP 요청 메시지로 응답한다.</p>
+          </li>
+          <li>
+            <p>DHCP ACK : 서버는 DHCP 요청 메시지에 대해 요청된 파라미터를 확인하는 DHCP ACK메시지로 응답한다. 클라이언트가 DHCP ACK 메시지를 받으면 상호작용은 종료되고 클라이언트는 DHCP 할당 IP 주소를 임대기간동안 사용할 수 있다.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br></p>
+
+<h2 id="네트워크-주소-변환-nat">네트워크 주소 변환 (NAT)</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/e8c9352d-0934-4d0a-873d-9b0e2c647c36" alt="image-20231008-095257"></p>
+
+<ul>
+  <li>
+    <p>SOHO(small office, home office)의 확산으로 ISP는 모든 SOHO에 IP 장치를 수용할 수 있는 주소 범위를 할당해야하는데 네트워크가 현저하게 커진다면 큰 주소 블록이 할당되어야한다. 하지만 ISP 이미 SOHO 네트워크의 해당 주소 범위에 인접한 부분을 할당해 버렸다면 네트워크 주소 변환 (NAT)로 주소를 할당할 수 있다.</p>
+  </li>
+  <li>
+    <p>NAT 기능 라우터는 외부 세계로는 라우터처럼 보이지 않고 하나의 IP 주소를 갖는 하나의 장비로 동작한다. 따라서 NAT 기능 라우터는 외부에서 들어오는 홈 네트워크의 상세한 사항을 숨긴다. 이때, 라우터가 한 IP 주소를 DHCP를 통해서 얻는다.</p>
+  </li>
+  <li>
+    <p>WAN에서 같은 목적지 IP 주소를 갖는 NAT 라우터에 모든 데이터그램이 도착하면, 라우터는 NAT 변환테이블을 통해 주어진 데이터그램을 전달하는 내부 호스트를 알 수 있다.</p>
+  </li>
+</ul>
+
+<h2 id="ipv6">IPv6</h2>
+<ul>
+  <li>
+    <p>IPv4 주소 공간의 고갈에 대한 주소 공간의 수명을 연장하기 위해 세로운 프로토콜인 IPv6가 개발되었다.</p>
+  </li>
+  <li>
+    <p>중요한 변화</p>
+
+    <ul>
+      <li>
+        <p>확장된 주소 기능 : IP 주소 크기를 32비트에서 12비트로 확장</p>
+      </li>
+      <li>
+        <p>간소화된 40바이트 헤더 : IPv4의 많은 필드가 생략되거나 옵션으로 남겨져 라우터가 IP 데이터그램을 더 빨리 처리하게 해준다.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>IPv4에서 IPv6로의 전환</p>
+  </li>
+</ul>
+
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/8442c12b-54e4-4e2b-bec5-deee3a732882" alt="image-20231008-112546"></p>
+
+<ul>
+  <li>
+    <p>터널링</p>
+
+    <ul>
+      <li>
+        <p>두 IPv6 노드가 IPv6 데이터 그램을 사용해서 작동하고 IPv4 라우터를 통해 연결되어있다고 가정한다. 이때, 연결된 IPv4 라우터들을 터널이라고 한다.</p>
+      </li>
+      <li>
+        <p>터널의 첫번째 노드는 IPv6데이터 그램을 IPv4형식으로 캡슐화한다.</p>
+      </li>
+      <li>
+        <p>터널 내부에 있는 IPv4라우터는 IPv4 데이터그램이 IPv6데이터그램을 갖고 있다는 사실을 모른채 다른 데이터 그램을 처리하는 방식으로 IPv4데이터그램을 처리한다.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/cs/2023/10/09/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98-%EA%B3%84%EC%B8%B5.html" title="(컴퓨터 네트워크) 애플리케이션 계층">(컴퓨터 네트워크) 애플리케이션 계층</a><a class="next" href="/jekyll-theme-yat/cs/2023/10/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%ED%8A%B8%EB%9E%9C%EC%8A%A4%ED%8F%AC%ED%8A%B8-%EA%B3%84%EC%B8%B5.html" title="(컴퓨터 네트워크) 트랜스포트 계층">(컴퓨터 네트워크) 트랜스포트 계층</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/java/2024/06/07/(%EC%9E%90%EB%B0%94)-%EB%9E%8C%EB%8B%A4%EC%8B%9D-(Lambda).html" title="(컴퓨터 네트워크) 트랜스포트 계층">(자바) 람다식 (Lambda)</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2024/06/04/(%EC%9E%90%EB%B0%94)-%EC%8A%A4%ED%8A%B8%EB%A6%BC-(Stream).html" title="(컴퓨터 네트워크) 트랜스포트 계층">(자바) 스트림 (Stream)</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/docker/2024/02/26/(%EB%8F%84%EC%BB%A4)-%EB%8F%84%EC%BB%A4-%EC%8B%A4%EB%AC%B4.html" title="(컴퓨터 네트워크) 트랜스포트 계층">(도커) 도커 실무</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/oauth2/2024/04/18/(OAuth2-Login)-%EA%B5%AC%EA%B8%80-%EC%86%8C%EC%85%9C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84-(3)-_-JWT-%EC%9D%B8%EC%A6%9D.html" title="(컴퓨터 네트워크) 트랜스포트 계층">(OAuth2 Login) 구글 소셜 로그인 구현 (3) - JWT 인증</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2024 Yun Daehyun</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

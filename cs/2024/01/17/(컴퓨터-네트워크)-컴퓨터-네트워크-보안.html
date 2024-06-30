@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>(컴퓨터 네트워크) 컴퓨터 네트워크 보안 | 대현’s 개발일지</title>
+<meta name="generator" content="Jekyll v4.3.3">
+<meta property="og:title" content="(컴퓨터 네트워크) 컴퓨터 네트워크 보안">
+<meta name="author" content="Yun Daehyun">
+<meta property="og:locale" content="ko">
+<meta name="description" content="네트워크 보안 네트워크 보안 - 기밀성, 메시지 무결성, 종단점 인증, 운영 보안을 고려한 네트워크에서의 안전한 통신 기밀성 - 송신자와 지정된 수신자만이 전송되는 메시지 내용을 이해할 수 있어야한다. 메시지 무결성 - 통신하는 내용이 전송 도중에 변경되지 않아야한다. 종단점 인증 - 통신에 참여하는 송신자와 수신자는 서로 누구인지 인증 가능해야한다. 운영 보안 - 침입 감지 시스템으로 패킷은 상세히 관찰되고 의심스러운 행위에 대해 네트워크 관리에게 보고된다.">
+<meta property="og:description" content="네트워크 보안 네트워크 보안 - 기밀성, 메시지 무결성, 종단점 인증, 운영 보안을 고려한 네트워크에서의 안전한 통신 기밀성 - 송신자와 지정된 수신자만이 전송되는 메시지 내용을 이해할 수 있어야한다. 메시지 무결성 - 통신하는 내용이 전송 도중에 변경되지 않아야한다. 종단점 인증 - 통신에 참여하는 송신자와 수신자는 서로 누구인지 인증 가능해야한다. 운영 보안 - 침입 감지 시스템으로 패킷은 상세히 관찰되고 의심스러운 행위에 대해 네트워크 관리에게 보고된다.">
+<link rel="canonical" href="/jekyll-theme-yat/cs/2024/01/17/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B3%B4%EC%95%88.html">
+<meta property="og:url" content="/jekyll-theme-yat/cs/2024/01/17/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B3%B4%EC%95%88.html">
+<meta property="og:site_name" content="대현’s 개발일지">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-01-17T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="(컴퓨터 네트워크) 컴퓨터 네트워크 보안">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yun Daehyun"},"dateModified":"2024-01-17T00:00:00+00:00","datePublished":"2024-01-17T00:00:00+00:00","description":"네트워크 보안 네트워크 보안 - 기밀성, 메시지 무결성, 종단점 인증, 운영 보안을 고려한 네트워크에서의 안전한 통신 기밀성 - 송신자와 지정된 수신자만이 전송되는 메시지 내용을 이해할 수 있어야한다. 메시지 무결성 - 통신하는 내용이 전송 도중에 변경되지 않아야한다. 종단점 인증 - 통신에 참여하는 송신자와 수신자는 서로 누구인지 인증 가능해야한다. 운영 보안 - 침입 감지 시스템으로 패킷은 상세히 관찰되고 의심스러운 행위에 대해 네트워크 관리에게 보고된다.","headline":"(컴퓨터 네트워크) 컴퓨터 네트워크 보안","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/cs/2024/01/17/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B3%B4%EC%95%88.html"},"url":"/jekyll-theme-yat/cs/2024/01/17/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%B3%B4%EC%95%88.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="대현's 개발일지">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="대현's 개발일지" src="images/favicon.png" onerror="this.style.display='none'">
+  대현's 개발일지
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ko',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">(컴퓨터 네트워크) 컴퓨터 네트워크 보안</h1>
+  <h2 class="post-subtitle">컴퓨터 네트워크 8장</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2024-01-17T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jan 17, 2024
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 17 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#CS">#CS</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#Network">#Network</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="네트워크-보안">네트워크 보안</h2>
+<ul>
+  <li>네트워크 보안 - 기밀성, 메시지 무결성, 종단점 인증, 운영 보안을 고려한 네트워크에서의 안전한 통신
+    <ul>
+      <li>기밀성 - 송신자와 지정된 수신자만이 전송되는 메시지 내용을 이해할 수 있어야한다.</li>
+      <li>메시지 무결성 - 통신하는 내용이 전송 도중에 변경되지 않아야한다.</li>
+      <li>종단점 인증 - 통신에 참여하는 송신자와 수신자는 서로 누구인지 인증 가능해야한다.</li>
+      <li>운영 보안 - 침입 감지 시스템으로 패킷은 상세히 관찰되고 의심스러운 행위에 대해 네트워크 관리에게 보고된다.
+<br>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="암호의-원리">암호의 원리</h2>
+<ul>
+  <li>암호화 알고리즘 - 평문은 암호화 알고리즘을 사용해서 암호화되어 원문이 되고, 원문은 복화화 알고리즘을 사용해서 복호화되어 평문이 된다.
+<br>
+</li>
+</ul>
+
+<h2 id="대칭키-암호화">대칭키 암호화</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/b750f0b8-1e2c-42d2-a929-c963f8ac9086" alt="image-20231105-035351"></p>
+
+<ul>
+  <li>대칭키 암호화 알고리즘 - 어떤 것을 다른 것으로 대치하는 것이다. 송신자와 수신자는 같은 키를 공유한다.</li>
+  <li>카이사르 암호 - 평문 + k (k=key)</li>
+  <li>단일 문자 대응 암호 - 각 철자들은 고유한 대응 글자로 변환된다.</li>
+  <li>공격의 종류
+    <ul>
+      <li>암호문만을 이용한 공격 - 침입자가 평문 메시지의 내용에 대한 어떠한 사전 정보도 없이 가로챈 암호문에서만 접근할 수 있는 경우이다.</li>
+      <li>알려진 평문 공격 - 침입자가 어느정도 암호문의 쌍을 알고 있을 때, 이를 사용하여 공격하는 경우이다.</li>
+      <li>선택 평문 공격 - 침입자는 특정 평문 메시지를 선택하여 이에 대응하는 암호문 형태를 얻을 수 있다.</li>
+    </ul>
+  </li>
+  <li>다중 문자 대응 암호화 - 여러 개의 단일 문자 대응법을 가지고 평문 메시지에서의 위치에 따라 서로 다른 단일 문자 대응 암호법을 사용하는 것이다.</li>
+  <li>블록 암호화
+    <ul>
+      <li>메시지가 k비트 블록 단위로 암호화된다. 각 k비트 블록은 독립적으로 암호화된다.</li>
+      <li>이 암호기법에 대한가장 단순한 공격방법은 무작정 모든 사상을 시도해보는 것이다.</li>
+      <li><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/124d0cd9-0211-4276-b319-d7f6ba8cdcf4" alt="image-20231105-035836"></li>
+      <li>블록 암호화 기법은 블록의 순열 테이블을 임의로 모방 생성하는 함수를 사용한다. 암호화 사이클을 n번 반복하게 된다.</li>
+      <li>블록 암호화 방법에는 DES, AES 등이 있다.
+<br>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="공개키-암호화">공개키 암호화</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/afbd6a01-6aa8-4639-86bc-a2181681b528" alt="image-20231105-035902"></p>
+
+<ul>
+  <li>공개키 암호화 알고리즘 - 송신자와 수신자는 2개의 키를 갖는다. 하나는 세상의 모든사람에게 알려진 공개키이고, 다른 하나는 수신자만 아는 개인키이다. 송신자는 수신자의 공개키를 가지고 평문을 암호화하고, 수신자는 그것을 자신의 개인키와 이미 알려져 있는 복호화 알고리즘을 이용하여 복호화한다.</li>
+  <li>RSA - 소인수분해의 어려움에 기반하고 있는 알고리즘이다. 매우 큰 소수를 소인수로 분해하는 것이 어렵기 때문에 공개키 암호화 알고리즘으로서 적합하다.
+    <ul>
+      <li>RSA 알고리즘</li>
+      <li>
+        <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/c2a8b950-ffe7-4c9e-9acf-93d9a7948624" alt="image-20231105-040303"></p>
+      </li>
+      <li>세션키 - RSA에 필요한 지수연산은 시간이 많이 필요하기 때문에 RSA는 실제로 종종 대칭키 암호화와 함께 사용된다. 이 키를 세션키라고 한다. 수신자는 세션키가 RSA로 암호화된 형태인 c를 받고, 이를 복호화하여 세션키 Ks를 얻게된다. 그 후로, 수신자는 송신자가 데이터 암호화에 사용한 세션키를 사용한다.
+<br>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="메시지-무결성">메시지 무결성</h2>
+<ul>
+  <li>메시지 무결성을 정의하기 위해선 메시지가 정말 수신자로부터 온것인지, 수신자에게 전달되는 도중에 메시지가 변경되지 않았는지에 대해 확인이 필요하다. 
+<br>
+</li>
+</ul>
+
+<h2 id="암호화-해시함수">암호화 해시함수</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/b90a1a8a-e850-4805-9db0-c2c58b6864eb" alt="image-20231105-043119"></p>
+
+<ul>
+  <li>해시 함수는 입력 m을 받아서 해시라 불리는 고정된 크기의 문자열 H(m)을 계산해낸다.</li>
+  <li>(m, H(m))이 원래 메시지와 그 메시지에 대해 송신자가 만들어낸 해시값이라고 할 때, 침입자가 원래 메시지와 동일한 해시값을 갖는 다른 메시지 y를 위조할 수 없다고 할 수 있어야한다.
+<br>
+</li>
+</ul>
+
+<h2 id="메시지-인증-코드">메시지 인증 코드</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/46d52743-304f-477c-9081-71f19d7fdb8a" alt="image-20231105-050603"></p>
+
+<ul>
+  <li>해시 함수로부터 메시지 무결성을 얻을 때, 가짜 메시지 m’을 생성하여 메시지 내에서 자신이 수신자라고 주장한 후, H(m’)을 생성하여 수신자에게 (m’, H(m))을 보내면, 문제없이 부적절한 행위를 검출할 수 없다.</li>
+  <li>메시지 무결성을 위해서는 암호화 해시 함수의 사용 외에도 비밀키를 공유할 필요가 있는데, 이때, 비트열 형태인 이 공유 비밀키를 인증키라고 한다.</li>
+  <li>메시지 무결성 적용 방법
+    <ul>
+      <li>수신자는 메시지 m을 생성한 후 s와 접합하여 m+s를 만든다. 그런 다음 해시 H(m+s)를 계산해내는데 이것을 메시지 인증 코드(MAC)라고 부른다.</li>
+      <li>송신자는 MAC을 메시지 m에 첨부하여 확장 메시지 (m, H(m+s))를 생성해서 수신자에게 보낸다.</li>
+      <li>수신자는 확장 메시지 (m, h)를 받으면 이미 알고있는 s를 이용하여 MAC H(m+s)를 계산한다. 만약, H(m+s) = h라면, 아무 문제가 없는 것이다.</li>
+    </ul>
+  </li>
+  <li>MAC은 암호화 알고리즘을 필요로 하지 않는다. 즉, 메시지의 무결성만 필요로 하고 메시지 기밀성은 고려하지 않는다.
+<br>
+</li>
+</ul>
+
+<h2 id="전자서명">전자서명</h2>
+<ul>
+  <li>디지털 세계에서 자신의 문서 내용에 대해 승인했거나 동의했다는 사실을 증명하는 목적으로 사용되는 암호화 기법을 말한다.</li>
+  <li>서명자를 입증할 수 있어야 하고, 위조할 수 없도록 해야한다. 즉, 어느 한 개인이 서명한 무서를 실제로 그 사람이 서명했다는 사실, 그리고 오직 그 사람만이 문서에 서명할 수 있었다는 사실을 증명할 수 있어야 한다.</li>
+  <li>전자서명 생성방법</li>
+  <li>
+    <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/a8452659-fdef-4c0f-a3c8-bcccf44001db" alt="image-20231105-051655"></p>
+  </li>
+  <li>수신자는 문서에 서명할 목적으로 개인키를 사용하여 알고리즘을 계산한다.</li>
+  <li>개인키를 사용하는 이유는 KB+(KB−(m))=m이 되도록하기 위해서 이다.</li>
+  <li>개인키를 사용하였기 때문에 개인키를 알고있는 자신 이외에 다른 사람들은 생성 불가능하다.</li>
+  <li>전자서명 메시지의 전송</li>
+  <li>
+    <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/9a731901-7e0a-4b78-9801-075d36386eea" alt="image-20231105-052018"></p>
+  </li>
+  <li>서명된 메시지의 검증</li>
+  <li>
+    <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/14d14d68-2012-423b-850d-913f1ac6c9cc" alt="image-20231105-052042"></p>
+  </li>
+  <li>공개키 인증 - 전자서명의 중요한 응용 중 하나로 어떤 공개키가 특정 통신 개체에 속한다는 것을 보증하는 것이다.
+    <ul>
+      <li>IPsec과 TLS 등 많은 대중적인 보안 네트워킹에서 사용된다.</li>
+      <li>
+        <p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/dde0b2ed-0b31-440a-81fc-b926bdf4f967" alt="image-20231105-052233"></p>
+      </li>
+      <li>공격자는 송신자에게 자신이 수신자라고 속이고 자신의 개인키로 이용해 서명된 메시지 요약문을 송신자에게 보낸다. 송신자는 그것이 수신자의 것이라고 생각하여 공격자의 공개키를 이용하여 암호화하여 수신자에게 보낸다. 당연하게도 수신자는 자신이 원한 메시지가 아닌 잘못된 메시지를 가지게 된다.</li>
+    </ul>
+  </li>
+  <li>인증기관(CA) - 공개키가 어떤 특정한 통신 개체의 것인지 보증하는 일을 담당한다.
+    <ul>
+      <li>CA는 어떤 개체가 스스로 주장하는 자신의 신분, 바로 그 개체가 맞는지 확인한다.</li>
+      <li>일단 CA가 개체의 신원을 확인하면, CA는 그 개체의 공개키와 신분확인서를 결합한 인증서를 만든다</li>
+      <li>
+<img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/c1509ee8-efa9-4654-8b1b-764b6fe0f405" alt="image-20231105-053434">
+<br>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="종단점-인증">종단점 인증</h2>
+<ul>
+  <li>하나의 통신 개체가 다른 개체에게 자신의 신원을 컴퓨터 네트워크상으로 증명하는 작업이다.</li>
+  <li>종단점 인증 시나리오
+    <ul>
+      <li>송신자는 메시지를 수신자에게 보낸다.</li>
+      <li>수신자는 넌스 R을 선택하고 그것을 송신자에게 보낸다.</li>
+      <li>송신자는 송신자와 수신자의 대칭 비밀키르르 사용해서 그 넌스를 암호화하고, 암호화된 넌스를 밥에게 보낸다.</li>
+      <li>수신자는 자신이 받은 메시지를 복호화한다. 만약 복호화한 넌스가 자신이 송신자에게 보낸 것과 같다면 송신자를 인증한다.</li>
+      <li>
+<img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/b2143690-d142-4050-9c9a-3653814c4226" alt="image-20231105-053818">
+ <br>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="tcp연결의-보안--tls">TCP연결의 보안 : TLS</h2>
+<ul>
+  <li>TCP에서 기밀성, 데이터 무결성, 종단점 인증 등의 보안 서비스를 포함하는 버전을 TLS라고 부른다.</li>
+  <li>almost-TLS는 핸드셰이크, 키 유도, 데이터 전송이라는 세 단계에서 보안을 제공한다.</li>
+  <li>핸드셰이크
+    <ul>
+      <li>(a) 송신자는 TCP연결을 설립한다.</li>
+      <li>(b) 수신자는 송신자가 진짜 송신자인지 확인한다.</li>
+      <li>(c) TLS 세션에 필요한 모든 대칭키를 생성하기 위해 앨리스와 밥이 사용할 주 비밀키를 수신자에게 전송한다.</li>
+      <li>이렇게 TCP연결이 성립되면 수신자는 송신자에게 메시지를 보내고, 여기에 송신자는 수신자의 공개키를 담은 인증서로 응답한다.</li>
+      <li>수신자는 인증서 내의 공개키가 CA로부터 인증받은 것이기 때문에 수신자의 것이라는 사실을 확실히 믿을 수 있다.</li>
+      <li>수신자는 MS를 생성하여 이를 송신자의 공개키로 암호화하여 EMS를 만든다.</li>
+      <li>EMS가 송신자에게 전송되고 송신자는 자신의 개인키를 가지고 EMS를 복호화하여 MS를 얻는다.</li>
+      <li><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/9783d569-e881-40a7-b1d1-465a770272ea" alt="image-20231105-061351"></li>
+    </ul>
+  </li>
+  <li>키유도
+    <ul>
+      <li>원칙적으로 송신자와 수신자가 공유한 MS는 이후의 모든 암호화와 데이터 무결성 검사를 위한 대칭 세션키로 사용될 수 있다. 하지만 일반적으로 앨리스와 밥이 각각 다른 암호화 키를 사용하고, 암호화와 무결성 검사에도 서로 다른 키를 사용하는 것이 좀 더 안전하기 때문에 MS를 이용하여 4개의 키를 생성한다.</li>
+    </ul>
+  </li>
+  <li>데이터 전송
+    <ul>
+      <li>핸드 셰이크와 키유도를 통해 TCP연결이 되었기 때문에 송, 수신자는 서로에게 안전한 데이터를 보낼 수 있다.</li>
+      <li>송신자 쪽의 TCP는 모든게 잘 처리되었다고 생각하고 그 두 레코드를 TLS 부계층에 넘겨준다.</li>
+      <li>송신자 쪽의 TLS가 두 레코드를 복화화한다.</li>
+      <li>송신자 쪽의 TLS가 각 레코드의 HMA을 사용하여 두 레코드의 데이터 무결성을 확인한다.</li>
+      <li>TLS는 두 레코드의 복호화된 바이트 스트림을 애플리케이션 계층에 넘겨준다. 그러나 순서가 뒤 바뀐  두 레코드 때문에 앨리스가 받은 전체 바이트 스트림은 순서가 맞지 않는다.
+<br>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="네트워크-계층-보안--ipsec">네트워크 계층 보안 : IPsec</h2>
+<p><img src="https://github.com/eogus0512/eogus0512.github.io/assets/71585151/0c43e7f5-b5ea-4cc4-bd07-04aa4146dbc9" alt="image-20231105-062012"></p>
+
+<ul>
+  <li>IPsec - 호스트 사이의 IP 데이터 그램을 보호한다. 또한, 공공 인터넷 상에 가상 사설 네트워크를 구축하기 위해 IPsec이 사용된다. IP 데이터 그램에 기밀성, 출발지 인증, 데이터 무결성, 재생 공격 방지 같은 보안 서비스를 추가한다.</li>
+  <li>AH, ESP 프로토콜 - 출발지 IPsec 개체가 보안 데이터그램을 목적지 개체에 보낼 때 AH 프로토콜이나 ESP 프로토콜을 사용한다. AH 프로토콜은 출발지 인증과 데이터 무결성을 제공하지만 기밀성은 제공하지 않는다. ESP프로토콜은 출발지 인증, 데이터 무결성, 기밀성을 제공한다.</li>
+  <li>SA - IPsec 데이터그램을 전송하기 전에 출발지 개체와 목적지 개체는 네트워크 계층에서 논리적 연결을 설립한다. 이러한 논리적 연결을 SA라고 한다. SA는 단방향 연결이기 때문에 양방향으로 2개의 SA가 설립되어야한다.</li>
+  <li>IPsec 데이터 그램
+    <ul>
+      <li>터널 모드와 전송 모드라는 두가지 패킷 형식을 갖는다. 주로 VPN에 터널모드가 더 적합하여 터널보드가 더 널리 사용된다.</li>
+    </ul>
+  </li>
+</ul>
+
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/cs/2024/01/11/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EA%B3%84%EC%B8%B5-_-%EC%A0%9C%EC%96%B4-%ED%8F%89%EB%A9%B4.html" title="(컴퓨터 네트워크) 네트워크 계층 - 제어 평면">(컴퓨터 네트워크) 네트워크 계층 - 제어...</a><a class="next" href="/jekyll-theme-yat/docker/2024/02/21/(%EB%8F%84%EC%BB%A4)-%EA%B0%80%EC%83%81%ED%99%94-%EA%B8%B0%EC%88%A0.html" title="(도커) 가상화 기술">(도커) 가상화 기술</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/oauth2/2024/04/18/(OAuth2-Login)-%EA%B5%AC%EA%B8%80-%EC%86%8C%EC%85%9C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84-(2)-_-%EB%8F%84%EB%A9%94%EC%9D%B8-%EC%83%9D%EC%84%B1.html" title="(도커) 가상화 기술">(OAuth2 Login) 구글 소셜 로그인 구현 (2) - 도메인 생성</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/project/2023/02/14/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-3.html" title="(도커) 가상화 기술">(Spring Boot) 웹 개발 프로젝트 - 3</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/spring/2023/12/23/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%EC%9B%90%EB%A6%AC.html" title="(도커) 가상화 기술">(스프링 핵심원리) 객체 지향 원리</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/cs/2023/10/08/(%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EC%99%80-%EC%9D%B8%ED%84%B0%EB%84%B7.html" title="(도커) 가상화 기술">(컴퓨터 네트워크) 컴퓨터 네트워크와 인터넷</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2024 Yun Daehyun</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

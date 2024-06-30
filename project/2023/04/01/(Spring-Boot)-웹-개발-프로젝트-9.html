@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>(Spring Boot) 웹 개발 프로젝트 - 9 | 대현’s 개발일지</title>
+<meta name="generator" content="Jekyll v4.3.3">
+<meta property="og:title" content="(Spring Boot) 웹 개발 프로젝트 - 9">
+<meta name="author" content="Yun Daehyun">
+<meta property="og:locale" content="ko">
+<meta name="description" content="프로필 기능 설명 프로필 기능은 이 프로젝트에서 핵심적인 내용이라고 말할 수 있다. SNS의 핵심이 자신의 프로필을 생성하고, 자신만의 스토리를 다른사람에게 공개하는 것인것 처럼 이 프로젝트에서도 커플들이 본인들의 사랑이야기, 데이트 내용 등을 프로필을 통해 다른 사람들에게 공개하는 것이 핵심이다. 이러한 프로필 기능은 크게 포스트 등록, 프로필 화면 설계가 있다. 이번 포스팅에선 포스트 등록 관련해서 이야기하도록 하겠다.">
+<meta property="og:description" content="프로필 기능 설명 프로필 기능은 이 프로젝트에서 핵심적인 내용이라고 말할 수 있다. SNS의 핵심이 자신의 프로필을 생성하고, 자신만의 스토리를 다른사람에게 공개하는 것인것 처럼 이 프로젝트에서도 커플들이 본인들의 사랑이야기, 데이트 내용 등을 프로필을 통해 다른 사람들에게 공개하는 것이 핵심이다. 이러한 프로필 기능은 크게 포스트 등록, 프로필 화면 설계가 있다. 이번 포스팅에선 포스트 등록 관련해서 이야기하도록 하겠다.">
+<link rel="canonical" href="/jekyll-theme-yat/project/2023/04/01/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-9.html">
+<meta property="og:url" content="/jekyll-theme-yat/project/2023/04/01/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-9.html">
+<meta property="og:site_name" content="대현’s 개발일지">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-04-01T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="(Spring Boot) 웹 개발 프로젝트 - 9">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Yun Daehyun"},"dateModified":"2023-04-01T00:00:00+00:00","datePublished":"2023-04-01T00:00:00+00:00","description":"프로필 기능 설명 프로필 기능은 이 프로젝트에서 핵심적인 내용이라고 말할 수 있다. SNS의 핵심이 자신의 프로필을 생성하고, 자신만의 스토리를 다른사람에게 공개하는 것인것 처럼 이 프로젝트에서도 커플들이 본인들의 사랑이야기, 데이트 내용 등을 프로필을 통해 다른 사람들에게 공개하는 것이 핵심이다. 이러한 프로필 기능은 크게 포스트 등록, 프로필 화면 설계가 있다. 이번 포스팅에선 포스트 등록 관련해서 이야기하도록 하겠다.","headline":"(Spring Boot) 웹 개발 프로젝트 - 9","mainEntityOfPage":{"@type":"WebPage","@id":"/jekyll-theme-yat/project/2023/04/01/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-9.html"},"url":"/jekyll-theme-yat/project/2023/04/01/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-9.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/jekyll-theme-yat/assets/css/main.css">
+  <script src="/jekyll-theme-yat/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="/jekyll-theme-yat/feed.xml" title="대현's 개발일지">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/jekyll-theme-yat/">
+  <img class="site-favicon" title="대현's 개발일지" src="images/favicon.png" onerror="this.style.display='none'">
+  대현's 개발일지
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/jekyll-theme-yat/about.html">ABOUT</a><a class="page-link" href="/jekyll-theme-yat/archives.html">ARCHIVES</a><a class="page-link" href="/jekyll-theme-yat/categories.html">CATEGORIES</a><a class="page-link" href="/jekyll-theme-yat/">HOME</a><a class="page-link" href="/jekyll-theme-yat/tags.html">TAGS</a>
+
+
+
+
+
+
+
+
+
+<span class="page-link">
+
+
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'ko',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  // Links to cross-origin destinations are unsafe
+  var gll = document.getElementsByClassName('goog-logo-link')[0];
+  if (gll) {
+    gll.setAttribute('rel', 'noopener');
+  }
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span>
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">(Spring Boot) 웹 개발 프로젝트 - 9</h1>
+  <h2 class="post-subtitle">프로필 구현 - 1 (등록)</h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2023-04-01T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Apr 01, 2023
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 35 mins</span>
+  </p>
+<div class="post-tags">
+<a class="post-tag" href="/jekyll-theme-yat/tags.html#Spring">#Spring</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#Java">#Java</a><a class="post-tag" href="/jekyll-theme-yat/tags.html#Web">#Web</a>
+</div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="프로필-기능-설명">프로필 기능 설명</h2>
+<p>프로필 기능은 이 프로젝트에서 핵심적인 내용이라고 말할 수 있다. SNS의 핵심이 자신의 프로필을 생성하고, 자신만의 스토리를 다른사람에게 공개하는 것인것 처럼 이 프로젝트에서도 커플들이 본인들의 사랑이야기, 데이트 내용 등을 프로필을 통해 다른 사람들에게 공개하는 것이 핵심이다. 이러한 프로필 기능은 크게 포스트 등록, 프로필 화면 설계가 있다. 이번 포스팅에선 포스트 등록 관련해서 이야기하도록 하겠다. 
+<br><br></p>
+
+<h2 id="포스트-등록-설계">포스트 등록 설계</h2>
+<h3 id="데이터베이스-설계">데이터베이스 설계</h3>
+<p>등록에 있어서 가장먼저 해야할 일은 포스트관련 테이블을 생성해야한다. 포스트에 있어야할 내용으로는 포스트 ID, 남자친구 아이디, 여자친구 아이디, 이미지 정보, 내용, 해시태그이다. 이때, 이미지 정보의 경우는 이미지가 여러개일 수 있고, 원본 이미지 파일 이름과 저장되는 이미지 파일 이름이 모두 필요하다. 따라서, List형태로 이미지 여러개를 저장할 수 있고, 두가지 형태의 파일 이름을 멤버변수로 갖는 UploadFile이라는 클래스형식으로 저장하여야 한다.
+이 조건들을 충족하기 위해서는 테이블이 2개가 필요하다. 포스트 내용을 포함하고있는 POST테이블과 POST테이블의 images컬럼의 내용을 포함하고 있는 UPLOAD_FILE 테이블을 모두 생성하여 join하여야한다.</p>
+<pre><code class="language-domain/profile/Post.java">@Data
+@Entity
+public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    private String boyFriend;
+
+    @NotNull
+    private String girlFriend;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
+    private List&lt;UploadFile&gt; images = new ArrayList&lt;&gt;();
+
+    private String content;
+
+    private String hashTag;
+
+}
+</code></pre>
+<p>먼저, POST 테이블 관련 클래스를 생성하였다. 이미지를 제외한 변수들은 String으로 선언하였고, 이미지의 경우 여러개가 필요하고 이미지 당 두가지 형태의 파일이름이 필요하기 때문에 List<uploadfile>형으로 선언하였다 그리고 UPLOAD_FILE테이블과 조인할 것이기 때문에 외래키를 post_id라는 이름으로 설정하였다.</uploadfile></p>
+
+<pre><code class="language-domain/profile/UploadFile.java">@Data
+@Entity
+public class UploadFile {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String uploadFileName;
+
+    private String storeFileName;
+
+    public UploadFile(String uploadFileName, String storeFileName) {
+        this.uploadFileName = uploadFileName;
+        this.storeFileName = storeFileName;
+    }
+
+    public UploadFile() {
+
+    }
+}
+</code></pre>
+<p>그리고 두가지 형태의 파일 이름을 저장하기 위한 UploadFile클래스를 생성해주었다. Post클래스에서 images를 List<uploadfile>형으로 선언하였기 때문에 자동으로 스프링을 통해서 Post클래스와 join한다.
+<br></uploadfile></p>
+
+<h3 id="화면-설계">화면 설계</h3>
+<p>먼저 포스트 등록화면을 설계할 것이다.</p>
+<pre><code class="language-templates/page/profilePage_add.html">&lt;!DOCTYPE html&gt;
+&lt;html th:replace="~{layout/common_layout :: layout(~{::title}, ~{::section})}"&gt;
+&lt;head&gt;
+  &lt;title&gt;러브쉐어&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;section class="text-center"&gt;
+  &lt;form th:action method="post" enctype="multipart/form-data"&gt;
+    &lt;fieldset&gt;
+      &lt;legend&gt;게시물 등록&lt;/legend&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label for="images" class="form-label mt-4" style="float: left"&gt;이미지&lt;/label&gt;
+        &lt;input class="form-control" type="file" multiple="multiple" id="images" name="images"&gt;
+      &lt;/div&gt;
+      &lt;div class="form-group"&gt;
+      &lt;label for="content" class="form-label mt-4" style="float: left"&gt;내용&lt;/label&gt;
+      &lt;textarea class="form-control" id="content" name="content" rows="3"&gt;&lt;/textarea&gt;
+      &lt;/div&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label class="col-form-label mt-4" for="hashTag" style="float: left"&gt;해시태그&lt;/label&gt;
+        &lt;input type="text" class="form-control" placeholder="해시태그를 추가해보세요" id="hashTag" name="hashTag"&gt;
+      &lt;/div&gt;&lt;br&gt;
+      &lt;button type="submit" class="btn btn-primary"&gt;등록&lt;/button&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+&lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>세션을 통해서 남자친구, 여자친구 이름 정보가 현재 존재하기 때문에 포스트를 등록하기 위해서 사용자로부터 요구해야할 정보는 이미지파일, 포스트 내용, 해시태그이다. 여기서 해시태그는 나중에 검색기능을 사용할 때 쓰이는 포스트정보이다. 
+받아올 정보를 <input>태그를 통해서 받아온다. 여기서 중요한 점은 images의 경우 여려개의 이미지 파일을 받을 수 있도록 하여야하기 때문에 속성으로 ‘type=”file” multiple=”multiple”‘을 추가해야한다. 여기서 file은 사용자로부터 file을 받을 수 있도록 하고, multiple을 여러개의 파일을 한번에 받을 수 있도록 하는 속성이다.</p>
+
+<p>등록을 하면, 포스트를 볼 수 있도록 해야하기 때문에 포스트화면도 설계할 것이다.</p>
+<pre><code class="language-templates/page/profilePage_post.html">&lt;!DOCTYPE html&gt;
+&lt;html th:replace="~{layout/common_layout :: layout(~{::title}, ~{::section})}"&gt;
+&lt;head&gt;
+  &lt;title&gt;러브쉐어&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;section class="text-center"&gt;
+  &lt;span th:text="${post.boyFriend}" style="font-size: 20px"&gt;&lt;/span&gt;
+  &lt;span style="font-size: 20px"&gt;&amp;hearts;&lt;/span&gt;
+  &lt;span th:text="${post.girlFriend}"  style="font-size: 20px"&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;
+  &lt;div id="carouselControls" class="carousel slide" data-bs-ride="carousel" style="width:360px;height:480px;margin: auto;"&gt;
+    &lt;div class="carousel-inner"&gt;
+      &lt;div class="carousel-item" th:each="image, i : ${post.images}"
+           th:classappend="${i.index == 0} ? 'active'"&gt;
+        &lt;img th:src="|/images/${image.getStoreFileName()}|" width="360" height="480"/&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="carousel-control-prev" type="button" data-bs-target="#carouselControls" data-bs-slide="prev"&gt;
+      &lt;span class="carousel-control-prev-icon" aria-hidden="true"&gt;&lt;/span&gt;
+      &lt;span class="visually-hidden"&gt;Previous&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="carousel-control-next" type="button" data-bs-target="#carouselControls" data-bs-slide="next"&gt;
+      &lt;span class="carousel-control-next-icon" aria-hidden="true"&gt;&lt;/span&gt;
+      &lt;span class="visually-hidden"&gt;Next&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;&lt;br&gt;&lt;br&gt;
+  &lt;div class="card border-primary mb-3" style="width:360px;margin: auto;"&gt;
+    &lt;div class="card-body"&gt;
+      &lt;span class="card-text" th:text="${post.content}" style="font-size: 18px"&gt;글내용&lt;/span&gt;&lt;br&gt;
+      &lt;span class="card-text" th:text="${post.hashTag}" style="font-size: 15px"&gt;해시태크&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>포스트 화면은 먼저제목으로 커플의 아이디가 보이고, 여러개의 이미지를 carousel을 통해서 넘겨볼수 있도록 하였고, 내용과 해시태그를 이미지 밑에 보이도록 하였다. 이미지의 경우 이미지의 개수만큼 반복문의 반복을 통해 모두 볼 수 있도록 화면을 구성하였다. 또한, 버튼을 통해 이미지를 넘길 수 있도록 하였다. 이러한 carousel기능은 기존에 생성하였던 common_layout.html에 “<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>“를 추가함으로서 구현되도록 하였다.
+<br><br></p>
+
+<h2 id="포스트-등록">포스트 등록</h2>
+<h3 id="파일-저장-클래스-생성">파일 저장 클래스 생성</h3>
+<p>사용자로부터 받아온 이미지파일에 대해 저장소에 저장될 이미지 파일 이름을 생성하고, 저장소에 저장할 수 있도록 하는 클래스가 필요하다.</p>
+
+<pre><code class="language-domain/profile/FileStore.class">@Component
+public class FileStore {
+
+    @Value("${file.dir}")
+    private String fileDir;
+
+    public String getFullPath(String filename) {
+        return fileDir + filename;
+    }
+
+    public List&lt;UploadFile&gt; storeFiles(List&lt;MultipartFile&gt; multipartFiles) throws IOException {
+        List&lt;UploadFile&gt; storeFileResult = new ArrayList&lt;&gt;();
+        for (MultipartFile multipartFile : multipartFiles) {
+            if (!multipartFile.isEmpty()) {
+                storeFileResult.add(storeFile(multipartFile));
+            }
+        }
+        return storeFileResult;
+    }
+
+    public UploadFile storeFile(MultipartFile multipartFile) throws IOException {
+        if (multipartFile.isEmpty()) {
+            return null;
+        }
+
+        String originalFilename = multipartFile.getOriginalFilename();
+        String storeFileName = createStoreFileName(originalFilename);
+        multipartFile.transferTo(new File(getFullPath(storeFileName)));
+        return new UploadFile(originalFilename, storeFileName);
+    }
+
+    private String createStoreFileName(String originalFilename) {
+        String ext = extractExt(originalFilename);
+        String uuid = UUID.randomUUID().toString();
+        return uuid + "." + ext;
+    }
+
+    private String extractExt(String originalFilename) {
+        int pos = originalFilename.lastIndexOf(".");
+        return originalFilename.substring(pos + 1);
+    }
+}
+</code></pre>
+
+<p>클래스가 매우 복잡하게 보일 수 있으니 메소드별로 하나씩 설명하도록 하겠다.</p>
+<ul>
+  <li>@Value(“${file.dir}”) : 파일이 저장될 위치를 나타낸다.</li>
+  <li>extractExt() : 파일의 형식을 문자열로 뽑아내는 메소드</li>
+  <li>createStoreFileName() : uuid를 생성하여 파일의 형식 문자열과 합쳐 storeFileName을 생성하는 메소드</li>
+  <li>storeFile() : storeFileName으로이미지 파일을 File객체를 통해 파일이 저장될 위치에 저장하는 메소드, UploadFile객체형으로 반</li>
+  <li>storeFiles() : storeFile() 메소드를 사용하여 여러 파일을 저장하는 메소드, 저장된 이미지파일을 List<uploadfile>형으로 반환</uploadfile>
+</li>
+</ul>
+
+<p>전체적으로 보면 여러 이미지 파일들을 받아와 각각의 이미지 파일의 uuid형식인 storeFileName을 생성하여 설정해놓은 저장소에 File객체를  storeFileName으로 저장되도록한다.
+<br></p>
+
+<h3 id="포스트-저장">포스트 저장</h3>
+<p>Post클래스에서 멤버변수 images는 원본이미지 이름과, 파일을 저장할 때, 생성되는 저장용이름 정보만 담고 있기 때문에 사용자로부터 포스트 내용을 전달해주는 profilePage_add.html과 직접적으로 연결될 수 없다. 따라서, 사용자로부터 받는 포스트내용을 저장할 수 있는 도메인인 PostForm을 따로 생성해주어야한다.</p>
+<pre><code class="language-domain/profile/PostForm.class">@Data
+public class PostForm {
+
+    private List&lt;MultipartFile&gt; images;
+    private String content;
+    private String hashTag;
+}
+</code></pre>
+<p>profilePage_add.html에서 받아오는 이미지 파일은 MultiparFile형식이기 때문에 PostForm의 멤버변수 images를 List<multipartfile>형으로 선언해주었다.</multipartfile></p>
+
+<pre><code class="language-domain/profile/PostRepository.interface">public interface PostRepository {
+
+    Post save(Post post);
+
+    Post delete(Long id);
+
+    Post modify(Long id);
+
+    Post findById(Long id);
+  
+    Optional&lt;Post&gt; findByHashTag(String hashTag);
+
+    List&lt;Post&gt; findByBoyFriend(String boyFriend);
+
+}
+</code></pre>
+<p>profilePage_add.html으로 부터 받아오는 포스트 정보를 데이터베이스에 저장하는 기능을 PostRepository인터페이스에 정의하였다. 포스트를 저장하고, 삭제하고, 수정하고, 검색할 수 있어야하므로 관련 기능들을 메소드로 정의하였다.</p>
+
+<pre><code class="language-domain/profile/DBPostRepository.class">@Primary
+@Repository
+@Slf4j
+public class DBPostRepository implements PostRepository{
+    EntityManager em;
+
+    public DBPostRepository(EntityManager em) {
+        this.em = em;
+    }
+    @Override
+    public Post save(Post post) {
+        log.info("save: post={}", post);
+        em.persist(post);
+        return post;
+    }
+
+    @Override
+    public Post delete(Long id) {
+        return null;
+    }
+
+    @Override
+    public Post modify(Long id) {
+        return null;
+    }
+
+    @Override
+    public Post findById(Long id) {
+        Post post = em.find(Post.class, id);
+        return post;
+    }
+
+    @Override
+    public Optional&lt;Post&gt; findByHashTag(String hashTag) {
+        List&lt;Post&gt; result = em.createQuery("select m from Post m where m.hashTag = :hashTag", Post.class)
+                .setParameter("hashTag", hashTag)
+                .getResultList();
+        return result.stream().findAny();
+    }
+
+    @Override
+    public List&lt;Post&gt; findByBoyFriend(String boyFriend) {
+        return em.createQuery("select m from Post m where m.boyFriend = :boyFriend", Post.class)
+                .setParameter("boyFriend", boyFriend)
+                .getResultList();
+    }
+}
+</code></pre>
+<p>인터페이스로 정의한 포스트저장 관련 기능들을 포스트정보와 데이터베이스 사이에 직접 데이터를 주고받기 위해서 DBPostRepository클래스를 통해 구현하였다. delete와 modify메소드는 추후에 구현하도록 하고 현재 필요한 메소드만 먼저 정의하도록 하자. findByBoyFriend메소드의 경우 남자친구정보를 매개변수로 받아와 해당 남자친구 정보가 담겨있는 포스트를 모두 뽑아내 리스트형식으로 받아온다. 이는 이전에 구현했던 DBMemberRepository클래스와 유사하다.
+<br></p>
+
+<h3 id="컨트롤러-구현">컨트롤러 구현</h3>
+<pre><code class="language-web/profile/ProfileController.class">@GetMapping("/profile-add")
+public String addPost(@ModelAttribute PostForm form) {
+    return "page/profilePage_add";
+}
+
+@PostMapping("/profile-add")
+public String savePost(@ModelAttribute PostForm form, RedirectAttributes redirectAttributes, HttpServletRequest request) throws IOException {
+    List&lt;UploadFile&gt; storeImageFiles = fileStore.storeFiles(form.getImages());
+
+    //데이터베이스에 저장
+    Post post = new Post();
+    HttpSession session = request.getSession();
+    Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
+    log.info("gender={}", member.getGender());
+    if (member.getGender().equals("MEN")) {
+        post.setBoyFriend(member.getLoginId());
+        post.setGirlFriend(member.getLoverName());
+    } else {
+        post.setBoyFriend(member.getLoverName());
+        post.setGirlFriend(member.getLoginId());
+    }
+    post.setContent(form.getContent());
+    post.setHashTag(form.getHashTag());
+    post.setImages(storeImageFiles);
+    log.info("post={}", post);
+    postRepository.save(post);
+
+    redirectAttributes.addAttribute("postId", post.getId());
+    return "redirect:/profile/post/{postId}";
+}
+
+@GetMapping("/profile/post/{id}")
+public String postView(@PathVariable Long id, Model model) {
+    Post post = postRepository.findById(id);
+    model.addAttribute("post", post);
+    return "page/profilePage_post";
+}
+
+@ResponseBody
+@GetMapping("/images/{filename}")
+public Resource downloadImage(@PathVariable String filename) throws MalformedURLException {
+    return new UrlResource("file:" + fileStore.getFullPath(filename));
+}
+</code></pre>
+<p>포스트 저장 관련 컨트롤러에서 필요한 메소드를 하나씩 설명하도록 하겠다.</p>
+<ul>
+  <li>addPost() : 프로필화면에서 ‘+’버튼을 클릭하면 profilePage_add.html화면으로 이동한다.</li>
+  <li>savePost() : 화면으로부터 포스트 정보를 PostForm객체로 받아온다. 객체안의 이미지를 FileStore객체를 통해 저장소에 저장하고, List<uploadfile>형으로 두가지 형태의 이미지 이름을 반환한다. 그리고 Post객체를 생성하고, 세션을 통해 남자친구, 여자친구 이름을 불러오고, PostForm객체의 포스트 정보와 함께 Post객체에 저장하여 데이터 베이스에 저장한다. 저장이 완료되면 저장한 포스트 정보를 화면으로 바로 보여줄 수 있도록 하기 위해서 RedirectAttributes를 통해서 postId를 attribute값으로 넣어 "/profile/post/{postId}"으로 바로 이동하도록 한다.</uploadfile>
+</li>
+  <li>postView() : 포스트 화면을 출력한다. savePost()를 통해 저장된 포스트를 이 화면을 통해 볼 수 있다. 모델로 post객체를 사용한다.</li>
+  <li>downloadImage() : multipart형의 이미지를 화면에 보이도록하려면 UrlResource객체 생성하여 파일의 fullpath를 넣어줘야한다. 따라서, 이미지의 주소값으로 @GetMapping을 통해 이 메소드가 실행되어 저장소의 이미지를 화면에 노출시킬 수 있다.
+<br><br>
+</li>
+</ul>
+
+<h2 id="결과">결과</h2>
+<p><img src="https://user-images.githubusercontent.com/71585151/229302398-be254c54-2d1d-46ba-97d1-4a33e1871b98.png" alt="image"></p>
+
+<p>먼저, 프로그램을 실행하면 테이블이 자동으로 생성된 것을 확인할 수 있다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/71585151/229302599-142d42ed-c656-43a8-9e12-94c6e74a7543.png" alt="image"></p>
+
+<p>게시물 등록화면이다. 이미지 파일은 한번에 여러개 업로드할 수 있다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/71585151/229302804-6fd45770-7de6-42e5-8442-e258b43fb3ee.png" alt="image"></p>
+
+<p>등록 버튼을 클릭하면 저장소에 이미지 파일이 저장된 것을 확인할 수 있다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/71585151/229302649-d3b46ce8-0005-4469-b15b-d859fb7c8d06.png" alt="image"></p>
+
+<p>저장소에 이미지 파일이 저장되고, 데이터베이스에 포스트정보가 저장되면 데이터베이스에 저장된 포스트정보를 화면에 출력한다.</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/jekyll-theme-yat/project/2023/03/24/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-8.html" title="(Spring Boot) 웹 개발 프로젝트 - 8">(Spring Boot) 웹 개발 프로젝트 -...</a><a class="next" href="/jekyll-theme-yat/project/2023/05/14/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-10.html" title="(Spring Boot) 웹 개발 프로젝트 - 10">(Spring Boot) 웹 개발 프로젝트 -...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/jekyll-theme-yat/spring/2024/01/08/(%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC)-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%8A%A4%EC%BA%94%EA%B3%BC-%EC%9D%98%EC%A1%B4%EA%B4%80%EA%B3%84-%EC%9E%90%EB%8F%99-%EC%A3%BC%EC%9E%85.html" title="(Spring Boot) 웹 개발 프로젝트 - 10">(스프링 핵심원리) 컴포넌트 스캔과 의존관계 자동 주입</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/docker/2024/02/27/(%EB%8F%84%EC%BB%A4)-%EB%8F%84%EC%BB%A4-%EC%BB%B4%ED%8F%AC%EC%A6%88.html" title="(Spring Boot) 웹 개발 프로젝트 - 10">(도커) 도커 컴포즈</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/project/2023/02/27/(Spring-Boot)-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-7.html" title="(Spring Boot) 웹 개발 프로젝트 - 10">(Spring Boot) 웹 개발 프로젝트 - 7</a></li>
+<li><a class="post-link" href="/jekyll-theme-yat/java/2024/06/04/(%EC%9E%90%EB%B0%94)-%EC%8A%A4%ED%8A%B8%EB%A6%BC-(Stream).html" title="(Spring Boot) 웹 개발 프로젝트 - 10">(자바) 스트림 (Stream)</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-theme-yat/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div>Unpublished Work <span class="copyleft">©</span> 2017-2024 Yun Daehyun</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/jekyll-theme-yat/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
